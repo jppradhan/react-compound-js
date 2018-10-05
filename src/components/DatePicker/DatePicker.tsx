@@ -25,7 +25,7 @@ interface State {
   showYear: boolean;
 }
 
-export class Calendar extends React.Component<Props, State> {
+export class DatePicker extends React.Component<Props, State> {
   public constructor(props: Props) {
     super(props);
     const curDate = new Date(Date.parse(this.props.currentDate));
@@ -84,12 +84,12 @@ export class Calendar extends React.Component<Props, State> {
   private generateDays = (day: number, month: number, year: number) => {
     const days = [];
     const daysInMonth = getDaysInMonth(month + 1, year);
-    for (let i = 0; i < daysInMonth; i += 1) {
+    for (let i = 0; i < 31; i += 1) {
       days.push(
         <div
           className={`calandar__days ${this.state.today ? "today" : ""} ${
             i === day ? "selected" : ""
-          }`}
+          } ${i >= daysInMonth ? "disabled" : ""}`}
           key={`DAYS_${i}`}
           onClick={() => this.onSelectDate(i, month, year)}
         >
@@ -156,7 +156,9 @@ export class Calendar extends React.Component<Props, State> {
         selectedDate: formatDate(this.props.format, day + 1, month + 1, year)
       },
       () => {
-        this.props.onSelectDate(this.state.selectedDate);
+        if (!this.state.showMonth && !this.state.showMonth) {
+          this.props.onSelectDate(this.state.selectedDate);
+        }
       }
     );
   };

@@ -135,3 +135,15 @@
   font-size: 12px;
   line-height: 25px;
 }
+
+.form-date {
+  position: relative;
+  .picker__wrapper {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    z-index: 4;
+    box-shadow: 1px 0px 11px 0px rgba(0,0,0,0.54);
+    border-radius: 4px;
+  }
+}
