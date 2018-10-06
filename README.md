@@ -1,2 +1,5 @@
-#Compound js
-React plugin
+# React Compound js
+Simple React utility plugin
+
+## Docs Page
+[Compound js](https://jppradhan.github.io/compound-js/)
