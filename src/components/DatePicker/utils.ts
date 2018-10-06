@@ -31,3 +31,23 @@ export const formatDate = (
     .replace(/(mm|MM)/, month < 10 ? `0${month}` : month.toString())
     .replace(/(yyyy|YYYY)/, year.toString());
 };
+
+export const stringToDate = (format: string, dateStr: string) => {
+  const formatArr = format.split(/[-\/]/);
+  const dateStrArr = dateStr.split(/[-\/]/);
+  let day = 0;
+  let month = 0;
+  let year = 0;
+  for (let i = 0; i < formatArr.length; i++) {
+    if (formatArr[i].match(/(dd|DD)/)) {
+      day = parseInt(dateStrArr[i]);
+    }
+    if (formatArr[i].match(/(mm|MM)/)) {
+      month = parseInt(dateStrArr[i]);
+    }
+    if (formatArr[i].match(/(yy|YYYY)/)) {
+      year = parseInt(dateStrArr[i]);
+    }
+  }
+  return formatDate("mm-dd-yyyy", day, month, year);
+};

@@ -5,7 +5,8 @@ import {
   getDaysInMonth,
   YEAR_START,
   YEAR_END,
-  formatDate
+  formatDate,
+  stringToDate
 } from "./utils";
 import "./styles.scss";
 
@@ -28,12 +29,13 @@ interface State {
 export class DatePicker extends React.Component<Props, State> {
   public constructor(props: Props) {
     super(props);
-    const curDate = new Date(Date.parse(this.props.currentDate));
+    const strToDate = stringToDate("dd-mm-yyyy", this.props.currentDate);
+    const curDate = new Date(Date.parse(strToDate));
     this.state = {
       currentMonth: curDate.getMonth(),
       currentYear: curDate.getFullYear(),
       currentDay: curDate.getDay(),
-      selectedDate: this.props.currentDate,
+      selectedDate: strToDate,
       today: this.isToday(
         curDate.getDay(),
         curDate.getMonth(),

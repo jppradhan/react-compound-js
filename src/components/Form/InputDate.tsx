@@ -40,7 +40,7 @@ export class InputDate extends React.Component<Props, State> {
           type="text"
           value={this.state.selectedValue}
           {...rest}
-          onClick={this.openDatePicker}
+          onFocus={this.openDatePicker}
           className={`form-input format-${format}`}
         />
         <div className="picker__wrapper">
