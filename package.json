@@ -1,12 +1,11 @@
 {
   "name": "compound-js",
   "version": "0.1.0",
-  "private": true,
   "email": "er.jppradhan@gmail.com",
   "description": "A react plugin with small basic components",
   "repository": {
     "type": "git",
-    "url": "https://pradhanjp@bitbucket.org/pradhanjp/compound-js.git"
+    "url": "https://github.com/jppradhan/compound-js.git"
   },
   "dependencies": {
     "autoprefixer": "7.1.6",
