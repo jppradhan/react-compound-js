@@ -35,4 +35,5 @@ module.exports = {
       ribbonText: '#fff',
     }
   },
+  styleguideDir: 'docs'
 }

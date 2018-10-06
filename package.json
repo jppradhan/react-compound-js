@@ -55,10 +55,12 @@
     "styleguide": "npx styleguidist server",
     "styleguide:build": "npx styleguidist build"
   },
+  "pre-commit": ["build", "styleguide:build"],
   "devDependencies": {
     "@types/node": "^10.5.8",
     "@types/react": "^16.4.9",
     "@types/react-dom": "^16.0.7",
+    "pre-commit": "^1.2.2",
     "react-docgen-typescript": "^1.8.0",
     "react-styleguidist": "^7.3.4",
     "typescript": "^3.0.1"
