@@ -71,5 +71,12 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "files": [
+    "package.json",
+    "README.md",
+    "index.js",
+    "dist/*",
+    "src/**/*"
+  ]
 }
