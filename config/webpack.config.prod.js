@@ -18,7 +18,6 @@ const shouldUseRelativeAssetPaths = publicPath === './';
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 const publicUrl = publicPath.slice(0, -1);
 const env = getClientEnvironment(publicUrl);
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 if (env.stringified['process.env'].NODE_ENV !== '"production"') {
   throw new Error('Production builds must have NODE_ENV=production.');
@@ -193,9 +192,6 @@ module.exports = {
       sourceMap: shouldUseSourceMap,
     }), // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new CopyWebpackPlugin([
-      { from: paths.appIndexJs, to: paths.appBuild },
-    ], {}),
     new ForkTsCheckerWebpackPlugin({
       async: false,
       tsconfig: paths.appTsProdConfig,
