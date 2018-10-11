@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./styles.scss";
+//@ts-ignore
 import Arrow from "../../icons/right_arrow.svg";
 
 interface Props {

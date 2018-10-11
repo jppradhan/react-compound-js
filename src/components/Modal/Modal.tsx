@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./styles.scss";
+//@ts-ignore
 import Cross from "../../icons/cross.svg";
 
 interface Props {

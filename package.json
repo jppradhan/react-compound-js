@@ -1,6 +1,6 @@
 {
   "name": "react-compound-js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "email": "er.jppradhan@gmail.com",
   "description": "A react plugin with small basic components",
   "repository": {
@@ -10,7 +10,7 @@
   "homepage": "https://jppradhan.github.io/react-compound-js/",
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "gulp",
     "styleguide": "npx styleguidist server",
     "styleguide:build": "npx styleguidist build"
   },

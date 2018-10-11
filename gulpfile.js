@@ -4,14 +4,20 @@ const clean = require('gulp-clean');
 const sequence = require('run-sequence');
 
 gulp.task('compile', () => {
-  const tsProject = ts.createProject("./tsconfig.json", {});
+  const tsProject = ts.createProject("./tsconfig.json", {
+    declaration: true,
+    allowJs: false,
+  });
   return gulp.src(['./src/components/**/*.tsx', './src/components/**/*.ts'])
     .pipe(tsProject())
     .pipe(gulp.dest('./dist/components'))
 });
 
 gulp.task('index', () => {
-  const tsProject = ts.createProject("./tsconfig.json", {});
+  const tsProject = ts.createProject("./tsconfig.json", {
+    declaration: true,
+    allowJs: false,
+  });
   return gulp.src(['./src/index.tsx'])
     .pipe(tsProject())
     .pipe(gulp.dest('./dist'))

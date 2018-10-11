@@ -1,4 +1,5 @@
 import * as React from "react";
+//@ts-ignore
 import Arrow from "../../icons/right_arrow.svg";
 import {
   MONTHS,
