@@ -1,6 +1,6 @@
 {
   "name": "react-compound-js",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "email": "er.jppradhan@gmail.com",
   "description": "A react plugin with small basic components",
   "repository": {
@@ -83,5 +83,5 @@
     "dist/*",
     "src/**/*"
   ],
-  "entry": "src/index.tsx"
+  "entry": "dist/index.js"
 }
