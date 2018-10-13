@@ -80,8 +80,7 @@
   "files": [
     "package.json",
     "README.md",
-    "dist/*",
-    "src/**/*"
+    "dist/*"
   ],
   "entry": "dist/index.js"
 }
