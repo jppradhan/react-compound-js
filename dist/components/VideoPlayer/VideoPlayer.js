@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from "react";
-import "./styles.scss";
+import "./styles.css";
 var VideoPlayer = /** @class */ (function (_super) {
     __extends(VideoPlayer, _super);
     function VideoPlayer(props) {

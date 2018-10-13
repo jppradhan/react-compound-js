@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from "react";
-import "./styles.scss";
+import "./styles.css";
 var Sortable = /** @class */ (function (_super) {
     __extends(Sortable, _super);
     function Sortable(props) {

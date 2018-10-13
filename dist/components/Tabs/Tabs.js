@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from "react";
-import "./styles.scss";
+import "./styles.css";
 var Tabs = /** @class */ (function (_super) {
     __extends(Tabs, _super);
     function Tabs(props) {

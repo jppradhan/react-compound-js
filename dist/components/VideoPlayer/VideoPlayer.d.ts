@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./styles.scss";
+import "./styles.css";
 interface Video {
     title: string;
     description?: string;

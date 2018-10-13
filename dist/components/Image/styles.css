@@ -4,17 +4,14 @@
   display: flex;
   justify-content: center;
   overflow: hidden;
-  position: relative;
-  .show {
-    opacity: 1;
-  }
-  .hide {
-    opacity: 0;
-  }
-  img {
-    width: 100%;
-  }
-  .loadingWrapper {
+  position: relative; }
+  .image .show {
+    opacity: 1; }
+  .image .hide {
+    opacity: 0; }
+  .image img {
+    width: 100%; }
+  .image .loadingWrapper {
     position: absolute;
     left: 0;
     top: 0;
@@ -22,6 +19,4 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-  }
-}
+    align-items: center; }

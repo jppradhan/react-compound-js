@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./styles.scss";
+import "./styles.css";
 interface Props {
     onDismiss: () => void;
     isShowing: boolean;

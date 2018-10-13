@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./styles.scss";
+import "./styles.css";
 interface Props {
     children: React.ReactNode;
     loop?: boolean;

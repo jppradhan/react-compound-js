@@ -1,0 +1,28 @@
+.carousel {
+  position: relative; }
+  .carousel .viewport {
+    display: flex;
+    width: 100%;
+    overflow: hidden; }
+  .carousel .wrapper {
+    flex-wrap: nowrap;
+    display: flex; }
+  .carousel .controls .btn {
+    position: absolute;
+    z-index: 5;
+    border: none;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+    top: calc(50% - 20px);
+    padding: 5px;
+    cursor: pointer; }
+  .carousel .controls .prevBtn {
+    left: 30px; }
+    .carousel .controls .prevBtn svg {
+      transform: rotate(180deg); }
+  .carousel .controls .nextBtn {
+    right: 30px; }

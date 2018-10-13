@@ -1,6 +1,6 @@
 {
   "name": "react-compound-js",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "email": "er.jppradhan@gmail.com",
   "description": "A react plugin with small basic components",
   "repository": {
@@ -39,6 +39,7 @@
     "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",
     "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.0.1",
     "gulp-typescript": "^5.0.0-alpha.3",
     "html-webpack-plugin": "2.29.0",
     "node-sass": "^4.9.3",

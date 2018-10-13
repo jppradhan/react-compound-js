@@ -33,7 +33,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import * as React from "react";
 import { DatePicker } from "../DatePicker/DatePicker";
-import "./styles.scss";
+import "./styles.css";
 var InputDate = /** @class */ (function (_super) {
     __extends(InputDate, _super);
     function InputDate(props) {

@@ -1,0 +1,27 @@
+.ratings {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+  .ratings svg path {
+    fill: #b3bfc8; }
+  .ratings .ratings__icon {
+    display: inline-block;
+    margin-right: 5px; }
+  .ratings .top_layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden; }
+    .ratings .top_layer svg path {
+      fill: #D93636; }
+  .ratings .bottom_layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }

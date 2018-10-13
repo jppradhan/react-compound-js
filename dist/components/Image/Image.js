@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from "react";
-import "./styles.scss";
+import "./styles.css";
 var Image = /** @class */ (function (_super) {
     __extends(Image, _super);
     // private img: any = null;

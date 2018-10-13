@@ -23,7 +23,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import * as React from "react";
-import "./styles.scss";
+import "./styles.css";
 //@ts-ignore
 import Arrow from "../../icons/right_arrow.svg";
 var ICON_DIMENSIONS = 20;

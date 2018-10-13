@@ -15,7 +15,7 @@ import * as React from "react";
 //@ts-ignore
 import Arrow from "../../icons/right_arrow.svg";
 import { MONTHS, getDaysInMonth, YEAR_START, YEAR_END, formatDate, stringToDate } from "./utils";
-import "./styles.scss";
+import "./styles.css";
 var DatePicker = /** @class */ (function (_super) {
     __extends(DatePicker, _super);
     function DatePicker(props) {

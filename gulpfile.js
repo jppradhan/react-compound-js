@@ -3,6 +3,7 @@ const ts = require('gulp-typescript');
 const clean = require('gulp-clean'); 
 const sequence = require('run-sequence');
 const replace = require('gulp-replace');
+const sass = require('gulp-sass');
 
 gulp.task('compile', () => {
   const tsProject = ts.createProject("./tsconfig.json", {
@@ -11,6 +12,7 @@ gulp.task('compile', () => {
   });
   return gulp.src(['./src/components/**/*.tsx', './src/components/**/*.ts'])
     .pipe(tsProject())
+    .pipe(replace('.scss', '.css'))
     .pipe(gulp.dest('./dist/components'))
 });
 
@@ -25,8 +27,9 @@ gulp.task('index', () => {
     .pipe(gulp.dest('./'))
 });
 
-gulp.task('copy-scss', () => {
+gulp.task('compile-scss', () => {
   return gulp.src('./src/components/**/*.scss')
+    .pipe(sass())
     .pipe(gulp.dest('./dist/components'))
 });
 
@@ -35,16 +38,11 @@ gulp.task('copy-icons', () => {
     .pipe(gulp.dest('./dist/icons'))
 });
 
-gulp.task('copy-common', () => {
-  return gulp.src('./src/common/**/*')
-    .pipe(gulp.dest('./dist/common'))
-});
-
 gulp.task('clean', () => {
   return gulp.src('./dist/*')
     .pipe(clean())
 });
 
 gulp.task('default', (callback) => { 
-  return sequence('clean', ['copy-icons', 'copy-scss', 'copy-common'], 'compile', 'index', callback)
+  return sequence('clean', ['copy-icons', 'compile-scss', 'compile', 'index' ], callback)
 });

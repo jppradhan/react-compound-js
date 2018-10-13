@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from "react";
-import "./styles.scss";
+import "./styles.css";
 var COUNT = 5;
 var MARGIN = 5;
 var Ratings = /** @class */ (function (_super) {
