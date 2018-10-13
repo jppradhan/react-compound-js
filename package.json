@@ -1,6 +1,6 @@
 {
   "name": "react-compound-js",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "email": "er.jppradhan@gmail.com",
   "description": "A react plugin with small basic components",
   "repository": {
@@ -38,6 +38,7 @@
     "fs-extra": "3.0.1",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",
+    "gulp-replace": "^1.0.0",
     "gulp-typescript": "^5.0.0-alpha.3",
     "html-webpack-plugin": "2.29.0",
     "node-sass": "^4.9.3",
@@ -80,7 +81,9 @@
   "files": [
     "package.json",
     "README.md",
-    "dist/*"
+    "dist/*",
+    "index.js",
+    "index.d.ts"
   ],
-  "entry": "dist/index.js"
+  "entry": "index.js"
 }

@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const ts = require('gulp-typescript');
 const clean = require('gulp-clean'); 
 const sequence = require('run-sequence');
+const replace = require('gulp-replace');
 
 gulp.task('compile', () => {
   const tsProject = ts.createProject("./tsconfig.json", {
@@ -20,7 +21,8 @@ gulp.task('index', () => {
   });
   return gulp.src(['./src/index.tsx'])
     .pipe(tsProject())
-    .pipe(gulp.dest('./dist'))
+    .pipe(replace('./components', './dist/components'))
+    .pipe(gulp.dest('./'))
 });
 
 gulp.task('copy-scss', () => {
