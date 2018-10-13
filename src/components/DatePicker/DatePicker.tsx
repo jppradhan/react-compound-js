@@ -1,6 +1,6 @@
 import * as React from "react";
 //@ts-ignore
-import Arrow from "../../icons/right_arrow.svg";
+import Arrow from "../../icons/right-arrow.svg";
 import {
   MONTHS,
   getDaysInMonth,

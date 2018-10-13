@@ -1,6 +1,6 @@
 {
   "name": "react-compound-js",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "email": "er.jppradhan@gmail.com",
   "description": "A react plugin with small basic components",
   "repository": {
@@ -11,6 +11,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "gulp",
+    "onebuild": "node scripts/build.js",
     "styleguide": "npx styleguidist server",
     "styleguide:build": "npx styleguidist build"
   },
@@ -18,10 +19,14 @@
     "build",
     "styleguide:build"
   ],
-  "devDependencies": {
-    "@types/node": "^10.5.8",
+  "dependencies": {
     "@types/react": "^16.4.9",
     "@types/react-dom": "^16.0.7",
+    "@types/node": "^10.5.8"
+  },
+  "devDependencies": {
+    "@svgr/cli": "^3.1.0",
+    "@svgr/core": "^3.1.0",
     "@types/vinyl": "^2.0.2",
     "autoprefixer": "7.1.6",
     "babel-loader": "^7.1.2",
@@ -40,6 +45,7 @@
     "gulp-clean": "^0.4.0",
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.1",
+    "gulp-shell": "^0.6.5",
     "gulp-typescript": "^5.0.0-alpha.3",
     "html-webpack-plugin": "2.29.0",
     "node-sass": "^4.9.3",

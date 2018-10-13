@@ -4,6 +4,7 @@ const clean = require('gulp-clean');
 const sequence = require('run-sequence');
 const replace = require('gulp-replace');
 const sass = require('gulp-sass');
+const shell = require('gulp-shell');
 
 gulp.task('compile', () => {
   const tsProject = ts.createProject("./tsconfig.json", {
@@ -13,6 +14,7 @@ gulp.task('compile', () => {
   return gulp.src(['./src/components/**/*.tsx', './src/components/**/*.ts'])
     .pipe(tsProject())
     .pipe(replace('.scss', '.css'))
+    .pipe(replace('.svg', ''))
     .pipe(gulp.dest('./dist/components'))
 });
 
@@ -33,10 +35,25 @@ gulp.task('compile-scss', () => {
     .pipe(gulp.dest('./dist/components'))
 });
 
-gulp.task('copy-icons', () => {
-  return gulp.src('./src/icons/**/*')
+gulp.task('convert-svg', shell.task(
+  './node_modules/@svgr/cli/bin/svgr --icon --template ./config/template.js --filename-case kebab --ext tsx -d ./dist/icons ./src/icons'
+));
+
+gulp.task('compile-svg', () => {
+  const tsProject = ts.createProject("./tsconfig.json", {
+    declaration: false,
+    allowJs: false,
+    rootDir: './dist'
+  });
+  return gulp.src('./dist/icons/**/*.tsx')
+    .pipe(tsProject())
     .pipe(gulp.dest('./dist/icons'))
-});
+})
+
+gulp.task('clean-tsx-icons', () => {
+  return gulp.src('./dist/icons/**/*.tsx')
+    .pipe(clean())
+})
 
 gulp.task('clean', () => {
   return gulp.src('./dist/*')
@@ -44,5 +61,11 @@ gulp.task('clean', () => {
 });
 
 gulp.task('default', (callback) => { 
-  return sequence('clean', ['copy-icons', 'compile-scss', 'compile', 'index' ], callback)
+  return sequence('clean', [
+    'compile-scss', 
+    'compile', 'index' 
+  ], 
+  'convert-svg', 
+  'compile-svg', 
+  'clean-tsx-icons', callback)
 });

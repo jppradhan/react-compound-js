@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./styles.scss";
 //@ts-ignore
-import Arrow from "../../icons/right_arrow.svg";
+import Arrow from "../../icons/right-arrow.svg";
 
 interface Props {
   children: React.ReactNode;

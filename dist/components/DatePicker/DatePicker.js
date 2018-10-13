@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import * as React from "react";
 //@ts-ignore
-import Arrow from "../../icons/right_arrow.svg";
+import Arrow from "../../icons/right-arrow";
 import { MONTHS, getDaysInMonth, YEAR_START, YEAR_END, formatDate, stringToDate } from "./utils";
 import "./styles.css";
 var DatePicker = /** @class */ (function (_super) {

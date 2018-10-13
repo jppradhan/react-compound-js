@@ -25,7 +25,7 @@ var __assign = (this && this.__assign) || function () {
 import * as React from "react";
 import "./styles.css";
 //@ts-ignore
-import Arrow from "../../icons/right_arrow.svg";
+import Arrow from "../../icons/right-arrow";
 var ICON_DIMENSIONS = 20;
 var Carousel = /** @class */ (function (_super) {
     __extends(Carousel, _super);
