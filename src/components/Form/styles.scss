@@ -147,3 +147,45 @@
     border-radius: 4px;
   }
 }
+
+.form-range {
+  position: relative;
+  .range-inputs {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    input {
+      width: 40px;
+      height: 30px;
+    }
+  }
+  .range-wrapper {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    background-color: $darkGrey;
+    margin-top: 10px;
+  }
+  .range {
+    background-color: $primary;
+    height: 8px;
+    width: 0;
+    transition: width 0.2s linear;
+  }
+  .range-button {
+    display: inline-block;
+    position: absolute;
+    top: -9px;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.75);
+    transition: left 0.2s linear;
+    cursor: pointer;
+    &.right {
+      left: 90%;
+    }
+  }
+}
