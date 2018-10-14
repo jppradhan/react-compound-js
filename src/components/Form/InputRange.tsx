@@ -42,21 +42,20 @@ export class InputRange extends React.Component<Props, State> {
       <div className="form-elems form-range">
         <label className="input-label">{label}</label>
         <div className="range-wrapper" ref={e => (this.rangeElem = e)}>
-          <div className="range" style={this.getRangeStyle(start, end)} />
-          <span
-            className="range-button left"
-            style={this.getLeftStyle(start, end)}
-            onDrag={e => this.onDragButton(e, "start")}
-            role="slider"
-            draggable={true}
-          />
-          <span
-            className="range-button right"
-            style={this.getRightStyle(start, end)}
-            onDrag={e => this.onDragButton(e, "end")}
-            role="slider"
-            draggable={true}
-          />
+          <div className="range" style={this.getRangeStyle(start, end)}>
+            <span
+              className="range-button left"
+              onDrag={e => this.onDragButton(e, "start")}
+              role="slider"
+              draggable={true}
+            />
+            <span
+              className="range-button right"
+              onDrag={e => this.onDragButton(e, "end")}
+              role="slider"
+              draggable={true}
+            />
+          </div>
         </div>
         <div className="range-inputs">
           <input
@@ -87,17 +86,17 @@ export class InputRange extends React.Component<Props, State> {
     };
   };
 
-  private getLeftStyle = (start: number, end: number) => {
-    return {
-      left: `${start}%`
-    };
-  };
+  // private getLeftStyle = (start: number, end: number) => {
+  //   return {
+  //     left: `${start}%`
+  //   };
+  // };
 
-  private getRightStyle = (start: number, end: number) => {
-    return {
-      left: `${end}%`
-    };
-  };
+  // private getRightStyle = (start: number, end: number) => {
+  //   return {
+  //     left: `${end}%`
+  //   };
+  // };
 
   private onKeyDownStart = (e: React.KeyboardEvent) => {
     if (e.keyCode !== 13) {
