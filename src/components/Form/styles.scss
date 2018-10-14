@@ -165,12 +165,13 @@
     height: 8px;
     background-color: $darkGrey;
     margin-top: 10px;
+    border-radius: 2px;
   }
   .range {
     background-color: $primary;
     height: 8px;
     width: 0;
-    transition: width 0.2s linear;
+    transition: width 0.1s linear;
   }
   .range-button {
     display: inline-block;
@@ -182,7 +183,8 @@
     border-radius: 50%;
     background-color: #fff;
     box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.75);
-    transition: left 0.2s linear;
+    transition: left 0.1s linear;
+    user-select: none;
     cursor: pointer;
     &.right {
       left: 90%;

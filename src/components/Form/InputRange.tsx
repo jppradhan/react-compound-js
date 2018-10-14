@@ -41,19 +41,21 @@ export class InputRange extends React.Component<Props, State> {
     return (
       <div className="form-elems form-range">
         <label className="input-label">{label}</label>
-        <div className="range-wrapper">
-          <div
-            className="range"
-            ref={e => (this.rangeElem = e)}
-            style={this.getRangeStyle(start, end)}
-          />
+        <div className="range-wrapper" ref={e => (this.rangeElem = e)}>
+          <div className="range" style={this.getRangeStyle(start, end)} />
           <span
             className="range-button left"
             style={this.getLeftStyle(start, end)}
+            onDrag={e => this.onDragButton(e, "start")}
+            role="slider"
+            draggable={true}
           />
           <span
             className="range-button right"
             style={this.getRightStyle(start, end)}
+            onDrag={e => this.onDragButton(e, "end")}
+            role="slider"
+            draggable={true}
           />
         </div>
         <div className="range-inputs">
@@ -139,5 +141,40 @@ export class InputRange extends React.Component<Props, State> {
     this.setState({
       inputEnd: val
     });
+  };
+
+  private onDragButton = (e: React.MouseEvent, buttonType: string) => {
+    if (this.rangeElem) {
+      const rangeWrapperWidth = this.rangeElem.offsetWidth;
+      //@ts-ignore
+      const wrapper = this.rangeElem.getBoundingClientRect();
+      //@ts-ignore
+      const leftPos = e.clientX - wrapper.left;
+      if (leftPos < 0) {
+        return;
+      }
+      const leftPercentage = Math.round((leftPos / rangeWrapperWidth) * 100);
+      if (
+        buttonType === "start" &&
+        leftPercentage < this.state.end &&
+        leftPercentage >= 0
+      ) {
+        this.setState({
+          start: leftPercentage,
+          inputStart: leftPercentage
+        });
+      }
+
+      if (
+        buttonType === "end" &&
+        leftPercentage > this.state.start &&
+        leftPercentage <= this.props.max
+      ) {
+        this.setState({
+          end: leftPercentage,
+          inputEnd: leftPercentage
+        });
+      }
+    }
   };
 }
