@@ -24,16 +24,16 @@ var InputRange = /** @class */ (function (_super) {
                 marginLeft: start + "%"
             };
         };
-        _this.getLeftStyle = function (start, end) {
-            return {
-                left: start + "%"
-            };
-        };
-        _this.getRightStyle = function (start, end) {
-            return {
-                left: end + "%"
-            };
-        };
+        // private getLeftStyle = (start: number, end: number) => {
+        //   return {
+        //     left: `${start}%`
+        //   };
+        // };
+        // private getRightStyle = (start: number, end: number) => {
+        //   return {
+        //     left: `${end}%`
+        //   };
+        // };
         _this.onKeyDownStart = function (e) {
             if (e.keyCode !== 13) {
                 return;
@@ -118,9 +118,9 @@ var InputRange = /** @class */ (function (_super) {
         return (React.createElement("div", { className: "form-elems form-range" },
             React.createElement("label", { className: "input-label" }, label),
             React.createElement("div", { className: "range-wrapper", ref: function (e) { return (_this.rangeElem = e); } },
-                React.createElement("div", { className: "range", style: this.getRangeStyle(start, end) }),
-                React.createElement("span", { className: "range-button left", style: this.getLeftStyle(start, end), onDrag: function (e) { return _this.onDragButton(e, "start"); }, role: "slider", draggable: true }),
-                React.createElement("span", { className: "range-button right", style: this.getRightStyle(start, end), onDrag: function (e) { return _this.onDragButton(e, "end"); }, role: "slider", draggable: true })),
+                React.createElement("div", { className: "range", style: this.getRangeStyle(start, end) },
+                    React.createElement("span", { className: "range-button left", onDrag: function (e) { return _this.onDragButton(e, "start"); }, role: "slider", draggable: true }),
+                    React.createElement("span", { className: "range-button right", onDrag: function (e) { return _this.onDragButton(e, "end"); }, role: "slider", draggable: true }))),
             React.createElement("div", { className: "range-inputs" },
                 React.createElement("input", { type: "text", name: startInputName, className: "form-input format-default", value: this.state.inputStart, onChange: this.onChangeStart, onKeyDown: this.onKeyDownStart }),
                 React.createElement("input", { type: "text", name: endInputName, className: "form-input format-default", value: this.state.inputEnd, onChange: this.onChangeEnd, onKeyDown: this.onKeyDownEnd }))));

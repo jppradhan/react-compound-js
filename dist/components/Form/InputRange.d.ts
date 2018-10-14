@@ -20,8 +20,6 @@ export declare class InputRange extends React.Component<Props, State> {
     constructor(props: Props);
     render(): JSX.Element;
     private getRangeStyle;
-    private getLeftStyle;
-    private getRightStyle;
     private onKeyDownStart;
     private onKeyDownEnd;
     private onChangeStart;
