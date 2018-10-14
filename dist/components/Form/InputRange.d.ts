@@ -26,6 +26,7 @@ export declare class InputRange extends React.Component<Props, State> {
     private onKeyDownEnd;
     private onChangeStart;
     private onChangeEnd;
+    private onDragButton;
 }
 export {};
 //# sourceMappingURL=InputRange.d.ts.map

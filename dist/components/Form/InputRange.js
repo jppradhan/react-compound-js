@@ -74,6 +74,35 @@ var InputRange = /** @class */ (function (_super) {
                 inputEnd: val
             });
         };
+        _this.onDragButton = function (e, buttonType) {
+            if (_this.rangeElem) {
+                var rangeWrapperWidth = _this.rangeElem.offsetWidth;
+                //@ts-ignore
+                var wrapper = _this.rangeElem.getBoundingClientRect();
+                //@ts-ignore
+                var leftPos = e.clientX - wrapper.left;
+                if (leftPos < 0) {
+                    return;
+                }
+                var leftPercentage = Math.round((leftPos / rangeWrapperWidth) * 100);
+                if (buttonType === "start" &&
+                    leftPercentage < _this.state.end &&
+                    leftPercentage >= 0) {
+                    _this.setState({
+                        start: leftPercentage,
+                        inputStart: leftPercentage
+                    });
+                }
+                if (buttonType === "end" &&
+                    leftPercentage > _this.state.start &&
+                    leftPercentage <= _this.props.max) {
+                    _this.setState({
+                        end: leftPercentage,
+                        inputEnd: leftPercentage
+                    });
+                }
+            }
+        };
         _this.state = {
             start: _this.props.start,
             end: _this.props.end,
@@ -88,10 +117,10 @@ var InputRange = /** @class */ (function (_super) {
         var _d = this.state, start = _d.start, end = _d.end;
         return (React.createElement("div", { className: "form-elems form-range" },
             React.createElement("label", { className: "input-label" }, label),
-            React.createElement("div", { className: "range-wrapper" },
-                React.createElement("div", { className: "range", ref: function (e) { return (_this.rangeElem = e); }, style: this.getRangeStyle(start, end) }),
-                React.createElement("span", { className: "range-button left", style: this.getLeftStyle(start, end) }),
-                React.createElement("span", { className: "range-button right", style: this.getRightStyle(start, end) })),
+            React.createElement("div", { className: "range-wrapper", ref: function (e) { return (_this.rangeElem = e); } },
+                React.createElement("div", { className: "range", style: this.getRangeStyle(start, end) }),
+                React.createElement("span", { className: "range-button left", style: this.getLeftStyle(start, end), onDrag: function (e) { return _this.onDragButton(e, "start"); }, role: "slider", draggable: true }),
+                React.createElement("span", { className: "range-button right", style: this.getRightStyle(start, end), onDrag: function (e) { return _this.onDragButton(e, "end"); }, role: "slider", draggable: true })),
             React.createElement("div", { className: "range-inputs" },
                 React.createElement("input", { type: "text", name: startInputName, className: "form-input format-default", value: this.state.inputStart, onChange: this.onChangeStart, onKeyDown: this.onKeyDownStart }),
                 React.createElement("input", { type: "text", name: endInputName, className: "form-input format-default", value: this.state.inputEnd, onChange: this.onChangeEnd, onKeyDown: this.onKeyDownEnd }))));
