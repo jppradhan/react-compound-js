@@ -20,6 +20,8 @@ interface State {
 
 export class InputRange extends React.Component<Props, State> {
   private rangeElem: HTMLElement | null = null;
+  private startMouseDown: boolean = false;
+  private endMouseDown: boolean = false;
   public constructor(props: Props) {
     super(props);
     this.state = {
@@ -28,6 +30,18 @@ export class InputRange extends React.Component<Props, State> {
       inputStart: this.props.start,
       inputEnd: this.props.end
     };
+  }
+
+  public componentDidMount() {
+    document.addEventListener("mousedown", this.onMouseDown);
+    document.addEventListener("mouseup", this.onMouseUp);
+    document.addEventListener("mousemove", this.onMouseMove);
+  }
+
+  public componentWillUnmount() {
+    document.removeEventListener("mousedown", this.onMouseDown);
+    document.removeEventListener("mouseup", this.onMouseUp);
+    document.removeEventListener("mousemove", this.onMouseMove);
   }
 
   public render() {
@@ -45,15 +59,13 @@ export class InputRange extends React.Component<Props, State> {
           <div className="range" style={this.getRangeStyle(start, end)}>
             <span
               className="range-button left"
-              onDrag={e => this.onDragButton(e, "start")}
+              id="start-button"
               role="slider"
-              draggable={true}
             />
             <span
               className="range-button right"
-              onDrag={e => this.onDragButton(e, "end")}
               role="slider"
-              draggable={true}
+              id="end-button"
             />
           </div>
         </div>
@@ -85,18 +97,6 @@ export class InputRange extends React.Component<Props, State> {
       marginLeft: `${start}%`
     };
   };
-
-  // private getLeftStyle = (start: number, end: number) => {
-  //   return {
-  //     left: `${start}%`
-  //   };
-  // };
-
-  // private getRightStyle = (start: number, end: number) => {
-  //   return {
-  //     left: `${end}%`
-  //   };
-  // };
 
   private onKeyDownStart = (e: React.KeyboardEvent) => {
     if (e.keyCode !== 13) {
@@ -174,6 +174,35 @@ export class InputRange extends React.Component<Props, State> {
           inputEnd: leftPercentage
         });
       }
+    }
+  };
+
+  private onMouseDown = (e: Event) => {
+    // @ts-ignore
+    if (e.target.getAttribute("id") === "start-button") {
+      this.startMouseDown = true;
+    }
+    // @ts-ignore
+    if (e.target.getAttribute("id") === "end-button") {
+      this.endMouseDown = true;
+    }
+  };
+
+  private onMouseUp = (e: Event) => {
+    console.log("mouse up");
+    this.startMouseDown = false;
+    this.endMouseDown = false;
+  };
+
+  private onMouseMove = (e: Event) => {
+    if (this.startMouseDown) {
+      // @ts-ignore
+      this.onDragButton(e, "start");
+    }
+
+    if (this.endMouseDown) {
+      // @ts-ignore
+      this.onDragButton(e, "end");
     }
   };
 }
