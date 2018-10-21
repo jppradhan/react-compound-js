@@ -189,7 +189,6 @@ export class InputRange extends React.Component<Props, State> {
   };
 
   private onMouseUp = (e: Event) => {
-    console.log("mouse up");
     this.startMouseDown = false;
     this.endMouseDown = false;
   };

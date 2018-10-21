@@ -140,7 +140,8 @@
     background-color: #00ADEF;
     height: 8px;
     width: 0;
-    position: relative; }
+    position: relative;
+    transition: width 0.05s linear; }
   .form-range .range-button {
     display: inline-block;
     position: absolute;

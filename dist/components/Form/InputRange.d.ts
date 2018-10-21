@@ -17,7 +17,11 @@ interface State {
 }
 export declare class InputRange extends React.Component<Props, State> {
     private rangeElem;
+    private startMouseDown;
+    private endMouseDown;
     constructor(props: Props);
+    componentDidMount(): void;
+    componentWillUnmount(): void;
     render(): JSX.Element;
     private getRangeStyle;
     private onKeyDownStart;
@@ -25,6 +29,9 @@ export declare class InputRange extends React.Component<Props, State> {
     private onChangeStart;
     private onChangeEnd;
     private onDragButton;
+    private onMouseDown;
+    private onMouseUp;
+    private onMouseMove;
 }
 export {};
 //# sourceMappingURL=InputRange.d.ts.map

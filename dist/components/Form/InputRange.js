@@ -18,22 +18,14 @@ var InputRange = /** @class */ (function (_super) {
     function InputRange(props) {
         var _this = _super.call(this, props) || this;
         _this.rangeElem = null;
+        _this.startMouseDown = false;
+        _this.endMouseDown = false;
         _this.getRangeStyle = function (start, end) {
             return {
                 width: end - start + "%",
                 marginLeft: start + "%"
             };
         };
-        // private getLeftStyle = (start: number, end: number) => {
-        //   return {
-        //     left: `${start}%`
-        //   };
-        // };
-        // private getRightStyle = (start: number, end: number) => {
-        //   return {
-        //     left: `${end}%`
-        //   };
-        // };
         _this.onKeyDownStart = function (e) {
             if (e.keyCode !== 13) {
                 return;
@@ -103,6 +95,31 @@ var InputRange = /** @class */ (function (_super) {
                 }
             }
         };
+        _this.onMouseDown = function (e) {
+            // @ts-ignore
+            if (e.target.getAttribute("id") === "start-button") {
+                _this.startMouseDown = true;
+            }
+            // @ts-ignore
+            if (e.target.getAttribute("id") === "end-button") {
+                _this.endMouseDown = true;
+            }
+        };
+        _this.onMouseUp = function (e) {
+            console.log("mouse up");
+            _this.startMouseDown = false;
+            _this.endMouseDown = false;
+        };
+        _this.onMouseMove = function (e) {
+            if (_this.startMouseDown) {
+                // @ts-ignore
+                _this.onDragButton(e, "start");
+            }
+            if (_this.endMouseDown) {
+                // @ts-ignore
+                _this.onDragButton(e, "end");
+            }
+        };
         _this.state = {
             start: _this.props.start,
             end: _this.props.end,
@@ -111,6 +128,16 @@ var InputRange = /** @class */ (function (_super) {
         };
         return _this;
     }
+    InputRange.prototype.componentDidMount = function () {
+        document.addEventListener("mousedown", this.onMouseDown);
+        document.addEventListener("mouseup", this.onMouseUp);
+        document.addEventListener("mousemove", this.onMouseMove);
+    };
+    InputRange.prototype.componentWillUnmount = function () {
+        document.removeEventListener("mousedown", this.onMouseDown);
+        document.removeEventListener("mouseup", this.onMouseUp);
+        document.removeEventListener("mousemove", this.onMouseMove);
+    };
     InputRange.prototype.render = function () {
         var _this = this;
         var _a = this.props, label = _a.label, _b = _a.startInputName, startInputName = _b === void 0 ? "start" : _b, _c = _a.endInputName, endInputName = _c === void 0 ? "end" : _c;
@@ -119,8 +146,8 @@ var InputRange = /** @class */ (function (_super) {
             React.createElement("label", { className: "input-label" }, label),
             React.createElement("div", { className: "range-wrapper", ref: function (e) { return (_this.rangeElem = e); } },
                 React.createElement("div", { className: "range", style: this.getRangeStyle(start, end) },
-                    React.createElement("span", { className: "range-button left", onDrag: function (e) { return _this.onDragButton(e, "start"); }, role: "slider", draggable: true }),
-                    React.createElement("span", { className: "range-button right", onDrag: function (e) { return _this.onDragButton(e, "end"); }, role: "slider", draggable: true }))),
+                    React.createElement("span", { className: "range-button left", id: "start-button", role: "slider" }),
+                    React.createElement("span", { className: "range-button right", role: "slider", id: "end-button" }))),
             React.createElement("div", { className: "range-inputs" },
                 React.createElement("input", { type: "text", name: startInputName, className: "form-input format-default", value: this.state.inputStart, onChange: this.onChangeStart, onKeyDown: this.onKeyDownStart }),
                 React.createElement("input", { type: "text", name: endInputName, className: "form-input format-default", value: this.state.inputEnd, onChange: this.onChangeEnd, onKeyDown: this.onKeyDownEnd }))));
