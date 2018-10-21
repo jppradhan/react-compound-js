@@ -106,7 +106,6 @@ var InputRange = /** @class */ (function (_super) {
             }
         };
         _this.onMouseUp = function (e) {
-            console.log("mouse up");
             _this.startMouseDown = false;
             _this.endMouseDown = false;
         };

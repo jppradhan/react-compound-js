@@ -141,7 +141,7 @@
     height: 8px;
     width: 0;
     position: relative;
-    transition: width 0.05s linear; }
+    transition: width 0.05s linear, margin-left 0.05s linear; }
   .form-range .range-button {
     display: inline-block;
     position: absolute;
