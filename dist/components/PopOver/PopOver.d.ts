@@ -10,8 +10,11 @@ interface State {
 }
 export declare class PopOver extends React.Component<Props, State> {
     constructor(props: Props);
+    componentWillUnmount(): void;
     render(): JSX.Element;
-    private togglePopup;
+    private openPopup;
+    private closePopup;
+    private onClickOutside;
 }
 export {};
 //# sourceMappingURL=PopOver.d.ts.map
