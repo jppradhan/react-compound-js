@@ -13,15 +13,21 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import * as React from "react";
 import "./styles.css";
+var dispatchClosePopup = function () {
+    var event = new Event("closePopup");
+    document.dispatchEvent(event);
+};
 var PopOver = /** @class */ (function (_super) {
     __extends(PopOver, _super);
     function PopOver(props) {
         var _this = _super.call(this, props) || this;
-        _this.openPopup = function () {
+        _this.openPopup = function (e) {
+            dispatchClosePopup();
             _this.setState({
                 isShowing: true
             }, function () {
                 document.addEventListener("click", _this.onClickOutside);
+                document.addEventListener("closePopup", _this.closePopup);
             });
         };
         _this.closePopup = function () {
@@ -29,6 +35,7 @@ var PopOver = /** @class */ (function (_super) {
                 isShowing: false
             }, function () {
                 document.removeEventListener("click", _this.onClickOutside);
+                document.removeEventListener("closePopup", _this.closePopup);
             });
         };
         _this.onClickOutside = function (e) {
@@ -49,6 +56,7 @@ var PopOver = /** @class */ (function (_super) {
     }
     PopOver.prototype.componentWillUnmount = function () {
         document.removeEventListener("click", this.onClickOutside);
+        document.removeEventListener("closePopup", this.closePopup);
     };
     PopOver.prototype.render = function () {
         var _a = this.props, children = _a.children, content = _a.content, _b = _a.position, position = _b === void 0 ? "bottom" : _b, _c = _a.size, size = _c === void 0 ? "md" : _c;
