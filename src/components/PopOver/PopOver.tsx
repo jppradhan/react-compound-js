@@ -11,6 +11,11 @@ interface State {
   isShowing: boolean;
 }
 
+const dispatchClosePopup = () => {
+  const event = new Event("closePopup");
+  document.dispatchEvent(event);
+};
+
 export class PopOver extends React.Component<Props, State> {
   public constructor(props: Props) {
     super(props);
@@ -21,6 +26,7 @@ export class PopOver extends React.Component<Props, State> {
 
   public componentWillUnmount() {
     document.removeEventListener("click", this.onClickOutside);
+    document.removeEventListener("closePopup", this.closePopup);
   }
 
   public render() {
@@ -37,13 +43,15 @@ export class PopOver extends React.Component<Props, State> {
     );
   }
 
-  private openPopup = () => {
+  private openPopup = (e: React.MouseEvent<any>) => {
+    dispatchClosePopup();
     this.setState(
       {
         isShowing: true
       },
       () => {
         document.addEventListener("click", this.onClickOutside);
+        document.addEventListener("closePopup", this.closePopup);
       }
     );
   };
@@ -55,6 +63,7 @@ export class PopOver extends React.Component<Props, State> {
       },
       () => {
         document.removeEventListener("click", this.onClickOutside);
+        document.removeEventListener("closePopup", this.closePopup);
       }
     );
   };
