@@ -35,10 +35,10 @@ export class DatePicker extends React.Component<Props, State> {
     this.state = {
       currentMonth: curDate.getMonth(),
       currentYear: curDate.getFullYear(),
-      currentDay: curDate.getDay(),
+      currentDay: curDate.getDate(),
       selectedDate: strToDate,
       today: this.isToday(
-        curDate.getDay(),
+        curDate.getDate(),
         curDate.getMonth(),
         curDate.getFullYear()
       ),
@@ -195,7 +195,7 @@ export class DatePicker extends React.Component<Props, State> {
   private isToday = (day: number, month: number, year: number) => {
     const today = new Date();
     return (
-      day === today.getDay() &&
+      day === today.getDate() &&
       month === today.getMonth() &&
       year === today.getFullYear()
     );
