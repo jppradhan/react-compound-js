@@ -101,7 +101,7 @@ var DatePicker = /** @class */ (function (_super) {
         };
         _this.isToday = function (day, month, year) {
             var today = new Date();
-            return (day === today.getDay() &&
+            return (day === today.getDate() &&
                 month === today.getMonth() &&
                 year === today.getFullYear());
         };
@@ -110,9 +110,9 @@ var DatePicker = /** @class */ (function (_super) {
         _this.state = {
             currentMonth: curDate.getMonth(),
             currentYear: curDate.getFullYear(),
-            currentDay: curDate.getDay(),
+            currentDay: curDate.getDate(),
             selectedDate: strToDate,
-            today: _this.isToday(curDate.getDay(), curDate.getMonth(), curDate.getFullYear()),
+            today: _this.isToday(curDate.getDate(), curDate.getMonth(), curDate.getFullYear()),
             showMonth: false,
             showYear: false
         };
