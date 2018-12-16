@@ -1,4 +1,5 @@
 import * as React from "react";
+import cx from "classnames";
 //@ts-ignore
 import Arrow from "../../icons/right-arrow.svg";
 import {
@@ -9,7 +10,7 @@ import {
   formatDate,
   stringToDate
 } from "./utils";
-import "./styles.scss";
+import styles from "./styles.scss";
 
 interface Props {
   currentDate: string;
@@ -28,6 +29,14 @@ interface State {
 }
 
 export class DatePicker extends React.Component<Props, State> {
+  static dayStyles = (options: any) =>
+    cx({
+      [styles.days]: true,
+      [styles.today]: options.today,
+      [styles.selected]: options.selected,
+      [styles.disabled]: options.disabled
+    });
+
   public constructor(props: Props) {
     super(props);
     const strToDate = stringToDate("dd-mm-yyyy", this.props.currentDate);
@@ -50,35 +59,35 @@ export class DatePicker extends React.Component<Props, State> {
   public render() {
     const { currentDay, currentMonth, currentYear } = this.state;
     return (
-      <div className="calendar__root">
-        <div className="calendar__header">
+      <div className={styles.root}>
+        <div className={styles.header}>
           <span
-            className="arrow left_arrow"
+            className={cx([styles.arrow, styles.leftArrow])}
             onClick={() => this.goToMonth(currentMonth - 1)}
           >
             <Arrow width={15} height={15} />
           </span>
-          <div className="month-year">
+          <div className={styles.monthYear}>
             <span onClick={this.showMonthView}>{MONTHS[currentMonth]}</span>
             <span onClick={this.showYearView}>{currentYear}</span>
           </div>
           <span
-            className="arrow right_arrow"
+            className={cx([styles.arrow, styles.rightArrow])}
             onClick={() => this.goToMonth(currentMonth + 1)}
           >
             <Arrow width={15} height={15} />
           </span>
         </div>
-        <div className="calendar__date">
+        <div className={styles.date}>
           {this.generateDays(currentDay, currentMonth, currentYear)}
         </div>
         {this.state.showMonth ? (
-          <div className="calendar__month__view">
+          <div className={styles.monthView}>
             {this.generateMonths(currentYear)}
           </div>
         ) : null}
         {this.state.showYear ? (
-          <div className="calendar__year__view">{this.generateYears()}</div>
+          <div className={styles.yearView}>{this.generateYears()}</div>
         ) : null}
       </div>
     );
@@ -90,9 +99,11 @@ export class DatePicker extends React.Component<Props, State> {
     for (let i = 0; i < 31; i += 1) {
       days.push(
         <div
-          className={`calandar__days ${this.state.today ? "today" : ""} ${
-            i === day ? "selected" : ""
-          } ${i >= daysInMonth ? "disabled" : ""}`}
+          className={DatePicker.dayStyles({
+            today: this.state.today,
+            selected: i === day,
+            disabled: i >= daysInMonth
+          })}
           key={`DAYS_${i}`}
           onClick={() => this.onSelectDate(i, month, year)}
         >
@@ -108,7 +119,7 @@ export class DatePicker extends React.Component<Props, State> {
     for (let i = 0; i < MONTHS.length; i += 1) {
       months.push(
         <div
-          className="calendar__month"
+          className={styles.month}
           key={`MONTH_${i}`}
           onClick={() => {
             this.onSelectDate(0, i, year);
@@ -127,7 +138,7 @@ export class DatePicker extends React.Component<Props, State> {
     for (let i = YEAR_START; i < YEAR_END; i += 1) {
       years.push(
         <div
-          className="calendar__year"
+          className={styles.year}
           key={`YEAR_${i}`}
           onClick={() => {
             this.onSelectDate(0, 0, i);

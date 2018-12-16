@@ -1,4 +1,6 @@
 import * as React from "react";
+import cx from "classnames";
+import styles from "./styles.scss";
 
 interface Props {
   label: React.ReactNode;
@@ -17,9 +19,9 @@ const Label: React.SFC<LabelProps> = props => <label {...props} />;
 
 export const InputCheckbox: React.SFC<Props> = ({ label, id, ...rest }) => {
   return (
-    <div className="form-elems form-checkbox">
+    <div className={cx([styles.formElems, styles.formCheckbox])}>
       <input type="checkbox" {...rest} id={id} />
-      <Label className="checkbox-label" for={id}>
+      <Label className={styles.checkboxLabel} for={id}>
         {label}
       </Label>
     </div>

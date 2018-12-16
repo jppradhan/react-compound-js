@@ -1,7 +1,8 @@
 import * as React from "react";
-import "./styles.scss";
+import cx from "classnames";
 //@ts-ignore
 import Arrow from "../../icons/right-arrow.svg";
+import styles from "./styles.scss";
 
 interface Props {
   children: React.ReactNode;
@@ -56,10 +57,10 @@ export class Carousel extends React.Component<Props, State> {
   public render() {
     const { loop, children, iconDimension } = this.props;
     return (
-      <div className="carousel">
-        <div className="viewport" ref={e => (this.viewPortRef = e)}>
+      <div className={styles.carousel}>
+        <div className={styles.viewport} ref={e => (this.viewPortRef = e)}>
           <div
-            className="wrapper"
+            className={styles.wrapper}
             ref={e => (this.wrapperRef = e)}
             style={this.getTransform()}
             onDragStart={this.onDragStart}
@@ -71,14 +72,20 @@ export class Carousel extends React.Component<Props, State> {
             {loop ? this.state.children : children}
           </div>
         </div>
-        <div className="controls">
-          <button onClick={this.onClickPrev} className="btn prevBtn">
+        <div className={styles.controls}>
+          <button
+            onClick={this.onClickPrev}
+            className={cx([styles.btn, styles.prevBtn])}
+          >
             <Arrow
               width={iconDimension || ICON_DIMENSIONS}
               height={iconDimension || ICON_DIMENSIONS}
             />
           </button>
-          <button onClick={this.onClickNext} className="btn nextBtn">
+          <button
+            onClick={this.onClickNext}
+            className={cx([styles.btn, styles.nextBtn])}
+          >
             <Arrow
               width={iconDimension || ICON_DIMENSIONS}
               height={iconDimension || ICON_DIMENSIONS}

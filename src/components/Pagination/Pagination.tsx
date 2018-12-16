@@ -1,7 +1,7 @@
 import * as React from "react";
 //@ts-ignore
 import Arrow from "../../icons/right-arrow.svg";
-import "./styles.scss";
+import styles from "./styles.scss";
 
 interface Props {
   total: number;
@@ -31,10 +31,10 @@ export class Pagination extends React.Component<Props, State> {
     const { currentPage } = this.state;
     const { total } = this.props;
     return (
-      <div className="page__wrapper">
+      <div className={styles.wrapper}>
         <button
           onClick={() => this.setActivePage(currentPage - 1)}
-          className="page__button"
+          className={styles.button}
           disabled={currentPage <= 0}
         >
           <Arrow />
@@ -44,16 +44,16 @@ export class Pagination extends React.Component<Props, State> {
           value={this.state.pageInput}
           onChange={this.onChangeInput}
           onKeyPress={this.onKeyPressInput}
-          className="page__input"
+          className={styles.input}
         />
         <button
           onClick={() => this.setActivePage(currentPage + 1)}
-          className="page__button"
+          className={styles.button}
           disabled={currentPage >= total}
         >
           <Arrow />
         </button>
-        <span className="page__remain"> of {total}</span>
+        <span className={styles.remain}> of {total}</span>
       </div>
     );
   }

@@ -1,13 +1,13 @@
 @import '../../common/styles/colors';
 
-.page__wrapper {
+.wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   color: $text;
 }
 
-.page__button {
+.button {
   background-color: $darkGrey;
   border: 1px solid $greyText;
   border-radius: 4px;
@@ -30,7 +30,7 @@
   }
 }
 
-.page__input {
+.input {
   height: 40px;
   width: 50px;
   display: flex;
@@ -48,6 +48,6 @@
   }
 }
 
-.page__remain {
+.remain {
   margin-left: 10px;
 }

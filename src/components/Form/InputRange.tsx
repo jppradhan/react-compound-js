@@ -1,5 +1,6 @@
 import * as React from "react";
-import "./styles.scss";
+import cx from "classnames";
+import styles from "./styles.scss";
 
 interface Props {
   start: number;
@@ -53,27 +54,27 @@ export class InputRange extends React.Component<Props, State> {
 
     const { start, end } = this.state;
     return (
-      <div className="form-elems form-range">
-        <label className="input-label">{label}</label>
-        <div className="range-wrapper" ref={e => (this.rangeElem = e)}>
-          <div className="range" style={this.getRangeStyle(start, end)}>
+      <div className={cx([styles.formElems, styles.formRange])}>
+        <label className={styles.inputLabel}>{label}</label>
+        <div className={styles.rangeWrapper} ref={e => (this.rangeElem = e)}>
+          <div className={styles.range} style={this.getRangeStyle(start, end)}>
             <span
-              className="range-button left"
+              className={cx([styles.rangeButton, styles.left])}
               id="start-button"
               role="slider"
             />
             <span
-              className="range-button right"
+              className={cx([styles.rangeButton, styles.right])}
               role="slider"
               id="end-button"
             />
           </div>
         </div>
-        <div className="range-inputs">
+        <div className={styles.rangeInputs}>
           <input
             type="text"
             name={startInputName}
-            className="form-input format-default"
+            className={cx([styles.formInput, styles.formatDefault])}
             value={this.state.inputStart}
             onChange={this.onChangeStart}
             onKeyDown={this.onKeyDownStart}
@@ -81,7 +82,7 @@ export class InputRange extends React.Component<Props, State> {
           <input
             type="text"
             name={endInputName}
-            className="form-input format-default"
+            className={cx([styles.formInput, styles.formatDefault])}
             value={this.state.inputEnd}
             onChange={this.onChangeEnd}
             onKeyDown={this.onKeyDownEnd}

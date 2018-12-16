@@ -122,7 +122,8 @@ module.exports = {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
-                  // modules: 'global'
+                  modules: true,
+                  camelCase: true,
                 },
               },
               require.resolve('sass-loader'),
