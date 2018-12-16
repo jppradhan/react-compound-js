@@ -54,20 +54,12 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: [
-          require.resolve("babel-loader"),
-          {
-            loader: require.resolve("react-svg-loader"),
-            options: {
-              svgo: {
-                plugins: [
-                  { removeTitle: false }
-                ],
-                floatPrecision: 2
-              }
-            }
-          }
-        ]
+        use: [{
+          loader: require.resolve('@svgr/webpack'),
+          options: {
+            svgo: false
+          },
+        }],
       },
       {
         oneOf: [

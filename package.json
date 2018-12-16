@@ -9,8 +9,8 @@
   },
   "homepage": "https://jppradhan.github.io/react-compound-js/",
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "npx styleguidist build",
+    "start": "npx styleguidist server",
+    "build": "./node_modules/webpack/bin/webpack.js --config ./config/webpack.config.prod.js",
     "onebuild": "node scripts/build.js",
     "styleguide": "npx styleguidist server",
     "styleguide:build": "npx styleguidist build"
@@ -22,8 +22,7 @@
     "@types/react-dom": "^16.0.7"
   },
   "devDependencies": {
-    "@svgr/cli": "^3.1.0",
-    "@svgr/core": "^3.1.0",
+    "@svgr/webpack": "^4.1.0",
     "@types/vinyl": "^2.0.2",
     "autoprefixer": "7.1.6",
     "babel-loader": "^7.1.2",
@@ -52,7 +51,6 @@
     "react-docgen-typescript": "^1.8.0",
     "react-dom": "^16.4.2",
     "react-styleguidist": "^7.3.4",
-    "react-svg-loader": "^2.1.0",
     "resolve": "1.6.0",
     "run-sequence": "^2.2.1",
     "sass-loader": "^7.1.0",

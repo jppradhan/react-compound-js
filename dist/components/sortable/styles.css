@@ -1,7 +1,0 @@
-.sortable {
-  width: 100%; }
-
-.draggable.dragging {
-  opacity: 0.3;
-  background: #fff;
-  cursor: pointer; }

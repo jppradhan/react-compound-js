@@ -54,4 +54,8 @@ module.exports = {
   appTsLint: resolveApp('tslint.json'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
+  components: {
+    Button: resolveApp('src/components/Button/Button.tsx'),
+    Carousel: resolveApp('src/components/Carousel/Carousel.tsx'),
+  }
 };

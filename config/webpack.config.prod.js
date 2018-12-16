@@ -1,5 +1,7 @@
 'use strict';
 
+process.env.NODE_ENV = 'production';
+
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
@@ -17,7 +19,7 @@ const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 const publicUrl = publicPath.slice(0, -1);
 const env = getClientEnvironment(publicUrl);
 const base = require('../config/webpack.base');
-
+console.log(env.stringified['process.env'].NODE_ENV)
 if (env.stringified['process.env'].NODE_ENV !== '"production"') {
   throw new Error('Production builds must have NODE_ENV=production.');
 }
@@ -25,16 +27,12 @@ if (env.stringified['process.env'].NODE_ENV !== '"production"') {
 module.exports = {
   bail: true,
   devtool: base.devtool,
-  entry: [require.resolve('./polyfills'), paths.appIndexJs],
+  entry: paths.components,
   output: {
     path: paths.appBuild,
-    filename: '[name].js',
+    filename: 'components/[name]/[name].js',
     chunkFilename: '[name].js',
     publicPath: publicPath,
-    devtoolModuleFilenameTemplate: info =>
-      path
-        .relative(paths.appSrc, info.absoluteResourcePath)
-        .replace(/\\/g, '/'),
   },
   resolve: base.resolve,
   module: base.module,
@@ -61,7 +59,7 @@ module.exports = {
       },
       parallel: true,
       cache: true,
-      sourceMap: shouldUseSourceMap,
+      sourceMap: false,
     }), // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new ForkTsCheckerWebpackPlugin({
