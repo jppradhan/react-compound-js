@@ -19,10 +19,12 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import * as React from "react";
+import cx from "classnames";
+import styles from "./styles.css";
 var Label = function (props) { return React.createElement("label", __assign({}, props)); };
 export var InputRadio = function (_a) {
     var label = _a.label, id = _a.id, rest = __rest(_a, ["label", "id"]);
-    return (React.createElement("div", { className: "form-elems form-radio" },
+    return (React.createElement("div", { className: cx(styles.formElems, styles.formRadio) },
         React.createElement("input", __assign({ type: "radio" }, rest, { id: id })),
-        React.createElement(Label, { className: "radio-label", for: id }, label)));
+        React.createElement(Label, { className: styles.radioLabel, for: id }, label)));
 };

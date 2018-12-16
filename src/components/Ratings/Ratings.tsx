@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./styles.scss";
+import styles from "./styles.scss";
 
 interface Props {
   rate: number;
@@ -36,14 +36,14 @@ export class Ratings extends React.Component<Props, State> {
     const { icon } = this.props;
     return (
       <div
-        className="ratings"
+        className={styles.ratings}
         style={this.getContainerStyle()}
         onClick={this.setRatings}
       >
-        <div className="top_layer" style={this.getRatingStyle()}>
+        <div className={styles.topLayer} style={this.getRatingStyle()}>
           {blankStar.map((b, i) => (
             <span
-              className="ratings__icon"
+              className={styles.ratingsIcon}
               key={`RATINGS_ICON_${i}`}
               style={this.getIconStyle()}
             >
@@ -51,10 +51,10 @@ export class Ratings extends React.Component<Props, State> {
             </span>
           ))}
         </div>
-        <div className="bottom_layer">
+        <div className={styles.bottomLayer}>
           {blankStar.map((b, i) => (
             <span
-              className="ratings__icon"
+              className={styles.ratingsIcon}
               key={`RATINGS_ICON_${i}`}
               style={this.getIconStyle()}
             >

@@ -1,6 +1,6 @@
 @import '../../common/styles/colors';
 
-.video__container {
+.video-container {
   width: 100%;
   height: 100%;
 
@@ -9,20 +9,7 @@
     height: 100%;
   }
 }
-
-.video__wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  &:hover {
-    .video__list {
-      opacity: 1;
-    }
-  }
-}
-
-.video__list {
+.video-list {
   width: 150px;
   position: absolute;
   right: 0;
@@ -34,7 +21,7 @@
   padding-right: 15px;
   opacity: 0;
   transition: opacity 0.2s linear;
-  .preview__item {
+  .preview-item {
     height: 80px;
     width: 100%;
     margin-bottom: 10px;
@@ -62,8 +49,19 @@
     font-size: 12px;
     background-color: rgba($color: #000000, $alpha: 0.3);
   }
-  .preview__thumb {
+  .preview-thumb {
     width: 100%;
     height: 100%;
+  }
+}
+.video-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  &:hover {
+    .video-list {
+      opacity: 1;
+    }
   }
 }

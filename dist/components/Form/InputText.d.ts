@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./styles.css";
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
     label: React.ReactNode;
     value: string | number;

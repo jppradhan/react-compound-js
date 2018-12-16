@@ -23,9 +23,10 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import * as React from "react";
-import "./styles.css";
+import cx from "classnames";
 //@ts-ignore
 import Arrow from "../../icons/right-arrow";
+import styles from "./styles.css";
 var ICON_DIMENSIONS = 20;
 var Carousel = /** @class */ (function (_super) {
     __extends(Carousel, _super);
@@ -139,13 +140,13 @@ var Carousel = /** @class */ (function (_super) {
     Carousel.prototype.render = function () {
         var _this = this;
         var _a = this.props, loop = _a.loop, children = _a.children, iconDimension = _a.iconDimension;
-        return (React.createElement("div", { className: "carousel" },
-            React.createElement("div", { className: "viewport", ref: function (e) { return (_this.viewPortRef = e); } },
-                React.createElement("div", { className: "wrapper", ref: function (e) { return (_this.wrapperRef = e); }, style: this.getTransform(), onDragStart: this.onDragStart, onDragEnd: this.onDragEnd, onTouchStart: this.onTouchStart, onTouchEnd: this.onTouchEnd, draggable: true }, loop ? this.state.children : children)),
-            React.createElement("div", { className: "controls" },
-                React.createElement("button", { onClick: this.onClickPrev, className: "btn prevBtn" },
+        return (React.createElement("div", { className: styles.carousel },
+            React.createElement("div", { className: styles.viewport, ref: function (e) { return (_this.viewPortRef = e); } },
+                React.createElement("div", { className: styles.wrapper, ref: function (e) { return (_this.wrapperRef = e); }, style: this.getTransform(), onDragStart: this.onDragStart, onDragEnd: this.onDragEnd, onTouchStart: this.onTouchStart, onTouchEnd: this.onTouchEnd, draggable: true }, loop ? this.state.children : children)),
+            React.createElement("div", { className: styles.controls },
+                React.createElement("button", { onClick: this.onClickPrev, className: cx([styles.btn, styles.prevBtn]) },
                     React.createElement(Arrow, { width: iconDimension || ICON_DIMENSIONS, height: iconDimension || ICON_DIMENSIONS })),
-                React.createElement("button", { onClick: this.onClickNext, className: "btn nextBtn" },
+                React.createElement("button", { onClick: this.onClickNext, className: cx([styles.btn, styles.nextBtn]) },
                     React.createElement(Arrow, { width: iconDimension || ICON_DIMENSIONS, height: iconDimension || ICON_DIMENSIONS })))));
     };
     return Carousel;

@@ -12,10 +12,11 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from "react";
+import cx from "classnames";
 //@ts-ignore
 import Arrow from "../../icons/right-arrow";
 import { MONTHS, getDaysInMonth, YEAR_START, YEAR_END, formatDate, stringToDate } from "./utils";
-import "./styles.css";
+import styles from "./styles.css";
 var DatePicker = /** @class */ (function (_super) {
     __extends(DatePicker, _super);
     function DatePicker(props) {
@@ -24,7 +25,11 @@ var DatePicker = /** @class */ (function (_super) {
             var days = [];
             var daysInMonth = getDaysInMonth(month + 1, year);
             var _loop_1 = function (i) {
-                days.push(React.createElement("div", { className: "calandar__days " + (_this.state.today ? "today" : "") + " " + (i === day ? "selected" : "") + " " + (i >= daysInMonth ? "disabled" : ""), key: "DAYS_" + i, onClick: function () { return _this.onSelectDate(i, month, year); } }, i + 1));
+                days.push(React.createElement("div", { className: DatePicker.dayStyles({
+                        today: _this.state.today,
+                        selected: i === day,
+                        disabled: i >= daysInMonth
+                    }), key: "DAYS_" + i, onClick: function () { return _this.onSelectDate(i, month, year); } }, i + 1));
             };
             for (var i = 0; i < 31; i += 1) {
                 _loop_1(i);
@@ -34,7 +39,7 @@ var DatePicker = /** @class */ (function (_super) {
         _this.generateMonths = function (year) {
             var months = [];
             var _loop_2 = function (i) {
-                months.push(React.createElement("div", { className: "calendar__month", key: "MONTH_" + i, onClick: function () {
+                months.push(React.createElement("div", { className: styles.month, key: "MONTH_" + i, onClick: function () {
                         _this.onSelectDate(0, i, year);
                         _this.hideMonthView();
                     } }, MONTHS[i].substring(0, 3)));
@@ -47,7 +52,7 @@ var DatePicker = /** @class */ (function (_super) {
         _this.generateYears = function () {
             var years = [];
             var _loop_3 = function (i) {
-                years.push(React.createElement("div", { className: "calendar__year", key: "YEAR_" + i, onClick: function () {
+                years.push(React.createElement("div", { className: styles.year, key: "YEAR_" + i, onClick: function () {
                         _this.onSelectDate(0, 0, i);
                         _this.hideYearView();
                     } }, i));
@@ -121,18 +126,27 @@ var DatePicker = /** @class */ (function (_super) {
     DatePicker.prototype.render = function () {
         var _this = this;
         var _a = this.state, currentDay = _a.currentDay, currentMonth = _a.currentMonth, currentYear = _a.currentYear;
-        return (React.createElement("div", { className: "calendar__root" },
-            React.createElement("div", { className: "calendar__header" },
-                React.createElement("span", { className: "arrow left_arrow", onClick: function () { return _this.goToMonth(currentMonth - 1); } },
+        return (React.createElement("div", { className: styles.root },
+            React.createElement("div", { className: styles.header },
+                React.createElement("span", { className: cx([styles.arrow, styles.leftArrow]), onClick: function () { return _this.goToMonth(currentMonth - 1); } },
                     React.createElement(Arrow, { width: 15, height: 15 })),
-                React.createElement("div", { className: "month-year" },
+                React.createElement("div", { className: styles.monthYear },
                     React.createElement("span", { onClick: this.showMonthView }, MONTHS[currentMonth]),
                     React.createElement("span", { onClick: this.showYearView }, currentYear)),
-                React.createElement("span", { className: "arrow right_arrow", onClick: function () { return _this.goToMonth(currentMonth + 1); } },
+                React.createElement("span", { className: cx([styles.arrow, styles.rightArrow]), onClick: function () { return _this.goToMonth(currentMonth + 1); } },
                     React.createElement(Arrow, { width: 15, height: 15 }))),
-            React.createElement("div", { className: "calendar__date" }, this.generateDays(currentDay, currentMonth, currentYear)),
-            this.state.showMonth ? (React.createElement("div", { className: "calendar__month__view" }, this.generateMonths(currentYear))) : null,
-            this.state.showYear ? (React.createElement("div", { className: "calendar__year__view" }, this.generateYears())) : null));
+            React.createElement("div", { className: styles.date }, this.generateDays(currentDay, currentMonth, currentYear)),
+            this.state.showMonth ? (React.createElement("div", { className: styles.monthView }, this.generateMonths(currentYear))) : null,
+            this.state.showYear ? (React.createElement("div", { className: styles.yearView }, this.generateYears())) : null));
+    };
+    DatePicker.dayStyles = function (options) {
+        var _a;
+        return cx((_a = {},
+            _a[styles.days] = true,
+            _a[styles.today] = options.today,
+            _a[styles.selected] = options.selected,
+            _a[styles.disabled] = options.disabled,
+            _a));
     };
     return DatePicker;
 }(React.Component));

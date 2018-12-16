@@ -19,11 +19,12 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import * as React from "react";
-import "./styles.css";
+import cx from "classnames";
+import styles from "./styles.css";
 export var InputText = function (_a) {
     var _b = _a.type, type = _b === void 0 ? "text" : _b, _c = _a.format, format = _c === void 0 ? "default" : _c, label = _a.label, errorMessage = _a.errorMessage, isValid = _a.isValid, rest = __rest(_a, ["type", "format", "label", "errorMessage", "isValid"]);
-    return (React.createElement("div", { className: "form-elems" },
-        React.createElement("label", { className: "input-label" }, label),
-        React.createElement("input", __assign({ type: type }, rest, { className: "form-input format-" + format })),
-        format === "error" && errorMessage ? (React.createElement("p", { className: "input-error-message" }, errorMessage)) : null));
+    return (React.createElement("div", { className: styles.formElems },
+        React.createElement("label", { className: styles.inputLabel }, label),
+        React.createElement("input", __assign({ type: type }, rest, { className: cx([styles.formInput, styles["format-" + format]]) })),
+        format === "error" && errorMessage ? (React.createElement("p", { className: styles.inputErrorMessage }, errorMessage)) : null));
 };

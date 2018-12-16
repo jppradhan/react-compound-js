@@ -28,7 +28,7 @@
   background-color: rgba(0,0,0,0.6);
 }
 
-.modal__inner {
+.modal-inner {
   min-height: 400px;
   background: $white;
   border: 1px solid $darkGrey;
@@ -48,14 +48,14 @@
   }
 }
 
-.modal__title {
+.modal-title {
   padding: 20px;
   font-size: 28px;  
   border-bottom: 1px solid $darkGrey;
   position: relative;
 }
 
-.close__dialog {
+.close-dialog {
   position: absolute;
   color: #000;
   font-size: 14px;
@@ -68,6 +68,6 @@
   cursor: pointer;
 }
 
-.modal__body {
+.modal-body {
   padding: 10px;
 }

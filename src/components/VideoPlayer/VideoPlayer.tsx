@@ -1,5 +1,6 @@
 import * as React from "react";
-import "./styles.scss";
+import cx from "classnames";
+import styles from "./styles.scss";
 
 interface Video {
   title: string;
@@ -40,24 +41,28 @@ export class VideoPlayer extends React.Component<Props, State> {
   public render() {
     const { videos, children } = this.props;
     return (
-      <div className="video__wrapper" ref={e => (this.wrapper = e)}>
-        <div className="video__list" style={{ height: this.state.listHeight }}>
+      <div className={styles.videoWrapper} ref={e => (this.wrapper = e)}>
+        <div
+          className={styles.videoList}
+          style={{ height: this.state.listHeight }}
+        >
           {videos.map((video, v) => (
             <div
-              className={`preview__item ${
-                this.state.selectedVideoIndex === v ? "selected" : ""
-              }`}
+              className={cx({
+                [styles.previewItem]: true,
+                [styles.selected]: this.state.selectedVideoIndex === v
+              })}
               onClick={() => this.onSelectVideo(video, v)}
               key={`PREVIEW__${v}`}
             >
-              <img src={video.thumb} className="preview__thumb" />
-              <div className="title">
+              <img src={video.thumb} className={styles.previewThumb} />
+              <div className={styles.title}>
                 <h4>{video.title}</h4>
               </div>
             </div>
           ))}
         </div>
-        <div className="video__container">
+        <div className={styles.videoContainer}>
           {children(this.state.selectedVideo)}
         </div>
       </div>

@@ -3,16 +3,16 @@
 $tab_headers_border: #ececec;
 $tab_active_bg: #f7f7f7;
 
-.c__tabs {
+.tabs {
   margin: 0;
   position: relative;
-  .c__tab__headers {
+  .headers {
     display: flex;
     width: 100%;
     justify-content: space-around;
     border-bottom: 1px solid $tab_headers_border;
   }
-  .c__tab {
+  .tab {
     width: 100%;
     height: 45px;
     display: flex;
@@ -45,7 +45,7 @@ $tab_active_bg: #f7f7f7;
       }
     }
   }
-  .c__tab__content {
+  .content {
     padding: 15px;
     animation: fadeInContent 0.3s ease-out;
   }

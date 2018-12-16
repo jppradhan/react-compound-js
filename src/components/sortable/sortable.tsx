@@ -1,5 +1,6 @@
 import * as React from "react";
-import "./styles.scss";
+import cx from "classnames";
+import styles from "./styles.scss";
 
 interface Props {
   children: React.ReactNode;
@@ -11,6 +12,11 @@ interface State {
 }
 
 export class Sortable extends React.Component<Props, State> {
+  static styleDragelem = (dragIndex: number | null, index: number) =>
+    cx({
+      [styles.draggable]: true,
+      [styles.dragging]: dragIndex === index
+    });
   private dragElementIndex: number = 0;
   public constructor(props: Props) {
     super(props);
@@ -27,13 +33,11 @@ export class Sortable extends React.Component<Props, State> {
       <div
         onDrop={this.onDrop}
         onDragOver={this.onDragOver}
-        className="sortable"
+        className={styles.sortable}
       >
         {this.state.children.map((child, i) => (
           <div
-            className={`draggable ${
-              this.state.dragClassIndex === i ? "dragging" : ""
-            }`}
+            className={Sortable.styleDragelem(this.state.dragClassIndex, i)}
             draggable
             onDragStart={e => this.onDragStart(e, i)}
             onDragEnd={this.onDragEnd}

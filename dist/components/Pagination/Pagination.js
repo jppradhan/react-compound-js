@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 import * as React from "react";
 //@ts-ignore
 import Arrow from "../../icons/right-arrow";
-import "./styles.css";
+import styles from "./styles.css";
 var Pagination = /** @class */ (function (_super) {
     __extends(Pagination, _super);
     function Pagination(props) {
@@ -33,13 +33,13 @@ var Pagination = /** @class */ (function (_super) {
         var _this = this;
         var currentPage = this.state.currentPage;
         var total = this.props.total;
-        return (React.createElement("div", { className: "page__wrapper" },
-            React.createElement("button", { onClick: function () { return _this.setActivePage(currentPage - 1); }, className: "page__button", disabled: currentPage <= 0 },
+        return (React.createElement("div", { className: styles.wrapper },
+            React.createElement("button", { onClick: function () { return _this.setActivePage(currentPage - 1); }, className: styles.button, disabled: currentPage <= 0 },
                 React.createElement(Arrow, null)),
-            React.createElement("input", { type: "number", value: this.state.pageInput, onChange: this.onChangeInput, onKeyPress: this.onKeyPressInput, className: "page__input" }),
-            React.createElement("button", { onClick: function () { return _this.setActivePage(currentPage + 1); }, className: "page__button", disabled: currentPage >= total },
+            React.createElement("input", { type: "number", value: this.state.pageInput, onChange: this.onChangeInput, onKeyPress: this.onKeyPressInput, className: styles.input }),
+            React.createElement("button", { onClick: function () { return _this.setActivePage(currentPage + 1); }, className: styles.button, disabled: currentPage >= total },
                 React.createElement(Arrow, null)),
-            React.createElement("span", { className: "page__remain" },
+            React.createElement("span", { className: styles.remain },
                 " of ",
                 total)));
     };

@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./styles.css";
 interface Props {
     currentDate: string;
     onSelectDate: (date: string) => void;
@@ -15,6 +14,7 @@ interface State {
     showYear: boolean;
 }
 export declare class DatePicker extends React.Component<Props, State> {
+    static dayStyles: (options: any) => string;
     constructor(props: Props);
     render(): JSX.Element;
     private generateDays;

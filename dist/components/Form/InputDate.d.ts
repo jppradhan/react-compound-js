@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./styles.css";
 interface Props {
     value: string;
     dateFormat: string;

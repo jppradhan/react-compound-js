@@ -1,5 +1,6 @@
 import * as React from "react";
-import "./styles.scss";
+import cx from "classnames";
+import styles from "./styles.scss";
 //@ts-ignore
 import Cross from "../../icons/cross.svg";
 
@@ -22,7 +23,7 @@ export class Modal extends React.Component<Props, State> {
     super(props);
     this.state = {
       isShowing: this.props.isShowing,
-      innerClass: this.props.isShowing ? "open" : "close"
+      innerClass: this.props.isShowing ? styles.open : styles.close
     };
   }
 
@@ -36,7 +37,7 @@ export class Modal extends React.Component<Props, State> {
     if (nextProps.isShowing !== this.props.isShowing) {
       this.setState({
         isShowing: nextProps.isShowing,
-        innerClass: nextProps.isShowing ? "open" : "close"
+        innerClass: nextProps.isShowing ? styles.open : styles.close
       });
     }
   }
@@ -46,20 +47,20 @@ export class Modal extends React.Component<Props, State> {
     if (this.state.isShowing) {
       return (
         <div
-          className="modal"
+          className={styles.modal}
           onClick={this.onClickOutSide}
           onKeyUp={this.onKeyPress}
           tabIndex={0}
           ref={e => (this.modalElem = e)}
         >
-          <div className={`modal__inner ${this.state.innerClass}`}>
-            <div className="modal__title">
+          <div className={cx([styles.modalInner, this.state.innerClass])}>
+            <div className={styles.modalTitle}>
               <h2>{title}</h2>
-              <span className="close__dialog" onClick={this.onCloseModal}>
+              <span className={styles.closeDialog} onClick={this.onCloseModal}>
                 <Cross />
               </span>
             </div>
-            <div className="modal__body">{children}</div>
+            <div className={styles.modalBody}>{children}</div>
           </div>
         </div>
       );
@@ -69,7 +70,7 @@ export class Modal extends React.Component<Props, State> {
 
   public onCloseModal = () => {
     this.setState({
-      innerClass: "close"
+      innerClass: styles.close
     });
     setTimeout(() => {
       this.setState(
@@ -85,7 +86,7 @@ export class Modal extends React.Component<Props, State> {
 
   private onClickOutSide = (e: React.SyntheticEvent<any>) => {
     //@ts-ignore
-    if (e.target.classList.contains("modal")) {
+    if (e.target.classList.contains(styles.modal)) {
       return this.onCloseModal();
     }
     return false;

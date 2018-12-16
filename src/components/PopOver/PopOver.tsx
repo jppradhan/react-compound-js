@@ -1,5 +1,6 @@
 import * as React from "react";
-import "./styles.scss";
+import cx from "classnames";
+import styles from "./styles.scss";
 
 interface Props {
   content: React.ReactNode;
@@ -32,10 +33,16 @@ export class PopOver extends React.Component<Props, State> {
   public render() {
     const { children, content, position = "bottom", size = "md" } = this.props;
     return (
-      <div className="popover__container" onClick={this.openPopup}>
+      <div className={styles.popoverContainer} onClick={this.openPopup}>
         {children}
         {this.state.isShowing ? (
-          <div className={`popover__wrapper ${position} ${size}`}>
+          <div
+            className={cx([
+              styles.popoverWrapper,
+              styles[position],
+              styles[size]
+            ])}
+          >
             {content}
           </div>
         ) : null}
@@ -74,7 +81,7 @@ export class PopOver extends React.Component<Props, State> {
     for (let i = 0; i < paths.length; i += 1) {
       if (
         paths[i].classList &&
-        paths[i].classList.contains("popover__container")
+        paths[i].classList.contains(styles.popoverContainer)
       ) {
         return;
       }

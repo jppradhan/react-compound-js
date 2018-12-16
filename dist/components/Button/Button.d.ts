@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./styles.css";
 interface Props extends React.ButtonHTMLAttributes<any> {
     children: React.ReactNode;
     format?: "primary" | "success" | "default" | "danger" | "light";

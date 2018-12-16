@@ -1,4 +1,4 @@
-.calendar__root {
+.root {
   max-width: 306px;
   min-height: 291px;
   border-radius: 4px;
@@ -6,36 +6,36 @@
   position: relative;
   background-color: #ffffff;
   display: inline-block; }
-  .calendar__root .calendar__header,
-  .calendar__root .calendar__year__header {
+  .root .header,
+  .root .year-header {
     border-bottom: 1px solid #b3bfc8;
     height: 35px;
     display: flex;
     justify-content: space-between;
     align-items: center; }
-  .calendar__root .arrow {
+  .root .arrow {
     width: 35px;
     height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer; }
-    .calendar__root .arrow svg path {
+    .root .arrow svg path {
       fill: #131313; }
-  .calendar__root .left_arrow {
+  .root .left-arrow {
     transform: rotate(180deg); }
-  .calendar__root .right_arrow {
+  .root .right-arrow {
     transform: rotate(0); }
-  .calendar__root .month-year {
+  .root .month-year {
     font-size: 14px;
     cursor: pointer; }
-    .calendar__root .month-year span {
+    .root .month-year span {
       display: inline-block; }
-    .calendar__root .month-year span:first-child {
+    .root .month-year span:first-child {
       margin-right: 10px; }
-  .calendar__root .calendar__date {
+  .root .date {
     padding: 5px; }
-  .calendar__root .calandar__days {
+  .root .days {
     min-width: 49px;
     height: 49px;
     display: inline-flex;
@@ -43,24 +43,24 @@
     align-items: center;
     cursor: pointer;
     transition: background-color 0.2s ease-in, color 0.2s ease-in; }
-    .calendar__root .calandar__days:hover {
+    .root .days:hover {
       border-radius: 3px;
       background-color: #4ec437;
       color: #ffffff; }
-    .calendar__root .calandar__days.today {
+    .root .days.today {
       background-color: rgba(78, 196, 55, 0.6);
       border-radius: 3px; }
-      .calendar__root .calandar__days.today:hover {
+      .root .days.today:hover {
         background-color: #4ec437; }
-    .calendar__root .calandar__days.selected {
+    .root .days.selected {
       border-radius: 3px;
       background-color: #4ec437;
       color: #ffffff; }
-    .calendar__root .calandar__days.disabled {
+    .root .days.disabled {
       opacity: 0.3;
       pointer-events: none;
       user-select: none; }
-  .calendar__root .calendar__month__view {
+  .root .month-view {
     position: absolute;
     left: 0;
     top: 35px;
@@ -72,7 +72,7 @@
     z-index: 1;
     padding-top: 25px;
     padding-bottom: 20px; }
-    .calendar__root .calendar__month__view .calendar__month {
+    .root .month-view .month {
       width: 73px;
       height: 70px;
       display: inline-flex;
@@ -82,11 +82,11 @@
       font-size: 12px;
       transition: background-color 0.2s ease-in, color 0.2s ease-in;
       cursor: pointer; }
-      .calendar__root .calendar__month__view .calendar__month:hover {
+      .root .month-view .month:hover {
         border-radius: 3px;
         background-color: #4ec437;
         color: #ffffff; }
-  .calendar__root .calendar__year__view {
+  .root .year-view {
     position: absolute;
     top: 35px;
     left: 0;
@@ -97,7 +97,7 @@
     overflow: auto;
     background-color: #ffffff;
     z-index: 1; }
-    .calendar__root .calendar__year__view .calendar__year {
+    .root .year-view .year {
       width: 49px;
       height: 40px;
       display: inline-flex;
@@ -107,7 +107,7 @@
       font-size: 12px;
       transition: background-color 0.2s ease-in, color 0.2s ease-in;
       cursor: pointer; }
-      .calendar__root .calendar__year__view .calendar__year:hover {
+      .root .year-view .year:hover {
         border-radius: 3px;
         background-color: #4ec437;
         color: #ffffff; }

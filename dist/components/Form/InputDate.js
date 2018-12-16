@@ -32,8 +32,9 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import * as React from "react";
+import cx from "classnames";
 import { DatePicker } from "../DatePicker/DatePicker";
-import "./styles.css";
+import styles from "./styles.css";
 var InputDate = /** @class */ (function (_super) {
     __extends(InputDate, _super);
     function InputDate(props) {
@@ -58,10 +59,10 @@ var InputDate = /** @class */ (function (_super) {
     InputDate.prototype.render = function () {
         var _this = this;
         var _a = this.props, value = _a.value, label = _a.label, dateFormat = _a.dateFormat, _b = _a.format, format = _b === void 0 ? "default" : _b, rest = __rest(_a, ["value", "label", "dateFormat", "format"]);
-        return (React.createElement("div", { className: "form-elems form-date" },
-            React.createElement("label", { className: "input-label" }, label),
-            React.createElement("input", __assign({ type: "text", value: this.state.selectedValue }, rest, { onFocus: this.openDatePicker, className: "form-input format-" + format })),
-            React.createElement("div", { className: "picker__wrapper" }, this.state.showDatePicker ? (React.createElement(DatePicker, { format: dateFormat, currentDate: value, onSelectDate: function (val) { return _this.setDateValue(val); } })) : null)));
+        return (React.createElement("div", { className: cx([styles.formElems, styles.formDate]) },
+            React.createElement("label", { className: cx(styles.inputLabel) }, label),
+            React.createElement("input", __assign({ type: "text", value: this.state.selectedValue }, rest, { onFocus: this.openDatePicker, className: cx([styles.formInput, styles["format-" + format]]) })),
+            React.createElement("div", { className: styles.pickerWrapper }, this.state.showDatePicker ? (React.createElement(DatePicker, { format: dateFormat, currentDate: value, onSelectDate: function (val) { return _this.setDateValue(val); } })) : null)));
     };
     return InputDate;
 }(React.Component));

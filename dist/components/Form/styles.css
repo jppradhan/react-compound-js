@@ -112,7 +112,7 @@
 
 .form-date {
   position: relative; }
-  .form-date .picker__wrapper {
+  .form-date .picker-wrapper {
     position: absolute;
     top: 70px;
     left: 0;
