@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./styles.css";
 interface Props {
     src: string;
     loadingIcon: React.ReactNode;

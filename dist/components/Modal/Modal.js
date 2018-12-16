@@ -12,7 +12,8 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from "react";
-import "./styles.css";
+import cx from "classnames";
+import styles from "./styles.css";
 //@ts-ignore
 import Cross from "../../icons/cross";
 var Modal = /** @class */ (function (_super) {
@@ -22,7 +23,7 @@ var Modal = /** @class */ (function (_super) {
         _this.modalElem = null;
         _this.onCloseModal = function () {
             _this.setState({
-                innerClass: "close"
+                innerClass: styles.close
             });
             setTimeout(function () {
                 _this.setState({
@@ -34,7 +35,7 @@ var Modal = /** @class */ (function (_super) {
         };
         _this.onClickOutSide = function (e) {
             //@ts-ignore
-            if (e.target.classList.contains("modal")) {
+            if (e.target.classList.contains(styles.modal)) {
                 return _this.onCloseModal();
             }
             return false;
@@ -48,7 +49,7 @@ var Modal = /** @class */ (function (_super) {
         };
         _this.state = {
             isShowing: _this.props.isShowing,
-            innerClass: _this.props.isShowing ? "open" : "close"
+            innerClass: _this.props.isShowing ? styles.open : styles.close
         };
         return _this;
     }
@@ -61,7 +62,7 @@ var Modal = /** @class */ (function (_super) {
         if (nextProps.isShowing !== this.props.isShowing) {
             this.setState({
                 isShowing: nextProps.isShowing,
-                innerClass: nextProps.isShowing ? "open" : "close"
+                innerClass: nextProps.isShowing ? styles.open : styles.close
             });
         }
     };
@@ -69,13 +70,13 @@ var Modal = /** @class */ (function (_super) {
         var _this = this;
         var _a = this.props, title = _a.title, children = _a.children;
         if (this.state.isShowing) {
-            return (React.createElement("div", { className: "modal", onClick: this.onClickOutSide, onKeyUp: this.onKeyPress, tabIndex: 0, ref: function (e) { return (_this.modalElem = e); } },
-                React.createElement("div", { className: "modal__inner " + this.state.innerClass },
-                    React.createElement("div", { className: "modal__title" },
+            return (React.createElement("div", { className: styles.modal, onClick: this.onClickOutSide, onKeyUp: this.onKeyPress, tabIndex: 0, ref: function (e) { return (_this.modalElem = e); } },
+                React.createElement("div", { className: cx([styles.modalInner, this.state.innerClass]) },
+                    React.createElement("div", { className: styles.modalTitle },
                         React.createElement("h2", null, title),
-                        React.createElement("span", { className: "close__dialog", onClick: this.onCloseModal },
+                        React.createElement("span", { className: styles.closeDialog, onClick: this.onCloseModal },
                             React.createElement(Cross, null))),
-                    React.createElement("div", { className: "modal__body" }, children))));
+                    React.createElement("div", { className: styles.modalBody }, children))));
         }
         return null;
     };

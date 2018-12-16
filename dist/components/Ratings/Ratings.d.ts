@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./styles.css";
 interface Props {
     rate: number;
     icon: React.ReactNode;

@@ -12,7 +12,8 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from "react";
-import "./styles.css";
+import cx from "classnames";
+import styles from "./styles.css";
 var Tabs = /** @class */ (function (_super) {
     __extends(Tabs, _super);
     function Tabs(props) {
@@ -36,14 +37,21 @@ var Tabs = /** @class */ (function (_super) {
     Tabs.prototype.render = function () {
         var _this = this;
         var tabContent = this.props.tabContent;
-        return (React.createElement("div", { className: "c__tabs" },
-            React.createElement("div", { className: "c__tab__headers" }, tabContent.map(function (tab, i) {
-                return (React.createElement("div", { className: "c__tab " + (_this.state.activeTab === i ? "active" : "") + " " + (_this.previousTabIndex < _this.state.activeTab
-                        ? "right"
-                        : "left"), key: "TAB_" + i, onClick: function () { return _this.goToTab(i); } },
+        return (React.createElement("div", { className: styles.tabs },
+            React.createElement("div", { className: styles.headers }, tabContent.map(function (tab, i) {
+                return (React.createElement("div", { className: Tabs.tabstyles(_this.state.activeTab, _this.previousTabIndex, i), key: "TAB_" + i, onClick: function () { return _this.goToTab(i); } },
                     React.createElement("h4", null, tab.label)));
             })),
-            React.createElement("div", { className: "c__tab__content" }, this.state.activeTabContent)));
+            React.createElement("div", { className: styles.content }, this.state.activeTabContent)));
+    };
+    Tabs.tabstyles = function (activeTab, prevTabIndex, index) {
+        var _a;
+        return cx((_a = {},
+            _a[styles.tab] = true,
+            _a[styles.active] = activeTab === index,
+            _a[styles.right] = prevTabIndex < activeTab,
+            _a[styles.left] = prevTabIndex >= activeTab,
+            _a));
     };
     return Tabs;
 }(React.Component));

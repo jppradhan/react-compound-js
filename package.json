@@ -10,15 +10,11 @@
   "homepage": "https://jppradhan.github.io/react-compound-js/",
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "gulp",
+    "build": "npx styleguidist build",
     "onebuild": "node scripts/build.js",
     "styleguide": "npx styleguidist server",
     "styleguide:build": "npx styleguidist build"
   },
-  "pre-commit": [
-    "build",
-    "styleguide:build"
-  ],
   "dependencies": {
     "@types/classnames": "^2.2.6",
     "@types/node": "^10.5.8",
@@ -43,12 +39,6 @@
     "file-loader": "0.11.2",
     "fork-ts-checker-webpack-plugin": "^0.2.8",
     "fs-extra": "3.0.1",
-    "gulp": "^3.9.1",
-    "gulp-clean": "^0.4.0",
-    "gulp-replace": "^1.0.0",
-    "gulp-sass": "^4.0.1",
-    "gulp-shell": "^0.6.5",
-    "gulp-typescript": "^5.0.0-alpha.3",
     "html-webpack-plugin": "2.29.0",
     "node-sass": "^4.9.3",
     "object-assign": "4.1.1",

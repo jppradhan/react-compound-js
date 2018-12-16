@@ -1,6 +1,5 @@
 import * as React from "react";
 import cx from "classnames";
-//@ts-ignore
 import Arrow from "../../icons/right-arrow.svg";
 import styles from "./styles.scss";
 

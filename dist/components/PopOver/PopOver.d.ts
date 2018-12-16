@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./styles.css";
 interface Props {
     content: React.ReactNode;
     position: "left" | "right" | "top" | "bottom";

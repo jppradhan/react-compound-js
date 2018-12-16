@@ -12,7 +12,8 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from "react";
-import "./styles.css";
+import cx from "classnames";
+import styles from "./styles.css";
 var VideoPlayer = /** @class */ (function (_super) {
     __extends(VideoPlayer, _super);
     function VideoPlayer(props) {
@@ -45,12 +46,18 @@ var VideoPlayer = /** @class */ (function (_super) {
     VideoPlayer.prototype.render = function () {
         var _this = this;
         var _a = this.props, videos = _a.videos, children = _a.children;
-        return (React.createElement("div", { className: "video__wrapper", ref: function (e) { return (_this.wrapper = e); } },
-            React.createElement("div", { className: "video__list", style: { height: this.state.listHeight } }, videos.map(function (video, v) { return (React.createElement("div", { className: "preview__item " + (_this.state.selectedVideoIndex === v ? "selected" : ""), onClick: function () { return _this.onSelectVideo(video, v); }, key: "PREVIEW__" + v },
-                React.createElement("img", { src: video.thumb, className: "preview__thumb" }),
-                React.createElement("div", { className: "title" },
-                    React.createElement("h4", null, video.title)))); })),
-            React.createElement("div", { className: "video__container" }, children(this.state.selectedVideo))));
+        return (React.createElement("div", { className: styles.videoWrapper, ref: function (e) { return (_this.wrapper = e); } },
+            React.createElement("div", { className: styles.videoList, style: { height: this.state.listHeight } }, videos.map(function (video, v) {
+                var _a;
+                return (React.createElement("div", { className: cx((_a = {},
+                        _a[styles.previewItem] = true,
+                        _a[styles.selected] = _this.state.selectedVideoIndex === v,
+                        _a)), onClick: function () { return _this.onSelectVideo(video, v); }, key: "PREVIEW__" + v },
+                    React.createElement("img", { src: video.thumb, className: styles.previewThumb }),
+                    React.createElement("div", { className: styles.title },
+                        React.createElement("h4", null, video.title))));
+            })),
+            React.createElement("div", { className: styles.videoContainer }, children(this.state.selectedVideo))));
     };
     return VideoPlayer;
 }(React.Component));

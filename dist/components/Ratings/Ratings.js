@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from "react";
-import "./styles.css";
+import styles from "./styles.css";
 var COUNT = 5;
 var MARGIN = 5;
 var Ratings = /** @class */ (function (_super) {
@@ -68,9 +68,9 @@ var Ratings = /** @class */ (function (_super) {
             blankStar.push(i);
         }
         var icon = this.props.icon;
-        return (React.createElement("div", { className: "ratings", style: this.getContainerStyle(), onClick: this.setRatings },
-            React.createElement("div", { className: "top_layer", style: this.getRatingStyle() }, blankStar.map(function (b, i) { return (React.createElement("span", { className: "ratings__icon", key: "RATINGS_ICON_" + i, style: _this.getIconStyle() }, icon)); })),
-            React.createElement("div", { className: "bottom_layer" }, blankStar.map(function (b, i) { return (React.createElement("span", { className: "ratings__icon", key: "RATINGS_ICON_" + i, style: _this.getIconStyle() }, icon)); }))));
+        return (React.createElement("div", { className: styles.ratings, style: this.getContainerStyle(), onClick: this.setRatings },
+            React.createElement("div", { className: styles.topLayer, style: this.getRatingStyle() }, blankStar.map(function (b, i) { return (React.createElement("span", { className: styles.ratingsIcon, key: "RATINGS_ICON_" + i, style: _this.getIconStyle() }, icon)); })),
+            React.createElement("div", { className: styles.bottomLayer }, blankStar.map(function (b, i) { return (React.createElement("span", { className: styles.ratingsIcon, key: "RATINGS_ICON_" + i, style: _this.getIconStyle() }, icon)); }))));
     };
     return Ratings;
 }(React.Component));

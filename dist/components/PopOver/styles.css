@@ -1,4 +1,4 @@
-.popover__wrapper {
+.popover-wrapper {
   position: absolute;
   background: #fff;
   z-index: 10;
@@ -7,7 +7,7 @@
   opacity: 0;
   animation: openPopover 0.4s ease-out forwards;
   padding: 10px; }
-  .popover__wrapper:after {
+  .popover-wrapper:after {
     content: '';
     position: absolute;
     color: inherit;
@@ -17,19 +17,19 @@
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 10px solid #fff; }
-  .popover__wrapper.bottom {
+  .popover-wrapper.bottom {
     top: 100%;
     left: 50%;
     transform: translate(-50%, 15px); }
-    .popover__wrapper.bottom:after {
+    .popover-wrapper.bottom:after {
       top: -10px;
       left: 50%;
       transform: translateX(-10px); }
-  .popover__wrapper.left {
+  .popover-wrapper.left {
     top: 50%;
     right: 100%;
     transform: translate(-15px, -50%); }
-    .popover__wrapper.left:after {
+    .popover-wrapper.left:after {
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
       border-right: 10px solid transparent;
@@ -37,11 +37,11 @@
       top: 50%;
       right: -10px;
       transform: translate(10px, -10px); }
-  .popover__wrapper.right {
+  .popover-wrapper.right {
     top: 50%;
     left: 100%;
     transform: translate(15px, -50%); }
-    .popover__wrapper.right:after {
+    .popover-wrapper.right:after {
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
       border-left: 10px solid transparent;
@@ -49,11 +49,11 @@
       top: 50%;
       left: -10px;
       transform: translate(-10px, -10px); }
-  .popover__wrapper.top {
+  .popover-wrapper.top {
     bottom: 100%;
     left: 50%;
     transform: translate(-50%, -15px); }
-    .popover__wrapper.top:after {
+    .popover-wrapper.top:after {
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
       border-bottom: 10px solid transparent;
@@ -61,14 +61,14 @@
       left: 50%;
       transform: translateX(-10px);
       top: 100%; }
-  .popover__wrapper.md {
+  .popover-wrapper.md {
     width: 400px; }
-  .popover__wrapper.lg {
+  .popover-wrapper.lg {
     width: 600px; }
-  .popover__wrapper.sm {
+  .popover-wrapper.sm {
     width: 280px; }
 
-.popover__container {
+.popover-container {
   position: relative;
   display: inline-block; }
 

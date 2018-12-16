@@ -12,7 +12,8 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from "react";
-import "./styles.css";
+import cx from "classnames";
+import styles from "./styles.css";
 var Sortable = /** @class */ (function (_super) {
     __extends(Sortable, _super);
     function Sortable(props) {
@@ -60,7 +61,14 @@ var Sortable = /** @class */ (function (_super) {
     }
     Sortable.prototype.render = function () {
         var _this = this;
-        return (React.createElement("div", { onDrop: this.onDrop, onDragOver: this.onDragOver, className: "sortable" }, this.state.children.map(function (child, i) { return (React.createElement("div", { className: "draggable " + (_this.state.dragClassIndex === i ? "dragging" : ""), draggable: true, onDragStart: function (e) { return _this.onDragStart(e, i); }, onDragEnd: _this.onDragEnd, key: "DRAGGABLE__" + i, id: "draggable_" + i }, React.cloneElement(child, { id: "draggable_inner_" + i }))); })));
+        return (React.createElement("div", { onDrop: this.onDrop, onDragOver: this.onDragOver, className: styles.sortable }, this.state.children.map(function (child, i) { return (React.createElement("div", { className: Sortable.styleDragelem(_this.state.dragClassIndex, i), draggable: true, onDragStart: function (e) { return _this.onDragStart(e, i); }, onDragEnd: _this.onDragEnd, key: "DRAGGABLE__" + i, id: "draggable_" + i }, React.cloneElement(child, { id: "draggable_inner_" + i }))); })));
+    };
+    Sortable.styleDragelem = function (dragIndex, index) {
+        var _a;
+        return cx((_a = {},
+            _a[styles.draggable] = true,
+            _a[styles.dragging] = dragIndex === index,
+            _a));
     };
     return Sortable;
 }(React.Component));

@@ -4,10 +4,10 @@
   position: relative; }
   .ratings svg path {
     fill: #b3bfc8; }
-  .ratings .ratings__icon {
+  .ratings .ratings-icon {
     display: inline-block;
     margin-right: 5px; }
-  .ratings .top_layer {
+  .ratings .top-layer {
     position: absolute;
     top: 0;
     left: 0;
@@ -17,9 +17,9 @@
     background-color: #ffffff;
     white-space: nowrap;
     overflow: hidden; }
-    .ratings .top_layer svg path {
+    .ratings .top-layer svg path {
       fill: #D93636; }
-  .ratings .bottom_layer {
+  .ratings .bottom-layer {
     position: absolute;
     top: 0;
     left: 0;

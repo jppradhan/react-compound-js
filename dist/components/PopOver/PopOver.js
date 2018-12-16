@@ -12,7 +12,8 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from "react";
-import "./styles.css";
+import cx from "classnames";
+import styles from "./styles.css";
 var dispatchClosePopup = function () {
     var event = new Event("closePopup");
     document.dispatchEvent(event);
@@ -43,7 +44,7 @@ var PopOver = /** @class */ (function (_super) {
             var paths = e.path;
             for (var i = 0; i < paths.length; i += 1) {
                 if (paths[i].classList &&
-                    paths[i].classList.contains("popover__container")) {
+                    paths[i].classList.contains(styles.popoverContainer)) {
                     return;
                 }
             }
@@ -60,9 +61,13 @@ var PopOver = /** @class */ (function (_super) {
     };
     PopOver.prototype.render = function () {
         var _a = this.props, children = _a.children, content = _a.content, _b = _a.position, position = _b === void 0 ? "bottom" : _b, _c = _a.size, size = _c === void 0 ? "md" : _c;
-        return (React.createElement("div", { className: "popover__container", onClick: this.openPopup },
+        return (React.createElement("div", { className: styles.popoverContainer, onClick: this.openPopup },
             children,
-            this.state.isShowing ? (React.createElement("div", { className: "popover__wrapper " + position + " " + size }, content)) : null));
+            this.state.isShowing ? (React.createElement("div", { className: cx([
+                    styles.popoverWrapper,
+                    styles[position],
+                    styles[size]
+                ]) }, content)) : null));
     };
     return PopOver;
 }(React.Component));

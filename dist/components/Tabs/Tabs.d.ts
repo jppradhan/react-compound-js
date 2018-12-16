@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./styles.css";
 interface Props {
     tabContent: tabContent[];
     activeTab: number;
@@ -13,6 +12,7 @@ interface State {
     activeTabContent: React.ReactNode;
 }
 export declare class Tabs extends React.Component<Props, State> {
+    static tabstyles: (activeTab: number, prevTabIndex: number, index: number) => string;
     private previousTabIndex;
     constructor(props: Props);
     render(): JSX.Element;
