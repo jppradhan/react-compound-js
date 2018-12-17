@@ -16,6 +16,7 @@ const env = getClientEnvironment(publicUrl);
 const base = require('../config/webpack.base');
 
 module.exports = {
+  mode: "development",
   devtool: base.devtool,
   entry: [
     require.resolve('./polyfills'),

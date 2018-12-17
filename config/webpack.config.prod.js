@@ -19,19 +19,26 @@ const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 const publicUrl = publicPath.slice(0, -1);
 const env = getClientEnvironment(publicUrl);
 const base = require('../config/webpack.base');
-console.log(env.stringified['process.env'].NODE_ENV)
+
 if (env.stringified['process.env'].NODE_ENV !== '"production"') {
   throw new Error('Production builds must have NODE_ENV=production.');
 }
 
 module.exports = {
+  mode: 'production',
   bail: true,
   devtool: base.devtool,
   entry: paths.components,
   output: {
     path: paths.appBuild,
-    filename: 'components/[name]/[name].js',
-    chunkFilename: '[name].js',
+    filename: (chunkData) => {
+      const context = chunkData.chunk.entryModule.context;
+      if (context) {
+        const folderName = context.substring(context.lastIndexOf('/') + 1);
+        return 'components/'+ folderName +'/[name].js'
+      }
+      return 'components/[name]/[name].js'
+    },
     publicPath: publicPath,
   },
   resolve: base.resolve,

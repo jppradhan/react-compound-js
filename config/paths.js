@@ -57,5 +57,22 @@ module.exports = {
   components: {
     Button: resolveApp('src/components/Button/Button.tsx'),
     Carousel: resolveApp('src/components/Carousel/Carousel.tsx'),
+    DatePicker: resolveApp('src/components/DatePicker/DatePicker.tsx'),
+    Form: resolveApp('src/components/Form/Form.tsx'),
+    InputCheckbox: resolveApp('src/components/Form/InputCheckbox.tsx'),
+    InputDate: resolveApp('src/components/Form/InputDate.tsx'),
+    InputRadio: resolveApp('src/components/Form/InputRadio.tsx'),
+    InputRange: resolveApp('src/components/Form/InputRange.tsx'),
+    InputText: resolveApp('src/components/Form/InputText.tsx'),
+    Image: resolveApp('src/components/Image/Image.tsx'),
+    Modal: resolveApp('src/components/Modal/Modal.tsx'),
+    Pagination: resolveApp('src/components/Pagination/Pagination.tsx'),
+    PopOver: resolveApp('src/components/PopOver/PopOver.tsx'),
+    Ratings: resolveApp('src/components/Ratings/Ratings.tsx'),
+    Get: resolveApp('src/components/Restful/Get.tsx'),
+    Post: resolveApp('src/components/Restful/Post.tsx'),
+    sortable: resolveApp('src/components/sortable/sortable.tsx'),
+    Tabs: resolveApp('src/components/Tabs/Tabs.tsx'),
+    VideoPlayer: resolveApp('src/components/VideoPlayer/VideoPlayer.tsx'),
   }
 };
