@@ -10,6 +10,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -27,7 +28,7 @@ if (env.stringified['process.env'].NODE_ENV !== '"production"') {
 module.exports = {
   mode: 'production',
   bail: true,
-  devtool: base.devtool,
+  devtool: false,
   entry: paths.components,
   output: {
     path: paths.appBuild,
@@ -39,41 +40,48 @@ module.exports = {
       }
       return 'components/[name]/[name].js'
     },
-    publicPath: publicPath,
+    // publicPath: publicPath,
   },
   resolve: base.resolve,
   module: base.module,
   plugins: base.plugins.concat([
     new webpack.DefinePlugin(env.stringified),
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        parse: {
-          ecma: 8,
-        },
-        compress: {
-          ecma: 5,
-          warnings: false,
-          comparisons: false,
-        },
-        mangle: {
-          safari10: true,
-        },
-        output: {
-          ecma: 5,
-          comments: false,
-          ascii_only: true,
-        },
-      },
-      parallel: true,
-      cache: true,
-      sourceMap: false,
-    }), // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
+    // new UglifyJsPlugin({
+    //   uglifyOptions: {
+    //     parse: {
+    //       ecma: 8,
+    //     },
+    //     compress: {
+    //       ecma: 5,
+    //       warnings: false,
+    //       comparisons: false,
+    //     },
+    //     mangle: {
+    //       safari10: true,
+    //     },
+    //     output: {
+    //       ecma: 5,
+    //       comments: false,
+    //       ascii_only: true,
+    //     },
+    //   },
+    //   parallel: true,
+    //   cache: true,
+    //   sourceMap: false,
+    // }), // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new ForkTsCheckerWebpackPlugin({
       async: false,
-      tsconfig: paths.appTsConfig,
+      tsconfig: paths.appTsConfigProd,
       tslint: paths.appTsLint,
     }),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/components/**/*.d.ts',
+        to: 'dist',
+        force: true,
+      }
+    ]),
   ]),
   node: base.node,
 };

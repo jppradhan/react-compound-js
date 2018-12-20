@@ -3,9 +3,6 @@
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const publicPath = paths.servedPath;
@@ -16,7 +13,7 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const isProduction = env.stringified['process.env'].NODE_ENV !== '"production"';
 
 module.exports = {
-  devtool: isProduction ? false : 'cheap-module-source-map',
+  devtool: isProduction ? false : 'source-map',
   resolve: {
     modules: ['node_modules', paths.appNodeModules].concat(
       process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
@@ -40,7 +37,7 @@ module.exports = {
     },
     plugins: [
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
-      new TsconfigPathsPlugin({ configFile: paths.appTsConfig }),
+      new TsconfigPathsPlugin({ configFile: isProduction ? paths.appTsConfigProd : paths.appTsConfig }),
     ],
   },
   module: {

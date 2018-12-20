@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "declaration": true,
+    "target": "es6",
+    "sourceMap": false,
+    "declarationDir": "dist",
+  }
+}
