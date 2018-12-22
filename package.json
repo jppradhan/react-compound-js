@@ -10,11 +10,18 @@
   "homepage": "https://jppradhan.github.io/react-compound-js/",
   "scripts": {
     "start": "npx styleguidist server",
-    "build": "./node_modules/webpack/bin/webpack.js --config ./config/webpack.config.prod.js",
+    "build": "npm run clean; tsc; npm run svg; npm run copy;",
     "onebuild": "node scripts/build.js",
-    "styleguide": "npx styleguidist server",
-    "styleguide:build": "npx styleguidist build"
+    "dev": "npx styleguidist server",
+    "docs": "npx styleguidist build",
+    "clean": "rm -rf dist",
+    "svg": "cp -r ./src/icons ./dist/",
+    "copy": "cp -r ./src/common ./dist/"
   },
+  "pre-commit": [
+    "build",
+    "docs"
+  ],
   "dependencies": {
     "@types/classnames": "^2.2.6",
     "@types/node": "^10.5.8",
@@ -39,7 +46,7 @@
     "file-loader": "0.11.2",
     "fork-ts-checker-webpack-plugin": "^0.5.2",
     "fs-extra": "3.0.1",
-    "html-webpack-plugin": "2.29.0",
+    "html-webpack-plugin": "^2.29.0",
     "node-sass": "^4.9.3",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
@@ -48,7 +55,7 @@
     "promise": "8.0.1",
     "raf": "3.4.0",
     "react": "^16.4.2",
-    "react-dev-utils": "^5.0.1",
+    "react-dev-utils": "^6.0.6-next.c662dfb0",
     "react-docgen-typescript": "^1.8.0",
     "react-dom": "^16.4.2",
     "react-styleguidist": "^7.3.4",
@@ -80,9 +87,7 @@
   "files": [
     "package.json",
     "README.md",
-    "dist/*",
-    "index.js",
-    "index.d.ts"
+    "dist/*"
   ],
-  "entry": "index.js"
+  "entry": "dist/index.js"
 }

@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "build/dist",
+    "outDir": "dist",
     "module": "esnext",
     "target": "es5",
-    "lib": ["es6", "dom"],
-    "sourceMap": true,
-    "allowJs": true,
+    "lib": ["es6", "dom", "esnext"],
+    "sourceMap": false,
     "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "src",
@@ -18,7 +17,16 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "downlevelIteration": true,
+    "noFallthroughCasesInSwitch": true,
   },
+  "include": 
+  [
+    "src/**/*"
+  ],
   "exclude": [
     "node_modules",
     "build",
@@ -27,6 +35,7 @@
     "webpack",
     "jest",
     "src/setupTests.ts",
-    "dist"
+    "dist",
+    "src/app.css"
   ]
 }

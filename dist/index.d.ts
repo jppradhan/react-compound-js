@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { Button } from "./components/Button/Button";
 import { Carousel } from "./components/Carousel/Carousel";
 import { DatePicker } from "./components/DatePicker/DatePicker";
@@ -16,23 +15,4 @@ import { Sortable } from "./components/sortable/sortable";
 import { Tabs } from "./components/Tabs/Tabs";
 import { VideoPlayer } from "./components/VideoPlayer/VideoPlayer";
 import { Pagination } from "./components/Pagination/Pagination";
-
-export {
-  Button,
-  Carousel,
-  DatePicker,
-  Form,
-  InputText,
-  InputCheckbox,
-  InputRadio,
-  InputDate,
-  Image,
-  Modal,
-  Ratings,
-  Get,
-  Post,
-  Sortable,
-  Tabs,
-  VideoPlayer,
-  Pagination
-};
+export { Button, Carousel, DatePicker, Form, InputText, InputCheckbox, InputRadio, InputDate, Image, Modal, Ratings, Get, Post, Sortable, Tabs, VideoPlayer, Pagination };

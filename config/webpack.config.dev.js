@@ -15,7 +15,7 @@ const env = getClientEnvironment(publicUrl);
 const base = require('../config/webpack.base');
 
 module.exports = {
-  mode: "development",
+  mode: base.mode,
   devtool: base.devtool,
   entry: [
     require.resolve('./polyfills'),
@@ -33,11 +33,11 @@ module.exports = {
   resolve: base.resolve,
   module: base.module,
   plugins: base.plugins.concat([
-    new InterpolateHtmlPlugin(env.raw),
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
     }),
+    // new InterpolateHtmlPlugin(env.raw),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new CaseSensitivePathsPlugin(),

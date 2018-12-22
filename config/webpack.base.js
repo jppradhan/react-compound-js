@@ -13,6 +13,7 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const isProduction = env.stringified['process.env'].NODE_ENV !== '"production"';
 
 module.exports = {
+  mode: isProduction ? "development" : "production",
   devtool: isProduction ? false : 'source-map',
   resolve: {
     modules: ['node_modules', paths.appNodeModules].concat(
@@ -37,7 +38,7 @@ module.exports = {
     },
     plugins: [
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
-      new TsconfigPathsPlugin({ configFile: isProduction ? paths.appTsConfigProd : paths.appTsConfig }),
+      new TsconfigPathsPlugin({ configFile: paths.appTsConfig }),
     ],
   },
   module: {
