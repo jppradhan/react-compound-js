@@ -174,11 +174,11 @@ code {
   margin-bottom: 20px;
 }
 
-.bottom_layer circle {
+[class*="bottom-layer"] circle {
   fill: #b3bfc8;
 }
 
-.top_layer circle {
+[class*="top-layer"] circle {
   fill: #37b7f2;
 }
 

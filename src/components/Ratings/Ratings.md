@@ -13,11 +13,11 @@ const Circle = require("../../icons/circle.svg").default;
 ```
 Custom rating icons colors
 ```css
-.bottom_layer circle{
+[class*="bottom-layer"] circle{
 	fill: #b3bfc8
 }
 
-.top_layer circle{
+[class*="top-layer"] circle{
 	fill: #37b7f2
 }
 ```

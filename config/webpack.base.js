@@ -92,7 +92,19 @@ module.exports = {
             ],
           },
           {
-            test: /\.(css|scss)$/,
+            test: /\.(css)$/,
+            use: [
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                }
+              }
+            ]
+          },
+          {
+            test: /\.(scss)$/,
             use: [
               require.resolve('style-loader'),
               {
@@ -103,6 +115,7 @@ module.exports = {
                   sourceMap: !isProduction,
                   modules: true,
                   camelCase: true,
+                  localIdentName: '[local]--[hash:base64:5]',
                 },
               },
               require.resolve('sass-loader'),
