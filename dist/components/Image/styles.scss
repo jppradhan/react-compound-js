@@ -1,0 +1,27 @@
+.image {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  .show {
+    opacity: 1;
+  }
+  .hide {
+    opacity: 0;
+  }
+  img {
+    width: 100%;
+  }
+  .loading-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
