@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -32,11 +31,10 @@ var __rest = (this && this.__rest) || function (s, e) {
             t[p[i]] = s[p[i]];
     return t;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = require("react");
-var classnames_1 = require("classnames");
-var DatePicker_1 = require("../DatePicker/DatePicker");
-var styles_scss_1 = require("./styles.scss");
+import * as React from "react";
+import cx from "classnames";
+import { DatePicker } from "../DatePicker/DatePicker";
+import styles from "./styles.scss";
 var InputDate = /** @class */ (function (_super) {
     __extends(InputDate, _super);
     function InputDate(props) {
@@ -61,11 +59,11 @@ var InputDate = /** @class */ (function (_super) {
     InputDate.prototype.render = function () {
         var _this = this;
         var _a = this.props, value = _a.value, label = _a.label, dateFormat = _a.dateFormat, _b = _a.format, format = _b === void 0 ? "default" : _b, rest = __rest(_a, ["value", "label", "dateFormat", "format"]);
-        return (React.createElement("div", { className: classnames_1.default([styles_scss_1.default.formElems, styles_scss_1.default.formDate]) },
-            React.createElement("label", { className: classnames_1.default(styles_scss_1.default.inputLabel) }, label),
-            React.createElement("input", __assign({ type: "text", value: this.state.selectedValue }, rest, { onFocus: this.openDatePicker, className: classnames_1.default([styles_scss_1.default.formInput, styles_scss_1.default["format-" + format]]) })),
-            React.createElement("div", { className: styles_scss_1.default.pickerWrapper }, this.state.showDatePicker ? (React.createElement(DatePicker_1.DatePicker, { format: dateFormat, currentDate: value, onSelectDate: function (val) { return _this.setDateValue(val); } })) : null)));
+        return (React.createElement("div", { className: cx([styles.formElems, styles.formDate]) },
+            React.createElement("label", { className: cx(styles.inputLabel) }, label),
+            React.createElement("input", __assign({ type: "text", value: this.state.selectedValue }, rest, { onFocus: this.openDatePicker, className: cx([styles.formInput, styles["format-" + format]]) })),
+            React.createElement("div", { className: styles.pickerWrapper }, this.state.showDatePicker ? (React.createElement(DatePicker, { format: dateFormat, currentDate: value, onSelectDate: function (val) { return _this.setDateValue(val); } })) : null)));
     };
     return InputDate;
 }(React.Component));
-exports.InputDate = InputDate;
+export { InputDate };

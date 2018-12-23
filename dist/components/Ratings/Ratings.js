@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12,9 +11,8 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = require("react");
-var styles_scss_1 = require("./styles.scss");
+import * as React from "react";
+import styles from "./styles.scss";
 var COUNT = 5;
 var MARGIN = 5;
 var Ratings = /** @class */ (function (_super) {
@@ -70,10 +68,10 @@ var Ratings = /** @class */ (function (_super) {
             blankStar.push(i);
         }
         var icon = this.props.icon;
-        return (React.createElement("div", { className: styles_scss_1.default.ratings, style: this.getContainerStyle(), onClick: this.setRatings },
-            React.createElement("div", { className: styles_scss_1.default.topLayer, style: this.getRatingStyle() }, blankStar.map(function (b, i) { return (React.createElement("span", { className: styles_scss_1.default.ratingsIcon, key: "RATINGS_ICON_" + i, style: _this.getIconStyle() }, icon)); })),
-            React.createElement("div", { className: styles_scss_1.default.bottomLayer }, blankStar.map(function (b, i) { return (React.createElement("span", { className: styles_scss_1.default.ratingsIcon, key: "RATINGS_ICON_" + i, style: _this.getIconStyle() }, icon)); }))));
+        return (React.createElement("div", { className: styles.ratings, style: this.getContainerStyle(), onClick: this.setRatings },
+            React.createElement("div", { className: styles.topLayer, style: this.getRatingStyle() }, blankStar.map(function (b, i) { return (React.createElement("span", { className: styles.ratingsIcon, key: "RATINGS_ICON_" + i, style: _this.getIconStyle() }, icon)); })),
+            React.createElement("div", { className: styles.bottomLayer }, blankStar.map(function (b, i) { return (React.createElement("span", { className: styles.ratingsIcon, key: "RATINGS_ICON_" + i, style: _this.getIconStyle() }, icon)); }))));
     };
     return Ratings;
 }(React.Component));
-exports.Ratings = Ratings;
+export { Ratings };

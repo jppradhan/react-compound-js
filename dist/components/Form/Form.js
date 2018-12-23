@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -23,8 +22,7 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = require("react");
+import * as React from "react";
 var Form = /** @class */ (function (_super) {
     __extends(Form, _super);
     function Form(props) {
@@ -131,4 +129,4 @@ var Form = /** @class */ (function (_super) {
     };
     return Form;
 }(React.Component));
-exports.Form = Form;
+export { Form };

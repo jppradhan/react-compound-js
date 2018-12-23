@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12,12 +11,11 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = require("react");
-var classnames_1 = require("classnames");
-var styles_scss_1 = require("./styles.scss");
+import * as React from "react";
+import cx from "classnames";
+import styles from "./styles.scss";
 //@ts-ignore
-var cross_svg_1 = require("../../icons/cross.svg");
+import Cross from "../../icons/cross.svg";
 var Modal = /** @class */ (function (_super) {
     __extends(Modal, _super);
     function Modal(props) {
@@ -25,7 +23,7 @@ var Modal = /** @class */ (function (_super) {
         _this.modalElem = null;
         _this.onCloseModal = function () {
             _this.setState({
-                innerClass: styles_scss_1.default.close
+                innerClass: styles.close
             });
             setTimeout(function () {
                 _this.setState({
@@ -37,7 +35,7 @@ var Modal = /** @class */ (function (_super) {
         };
         _this.onClickOutSide = function (e) {
             //@ts-ignore
-            if (e.target.classList.contains(styles_scss_1.default.modal)) {
+            if (e.target.classList.contains(styles.modal)) {
                 return _this.onCloseModal();
             }
             return false;
@@ -51,7 +49,7 @@ var Modal = /** @class */ (function (_super) {
         };
         _this.state = {
             isShowing: _this.props.isShowing,
-            innerClass: _this.props.isShowing ? styles_scss_1.default.open : styles_scss_1.default.close
+            innerClass: _this.props.isShowing ? styles.open : styles.close
         };
         return _this;
     }
@@ -64,7 +62,7 @@ var Modal = /** @class */ (function (_super) {
         if (nextProps.isShowing !== this.props.isShowing) {
             this.setState({
                 isShowing: nextProps.isShowing,
-                innerClass: nextProps.isShowing ? styles_scss_1.default.open : styles_scss_1.default.close
+                innerClass: nextProps.isShowing ? styles.open : styles.close
             });
         }
     };
@@ -72,16 +70,16 @@ var Modal = /** @class */ (function (_super) {
         var _this = this;
         var _a = this.props, title = _a.title, children = _a.children;
         if (this.state.isShowing) {
-            return (React.createElement("div", { className: styles_scss_1.default.modal, onClick: this.onClickOutSide, onKeyUp: this.onKeyPress, tabIndex: 0, ref: function (e) { return (_this.modalElem = e); } },
-                React.createElement("div", { className: classnames_1.default([styles_scss_1.default.modalInner, this.state.innerClass]) },
-                    React.createElement("div", { className: styles_scss_1.default.modalTitle },
+            return (React.createElement("div", { className: styles.modal, onClick: this.onClickOutSide, onKeyUp: this.onKeyPress, tabIndex: 0, ref: function (e) { return (_this.modalElem = e); } },
+                React.createElement("div", { className: cx([styles.modalInner, this.state.innerClass]) },
+                    React.createElement("div", { className: styles.modalTitle },
                         React.createElement("h2", null, title),
-                        React.createElement("span", { className: styles_scss_1.default.closeDialog, onClick: this.onCloseModal },
-                            React.createElement(cross_svg_1.default, null))),
-                    React.createElement("div", { className: styles_scss_1.default.modalBody }, children))));
+                        React.createElement("span", { className: styles.closeDialog, onClick: this.onCloseModal },
+                            React.createElement(Cross, null))),
+                    React.createElement("div", { className: styles.modalBody }, children))));
         }
         return null;
     };
     return Modal;
 }(React.Component));
-exports.Modal = Modal;
+export { Modal };

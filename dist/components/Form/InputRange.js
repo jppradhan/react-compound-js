@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12,10 +11,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = require("react");
-var classnames_1 = require("classnames");
-var styles_scss_1 = require("./styles.scss");
+import * as React from "react";
+import cx from "classnames";
+import styles from "./styles.scss";
 var InputRange = /** @class */ (function (_super) {
     __extends(InputRange, _super);
     function InputRange(props) {
@@ -144,16 +142,16 @@ var InputRange = /** @class */ (function (_super) {
         var _this = this;
         var _a = this.props, label = _a.label, _b = _a.startInputName, startInputName = _b === void 0 ? "start" : _b, _c = _a.endInputName, endInputName = _c === void 0 ? "end" : _c;
         var _d = this.state, start = _d.start, end = _d.end;
-        return (React.createElement("div", { className: classnames_1.default([styles_scss_1.default.formElems, styles_scss_1.default.formRange]) },
-            React.createElement("label", { className: styles_scss_1.default.inputLabel }, label),
-            React.createElement("div", { className: styles_scss_1.default.rangeWrapper, ref: function (e) { return (_this.rangeElem = e); } },
-                React.createElement("div", { className: styles_scss_1.default.range, style: this.getRangeStyle(start, end) },
-                    React.createElement("span", { className: classnames_1.default([styles_scss_1.default.rangeButton, styles_scss_1.default.left]), id: "start-button", role: "slider" }),
-                    React.createElement("span", { className: classnames_1.default([styles_scss_1.default.rangeButton, styles_scss_1.default.right]), role: "slider", id: "end-button" }))),
-            React.createElement("div", { className: styles_scss_1.default.rangeInputs },
-                React.createElement("input", { type: "text", name: startInputName, className: classnames_1.default([styles_scss_1.default.formInput, styles_scss_1.default.formatDefault]), value: this.state.inputStart, onChange: this.onChangeStart, onKeyDown: this.onKeyDownStart }),
-                React.createElement("input", { type: "text", name: endInputName, className: classnames_1.default([styles_scss_1.default.formInput, styles_scss_1.default.formatDefault]), value: this.state.inputEnd, onChange: this.onChangeEnd, onKeyDown: this.onKeyDownEnd }))));
+        return (React.createElement("div", { className: cx([styles.formElems, styles.formRange]) },
+            React.createElement("label", { className: styles.inputLabel }, label),
+            React.createElement("div", { className: styles.rangeWrapper, ref: function (e) { return (_this.rangeElem = e); } },
+                React.createElement("div", { className: styles.range, style: this.getRangeStyle(start, end) },
+                    React.createElement("span", { className: cx([styles.rangeButton, styles.left]), id: "start-button", role: "slider" }),
+                    React.createElement("span", { className: cx([styles.rangeButton, styles.right]), role: "slider", id: "end-button" }))),
+            React.createElement("div", { className: styles.rangeInputs },
+                React.createElement("input", { type: "text", name: startInputName, className: cx([styles.formInput, styles.formatDefault]), value: this.state.inputStart, onChange: this.onChangeStart, onKeyDown: this.onKeyDownStart }),
+                React.createElement("input", { type: "text", name: endInputName, className: cx([styles.formInput, styles.formatDefault]), value: this.state.inputEnd, onChange: this.onChangeEnd, onKeyDown: this.onKeyDownEnd }))));
     };
     return InputRange;
 }(React.Component));
-exports.InputRange = InputRange;
+export { InputRange };

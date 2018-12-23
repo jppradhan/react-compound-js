@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12,10 +11,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = require("react");
-var classnames_1 = require("classnames");
-var styles_scss_1 = require("./styles.scss");
+import * as React from "react";
+import cx from "classnames";
+import styles from "./styles.scss";
 var Image = /** @class */ (function (_super) {
     __extends(Image, _super);
     // private img: any = null;
@@ -34,13 +32,13 @@ var Image = /** @class */ (function (_super) {
     Image.prototype.render = function () {
         var _a;
         var _b = this.props, src = _b.src, loadingIcon = _b.loadingIcon;
-        return (React.createElement("div", { className: styles_scss_1.default.image },
-            this.state.isLoading && (React.createElement("div", { className: styles_scss_1.default.loadingWrapper }, loadingIcon)),
-            React.createElement("img", { src: src, onLoad: this.loadImage, className: classnames_1.default((_a = {},
-                    _a[styles_scss_1.default.hide] = this.state.isLoading,
-                    _a[styles_scss_1.default.show] = !this.state.isLoading,
+        return (React.createElement("div", { className: styles.image },
+            this.state.isLoading && (React.createElement("div", { className: styles.loadingWrapper }, loadingIcon)),
+            React.createElement("img", { src: src, onLoad: this.loadImage, className: cx((_a = {},
+                    _a[styles.hide] = this.state.isLoading,
+                    _a[styles.show] = !this.state.isLoading,
                     _a)) })));
     };
     return Image;
 }(React.Component));
-exports.Image = Image;
+export { Image };

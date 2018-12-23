@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12,10 +11,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = require("react");
-var classnames_1 = require("classnames");
-var styles_scss_1 = require("./styles.scss");
+import * as React from "react";
+import cx from "classnames";
+import styles from "./styles.scss";
 var dispatchClosePopup = function () {
     var event = new Event("closePopup");
     document.dispatchEvent(event);
@@ -46,7 +44,7 @@ var PopOver = /** @class */ (function (_super) {
             var paths = e.path;
             for (var i = 0; i < paths.length; i += 1) {
                 if (paths[i].classList &&
-                    paths[i].classList.contains(styles_scss_1.default.popoverContainer)) {
+                    paths[i].classList.contains(styles.popoverContainer)) {
                     return;
                 }
             }
@@ -63,14 +61,14 @@ var PopOver = /** @class */ (function (_super) {
     };
     PopOver.prototype.render = function () {
         var _a = this.props, children = _a.children, content = _a.content, _b = _a.position, position = _b === void 0 ? "bottom" : _b, _c = _a.size, size = _c === void 0 ? "md" : _c;
-        return (React.createElement("div", { className: styles_scss_1.default.popoverContainer, onClick: this.openPopup },
+        return (React.createElement("div", { className: styles.popoverContainer, onClick: this.openPopup },
             children,
-            this.state.isShowing ? (React.createElement("div", { className: classnames_1.default([
-                    styles_scss_1.default.popoverWrapper,
-                    styles_scss_1.default[position],
-                    styles_scss_1.default[size]
+            this.state.isShowing ? (React.createElement("div", { className: cx([
+                    styles.popoverWrapper,
+                    styles[position],
+                    styles[size]
                 ]) }, content)) : null));
     };
     return PopOver;
 }(React.Component));
-exports.PopOver = PopOver;
+export { PopOver };

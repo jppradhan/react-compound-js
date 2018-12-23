@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -32,10 +31,9 @@ var __spread = (this && this.__spread) || function () {
     for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
     return ar;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = require("react");
-var classnames_1 = require("classnames");
-var styles_scss_1 = require("./styles.scss");
+import * as React from "react";
+import cx from "classnames";
+import styles from "./styles.scss";
 var Sortable = /** @class */ (function (_super) {
     __extends(Sortable, _super);
     function Sortable(props) {
@@ -83,15 +81,15 @@ var Sortable = /** @class */ (function (_super) {
     }
     Sortable.prototype.render = function () {
         var _this = this;
-        return (React.createElement("div", { onDrop: this.onDrop, onDragOver: this.onDragOver, className: styles_scss_1.default.sortable }, this.state.children.map(function (child, i) { return (React.createElement("div", { className: Sortable.styleDragelem(_this.state.dragClassIndex, i), draggable: true, onDragStart: function (e) { return _this.onDragStart(e, i); }, onDragEnd: _this.onDragEnd, key: "DRAGGABLE__" + i, id: "draggable_" + i }, React.cloneElement(child, { id: "draggable_inner_" + i }))); })));
+        return (React.createElement("div", { onDrop: this.onDrop, onDragOver: this.onDragOver, className: styles.sortable }, this.state.children.map(function (child, i) { return (React.createElement("div", { className: Sortable.styleDragelem(_this.state.dragClassIndex, i), draggable: true, onDragStart: function (e) { return _this.onDragStart(e, i); }, onDragEnd: _this.onDragEnd, key: "DRAGGABLE__" + i, id: "draggable_" + i }, React.cloneElement(child, { id: "draggable_inner_" + i }))); })));
     };
     Sortable.styleDragelem = function (dragIndex, index) {
         var _a;
-        return classnames_1.default((_a = {},
-            _a[styles_scss_1.default.draggable] = true,
-            _a[styles_scss_1.default.dragging] = dragIndex === index,
+        return cx((_a = {},
+            _a[styles.draggable] = true,
+            _a[styles.dragging] = dragIndex === index,
             _a));
     };
     return Sortable;
 }(React.Component));
-exports.Sortable = Sortable;
+export { Sortable };

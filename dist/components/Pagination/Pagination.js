@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12,11 +11,10 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = require("react");
+import * as React from "react";
 //@ts-ignore
-var right_arrow_svg_1 = require("../../icons/right-arrow.svg");
-var styles_scss_1 = require("./styles.scss");
+import Arrow from "../../icons/right-arrow.svg";
+import styles from "./styles.scss";
 var Pagination = /** @class */ (function (_super) {
     __extends(Pagination, _super);
     function Pagination(props) {
@@ -35,13 +33,13 @@ var Pagination = /** @class */ (function (_super) {
         var _this = this;
         var currentPage = this.state.currentPage;
         var total = this.props.total;
-        return (React.createElement("div", { className: styles_scss_1.default.wrapper },
-            React.createElement("button", { onClick: function () { return _this.setActivePage(currentPage - 1); }, className: styles_scss_1.default.button, disabled: currentPage <= 0 },
-                React.createElement(right_arrow_svg_1.default, null)),
-            React.createElement("input", { type: "number", value: this.state.pageInput, onChange: this.onChangeInput, onKeyPress: this.onKeyPressInput, className: styles_scss_1.default.input }),
-            React.createElement("button", { onClick: function () { return _this.setActivePage(currentPage + 1); }, className: styles_scss_1.default.button, disabled: currentPage >= total },
-                React.createElement(right_arrow_svg_1.default, null)),
-            React.createElement("span", { className: styles_scss_1.default.remain },
+        return (React.createElement("div", { className: styles.wrapper },
+            React.createElement("button", { onClick: function () { return _this.setActivePage(currentPage - 1); }, className: styles.button, disabled: currentPage <= 0 },
+                React.createElement(Arrow, null)),
+            React.createElement("input", { type: "number", value: this.state.pageInput, onChange: this.onChangeInput, onKeyPress: this.onKeyPressInput, className: styles.input }),
+            React.createElement("button", { onClick: function () { return _this.setActivePage(currentPage + 1); }, className: styles.button, disabled: currentPage >= total },
+                React.createElement(Arrow, null)),
+            React.createElement("span", { className: styles.remain },
                 " of ",
                 total)));
     };
@@ -86,4 +84,4 @@ var Pagination = /** @class */ (function (_super) {
     };
     return Pagination;
 }(React.Component));
-exports.Pagination = Pagination;
+export { Pagination };

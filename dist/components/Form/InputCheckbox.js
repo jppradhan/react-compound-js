@@ -1,4 +1,3 @@
-"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -19,14 +18,13 @@ var __rest = (this && this.__rest) || function (s, e) {
             t[p[i]] = s[p[i]];
     return t;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = require("react");
-var classnames_1 = require("classnames");
-var styles_scss_1 = require("./styles.scss");
+import * as React from "react";
+import cx from "classnames";
+import styles from "./styles.scss";
 var Label = function (props) { return React.createElement("label", __assign({}, props)); };
-exports.InputCheckbox = function (_a) {
+export var InputCheckbox = function (_a) {
     var label = _a.label, id = _a.id, rest = __rest(_a, ["label", "id"]);
-    return (React.createElement("div", { className: classnames_1.default([styles_scss_1.default.formElems, styles_scss_1.default.formCheckbox]) },
+    return (React.createElement("div", { className: cx([styles.formElems, styles.formCheckbox]) },
         React.createElement("input", __assign({ type: "checkbox" }, rest, { id: id })),
-        React.createElement(Label, { className: styles_scss_1.default.checkboxLabel, for: id }, label)));
+        React.createElement(Label, { className: styles.checkboxLabel, for: id }, label)));
 };

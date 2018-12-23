@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.MONTHS = [
+export var MONTHS = [
     "January",
     "February",
     "March",
@@ -14,18 +12,18 @@ exports.MONTHS = [
     "November",
     "December"
 ];
-exports.getDaysInMonth = function (month, year) {
+export var getDaysInMonth = function (month, year) {
     return new Date(year, month, 0).getDate();
 };
-exports.YEAR_START = 1970;
-exports.YEAR_END = 2037;
-exports.formatDate = function (format, day, month, year) {
+export var YEAR_START = 1970;
+export var YEAR_END = 2037;
+export var formatDate = function (format, day, month, year) {
     return format
         .replace(/(dd|DD)/, day < 10 ? "0" + day : day.toString())
         .replace(/(mm|MM)/, month < 10 ? "0" + month : month.toString())
         .replace(/(yyyy|YYYY)/, year.toString());
 };
-exports.stringToDate = function (format, dateStr) {
+export var stringToDate = function (format, dateStr) {
     var formatArr = format.split(/[-\/]/);
     var dateStrArr = dateStr.split(/[-\/]/);
     var day = 0;
@@ -42,5 +40,5 @@ exports.stringToDate = function (format, dateStr) {
             year = parseInt(dateStrArr[i]);
         }
     }
-    return exports.formatDate("mm-dd-yyyy", day, month, year);
+    return formatDate("mm-dd-yyyy", day, month, year);
 };
