@@ -6,3 +6,6 @@ Simple React utility plugin
 
 ## How to install
 ``` npm install --save-dev react-compound-js```
+
+## Plugins required
+[@svgr/webpack](https://www.npmjs.com/package/@svgr/webpack)
