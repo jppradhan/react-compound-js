@@ -1,6 +1,6 @@
 {
   "name": "react-compound-js",
-  "version": "1.2.8",
+  "version": "1.3.0",
   "email": "er.jppradhan@gmail.com",
   "description": "A react plugin with small basic components",
   "repository": {
@@ -10,7 +10,7 @@
   "homepage": "https://jppradhan.github.io/react-compound-js/",
   "scripts": {
     "start": "npx styleguidist server",
-    "build": "rm -rf dist; npx tsc; cp -r ./src/common ./dist/; cp -r ./src/icons ./dist/; npx copy ./src/**/*.scss ./dist",
+    "build": "rm -rf dist; npx tsc --emitDeclarationOnly;npx webpack --config config/webpack.config.build.js ",
     "docs": "npx styleguidist build"
   },
   "dependencies": {
@@ -30,7 +30,6 @@
     "case-sensitive-paths-webpack-plugin": "2.1.1",
     "chalk": "1.1.3",
     "classnames": "^2.2.6",
-    "copy": "^0.3.2",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^0.28.7",
     "declaration-bundler-webpack-plugin": "^1.0.3",
