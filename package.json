@@ -1,6 +1,6 @@
 {
   "name": "react-compound-js",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "email": "er.jppradhan@gmail.com",
   "description": "A react plugin with small basic components",
   "repository": {
@@ -89,5 +89,10 @@
     "README.md",
     "dist/*"
   ],
-  "entry": "dist/index.js"
+  "entry": "dist/index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Jyoti Prakash Pradhan",
+    "email": "er.jppradhan@gmail.com"
+  }
 }
