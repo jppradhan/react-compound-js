@@ -12,22 +12,25 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var React = require("react");
-var Get = /** @class */ (function (_super) {
-    __extends(Get, _super);
-    function Get(props) {
+var Post = /** @class */ (function (_super) {
+    __extends(Post, _super);
+    function Post(props) {
         var _this = _super.call(this, props) || this;
-        _this.fetch = function () {
-            var options = _this.props.options;
+        _this.post = function (options) {
             var DEFAULT_HEADERS = {
                 "content-type": "application/json; charset=utf-8"
             };
             var promises = options.map(function (o) {
                 return fetch(o.url, {
-                    method: "GET",
-                    headers: o.headers || DEFAULT_HEADERS
+                    method: _this.props.method || "POST",
+                    headers: o.headers || DEFAULT_HEADERS,
+                    body: o.body || ""
                 }).then(function (res) { return res.json(); });
+            });
+            _this.setState({
+                loading: true
             });
             return Promise.all(promises)
                 .then(function (res) {
@@ -36,8 +39,7 @@ var Get = /** @class */ (function (_super) {
                     loading: false,
                     data: res
                 });
-            })
-                .catch(function (err) {
+            })["catch"](function (err) {
                 _this.setState({
                     error: err,
                     loading: false,
@@ -47,17 +49,19 @@ var Get = /** @class */ (function (_super) {
         };
         _this.state = {
             error: null,
-            data: null,
-            loading: true
+            loading: false,
+            data: null
         };
         return _this;
     }
-    Get.prototype.componentDidMount = function () {
-        this.fetch();
+    Post.prototype.render = function () {
+        return this.props.children({
+            post: this.post,
+            loading: this.state.loading,
+            error: this.state.error,
+            data: this.state.data
+        });
     };
-    Get.prototype.render = function () {
-        return this.props.children(this.state);
-    };
-    return Get;
+    return Post;
 }(React.Component));
-exports.Get = Get;
+exports.Post = Post;

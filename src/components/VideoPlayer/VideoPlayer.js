@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var React = require("react");
 var classnames_1 = require("classnames");
 var styles_scss_1 = require("./styles.scss");
@@ -48,18 +48,18 @@ var VideoPlayer = /** @class */ (function (_super) {
     VideoPlayer.prototype.render = function () {
         var _this = this;
         var _a = this.props, videos = _a.videos, children = _a.children;
-        return (React.createElement("div", { className: styles_scss_1.default.videoWrapper, ref: function (e) { return (_this.wrapper = e); } },
-            React.createElement("div", { className: styles_scss_1.default.videoList, style: { height: this.state.listHeight } }, videos.map(function (video, v) {
+        return (React.createElement("div", { className: styles_scss_1["default"].videoWrapper, ref: function (e) { return (_this.wrapper = e); } },
+            React.createElement("div", { className: styles_scss_1["default"].videoList, style: { height: this.state.listHeight } }, videos.map(function (video, v) {
                 var _a;
-                return (React.createElement("div", { className: classnames_1.default((_a = {},
-                        _a[styles_scss_1.default.previewItem] = true,
-                        _a[styles_scss_1.default.selected] = _this.state.selectedVideoIndex === v,
+                return (React.createElement("div", { className: classnames_1["default"]((_a = {},
+                        _a[styles_scss_1["default"].previewItem] = true,
+                        _a[styles_scss_1["default"].selected] = _this.state.selectedVideoIndex === v,
                         _a)), onClick: function () { return _this.onSelectVideo(video, v); }, key: "PREVIEW__" + v },
-                    React.createElement("img", { src: video.thumb, className: styles_scss_1.default.previewThumb }),
-                    React.createElement("div", { className: styles_scss_1.default.title },
+                    React.createElement("img", { src: video.thumb, className: styles_scss_1["default"].previewThumb }),
+                    React.createElement("div", { className: styles_scss_1["default"].title },
                         React.createElement("h4", null, video.title))));
             })),
-            React.createElement("div", { className: styles_scss_1.default.videoContainer }, children(this.state.selectedVideo))));
+            React.createElement("div", { className: styles_scss_1["default"].videoContainer }, children(this.state.selectedVideo))));
     };
     return VideoPlayer;
 }(React.Component));

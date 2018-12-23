@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { Button } from "./components/Button/Button";
 import { Carousel } from "./components/Carousel/Carousel";
 import { DatePicker } from "./components/DatePicker/DatePicker";

@@ -19,14 +19,14 @@ var __rest = (this && this.__rest) || function (s, e) {
             t[p[i]] = s[p[i]];
     return t;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var React = require("react");
 var classnames_1 = require("classnames");
 var styles_scss_1 = require("./styles.scss");
-var Label = function (props) { return React.createElement("label", __assign({}, props)); };
-exports.InputCheckbox = function (_a) {
-    var label = _a.label, id = _a.id, rest = __rest(_a, ["label", "id"]);
-    return (React.createElement("div", { className: classnames_1.default([styles_scss_1.default.formElems, styles_scss_1.default.formCheckbox]) },
-        React.createElement("input", __assign({ type: "checkbox" }, rest, { id: id })),
-        React.createElement(Label, { className: styles_scss_1.default.checkboxLabel, for: id }, label)));
+exports.InputText = function (_a) {
+    var _b = _a.type, type = _b === void 0 ? "text" : _b, _c = _a.format, format = _c === void 0 ? "default" : _c, label = _a.label, errorMessage = _a.errorMessage, isValid = _a.isValid, rest = __rest(_a, ["type", "format", "label", "errorMessage", "isValid"]);
+    return (React.createElement("div", { className: styles_scss_1["default"].formElems },
+        React.createElement("label", { className: styles_scss_1["default"].inputLabel }, label),
+        React.createElement("input", __assign({ type: type }, rest, { className: classnames_1["default"]([styles_scss_1["default"].formInput, styles_scss_1["default"]["format-" + format]]) })),
+        format === "error" && errorMessage ? (React.createElement("p", { className: styles_scss_1["default"].inputErrorMessage }, errorMessage)) : null));
 };

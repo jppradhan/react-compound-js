@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var React = require("react");
 var classnames_1 = require("classnames");
 //@ts-ignore
@@ -41,7 +41,7 @@ var DatePicker = /** @class */ (function (_super) {
         _this.generateMonths = function (year) {
             var months = [];
             var _loop_2 = function (i) {
-                months.push(React.createElement("div", { className: styles_scss_1.default.month, key: "MONTH_" + i, onClick: function () {
+                months.push(React.createElement("div", { className: styles_scss_1["default"].month, key: "MONTH_" + i, onClick: function () {
                         _this.onSelectDate(0, i, year);
                         _this.hideMonthView();
                     } }, utils_1.MONTHS[i].substring(0, 3)));
@@ -54,7 +54,7 @@ var DatePicker = /** @class */ (function (_super) {
         _this.generateYears = function () {
             var years = [];
             var _loop_3 = function (i) {
-                years.push(React.createElement("div", { className: styles_scss_1.default.year, key: "YEAR_" + i, onClick: function () {
+                years.push(React.createElement("div", { className: styles_scss_1["default"].year, key: "YEAR_" + i, onClick: function () {
                         _this.onSelectDate(0, 0, i);
                         _this.hideYearView();
                     } }, i));
@@ -128,26 +128,26 @@ var DatePicker = /** @class */ (function (_super) {
     DatePicker.prototype.render = function () {
         var _this = this;
         var _a = this.state, currentDay = _a.currentDay, currentMonth = _a.currentMonth, currentYear = _a.currentYear;
-        return (React.createElement("div", { className: styles_scss_1.default.root },
-            React.createElement("div", { className: styles_scss_1.default.header },
-                React.createElement("span", { className: classnames_1.default([styles_scss_1.default.arrow, styles_scss_1.default.leftArrow]), onClick: function () { return _this.goToMonth(currentMonth - 1); } },
-                    React.createElement(right_arrow_svg_1.default, { width: 15, height: 15 })),
-                React.createElement("div", { className: styles_scss_1.default.monthYear },
+        return (React.createElement("div", { className: styles_scss_1["default"].root },
+            React.createElement("div", { className: styles_scss_1["default"].header },
+                React.createElement("span", { className: classnames_1["default"]([styles_scss_1["default"].arrow, styles_scss_1["default"].leftArrow]), onClick: function () { return _this.goToMonth(currentMonth - 1); } },
+                    React.createElement(right_arrow_svg_1["default"], { width: 15, height: 15 })),
+                React.createElement("div", { className: styles_scss_1["default"].monthYear },
                     React.createElement("span", { onClick: this.showMonthView }, utils_1.MONTHS[currentMonth]),
                     React.createElement("span", { onClick: this.showYearView }, currentYear)),
-                React.createElement("span", { className: classnames_1.default([styles_scss_1.default.arrow, styles_scss_1.default.rightArrow]), onClick: function () { return _this.goToMonth(currentMonth + 1); } },
-                    React.createElement(right_arrow_svg_1.default, { width: 15, height: 15 }))),
-            React.createElement("div", { className: styles_scss_1.default.date }, this.generateDays(currentDay, currentMonth, currentYear)),
-            this.state.showMonth ? (React.createElement("div", { className: styles_scss_1.default.monthView }, this.generateMonths(currentYear))) : null,
-            this.state.showYear ? (React.createElement("div", { className: styles_scss_1.default.yearView }, this.generateYears())) : null));
+                React.createElement("span", { className: classnames_1["default"]([styles_scss_1["default"].arrow, styles_scss_1["default"].rightArrow]), onClick: function () { return _this.goToMonth(currentMonth + 1); } },
+                    React.createElement(right_arrow_svg_1["default"], { width: 15, height: 15 }))),
+            React.createElement("div", { className: styles_scss_1["default"].date }, this.generateDays(currentDay, currentMonth, currentYear)),
+            this.state.showMonth ? (React.createElement("div", { className: styles_scss_1["default"].monthView }, this.generateMonths(currentYear))) : null,
+            this.state.showYear ? (React.createElement("div", { className: styles_scss_1["default"].yearView }, this.generateYears())) : null));
     };
     DatePicker.dayStyles = function (options) {
         var _a;
-        return classnames_1.default((_a = {},
-            _a[styles_scss_1.default.days] = true,
-            _a[styles_scss_1.default.today] = options.today,
-            _a[styles_scss_1.default.selected] = options.selected,
-            _a[styles_scss_1.default.disabled] = options.disabled,
+        return classnames_1["default"]((_a = {},
+            _a[styles_scss_1["default"].days] = true,
+            _a[styles_scss_1["default"].today] = options.today,
+            _a[styles_scss_1["default"].selected] = options.selected,
+            _a[styles_scss_1["default"].disabled] = options.disabled,
             _a));
     };
     return DatePicker;

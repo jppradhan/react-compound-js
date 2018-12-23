@@ -23,7 +23,7 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var React = require("react");
 var classnames_1 = require("classnames");
 var right_arrow_svg_1 = require("../../icons/right-arrow.svg");
@@ -141,14 +141,14 @@ var Carousel = /** @class */ (function (_super) {
     Carousel.prototype.render = function () {
         var _this = this;
         var _a = this.props, loop = _a.loop, children = _a.children, iconDimension = _a.iconDimension;
-        return (React.createElement("div", { className: styles_scss_1.default.carousel },
-            React.createElement("div", { className: styles_scss_1.default.viewport, ref: function (e) { return (_this.viewPortRef = e); } },
-                React.createElement("div", { className: styles_scss_1.default.wrapper, ref: function (e) { return (_this.wrapperRef = e); }, style: this.getTransform(), onDragStart: this.onDragStart, onDragEnd: this.onDragEnd, onTouchStart: this.onTouchStart, onTouchEnd: this.onTouchEnd, draggable: true }, loop ? this.state.children : children)),
-            React.createElement("div", { className: styles_scss_1.default.controls },
-                React.createElement("button", { onClick: this.onClickPrev, className: classnames_1.default([styles_scss_1.default.btn, styles_scss_1.default.prevBtn]) },
-                    React.createElement(right_arrow_svg_1.default, { width: iconDimension || ICON_DIMENSIONS, height: iconDimension || ICON_DIMENSIONS })),
-                React.createElement("button", { onClick: this.onClickNext, className: classnames_1.default([styles_scss_1.default.btn, styles_scss_1.default.nextBtn]) },
-                    React.createElement(right_arrow_svg_1.default, { width: iconDimension || ICON_DIMENSIONS, height: iconDimension || ICON_DIMENSIONS })))));
+        return (React.createElement("div", { className: styles_scss_1["default"].carousel },
+            React.createElement("div", { className: styles_scss_1["default"].viewport, ref: function (e) { return (_this.viewPortRef = e); } },
+                React.createElement("div", { className: styles_scss_1["default"].wrapper, ref: function (e) { return (_this.wrapperRef = e); }, style: this.getTransform(), onDragStart: this.onDragStart, onDragEnd: this.onDragEnd, onTouchStart: this.onTouchStart, onTouchEnd: this.onTouchEnd, draggable: true }, loop ? this.state.children : children)),
+            React.createElement("div", { className: styles_scss_1["default"].controls },
+                React.createElement("button", { onClick: this.onClickPrev, className: classnames_1["default"]([styles_scss_1["default"].btn, styles_scss_1["default"].prevBtn]) },
+                    React.createElement(right_arrow_svg_1["default"], { width: iconDimension || ICON_DIMENSIONS, height: iconDimension || ICON_DIMENSIONS })),
+                React.createElement("button", { onClick: this.onClickNext, className: classnames_1["default"]([styles_scss_1["default"].btn, styles_scss_1["default"].nextBtn]) },
+                    React.createElement(right_arrow_svg_1["default"], { width: iconDimension || ICON_DIMENSIONS, height: iconDimension || ICON_DIMENSIONS })))));
     };
     return Carousel;
 }(React.Component));
