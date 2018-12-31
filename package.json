@@ -10,7 +10,7 @@
   "homepage": "https://jppradhan.github.io/react-compound-js/",
   "scripts": {
     "start": "npx styleguidist server",
-    "build": "rm -rf dist; npx tsc --emitDeclarationOnly;npx webpack --config config/webpack.config.build.js ",
+    "build": "rm -rf dist; npx tsc --emitDeclarationOnly;npx webpack --config config/webpack.config.build.js;cp dist/index.js ./",
     "docs": "npx styleguidist build"
   },
   "dependencies": {

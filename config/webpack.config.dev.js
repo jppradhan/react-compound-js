@@ -7,7 +7,6 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const paths = require('./paths');
-const publicPath = '/';
 const base = require('../config/webpack.base');
 
 module.exports = {
@@ -22,7 +21,6 @@ module.exports = {
     pathinfo: true,
     filename: 'static/js/bundle.js',
     chunkFilename: 'static/js/[name].chunk.js',
-    publicPath: publicPath,
     devtoolModuleFilenameTemplate: info =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
   },
