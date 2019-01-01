@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(window, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -4287,7 +4297,6 @@ var __rest = (undefined && undefined.__rest) || function (s, e) {
 
 
 
-console.log(_styles_scss__WEBPACK_IMPORTED_MODULE_2___default.a);
 var classStyles = function (props) {
     var _a;
     return classnames__WEBPACK_IMPORTED_MODULE_1___default()((_a = {},
@@ -6408,3 +6417,4 @@ module.exports = __webpack_require__(/*! /Users/jyotiprakash/www/react-compound-
 /***/ })
 
 /******/ });
+});
