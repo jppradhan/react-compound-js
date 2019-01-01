@@ -236,4 +236,12 @@ code {
 .cm-s-base16-light .cm-string.cm-property {
   color: #ff6188!important;
 }
-
+.hljs-selector-attr {
+  color: #E91E63;
+}
+.lang-css {
+  color: #f5f5f5;
+}
+.rsg--code-40 {
+  color: #f5f5f5!important;
+}
