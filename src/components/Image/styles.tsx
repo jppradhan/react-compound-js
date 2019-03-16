@@ -11,15 +11,11 @@ export const ImageWrapper = styled.div`
 
 export const StyledImage = styled.img`
   width: 100%;
+  opacity: 0;
   ${props =>
     props.show &&
     css`
       opacity: 1;
-    `}
-  ${props =>
-    props.hide &&
-    css`
-      opacity: 0;
     `}
 `;
 
