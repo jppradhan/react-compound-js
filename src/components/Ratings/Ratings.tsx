@@ -1,5 +1,5 @@
 import * as React from "react";
-import styles from "./styles.scss";
+import { StyledRatings, TopLayer, BottomLayer, RatingsIcon } from "./styles";
 
 interface Props {
   rate: number;
@@ -35,34 +35,22 @@ export class Ratings extends React.Component<Props, State> {
     }
     const { icon } = this.props;
     return (
-      <div
-        className={styles.ratings}
-        style={this.getContainerStyle()}
-        onClick={this.setRatings}
-      >
-        <div className={styles.topLayer} style={this.getRatingStyle()}>
+      <StyledRatings style={this.getContainerStyle()} onClick={this.setRatings}>
+        <TopLayer style={this.getRatingStyle()}>
           {blankStar.map((b, i) => (
-            <span
-              className={styles.ratingsIcon}
-              key={`RATINGS_ICON_${i}`}
-              style={this.getIconStyle()}
-            >
+            <RatingsIcon key={`RATINGS_ICON_${i}`} style={this.getIconStyle()}>
               {icon}
-            </span>
+            </RatingsIcon>
           ))}
-        </div>
-        <div className={styles.bottomLayer}>
+        </TopLayer>
+        <BottomLayer>
           {blankStar.map((b, i) => (
-            <span
-              className={styles.ratingsIcon}
-              key={`RATINGS_ICON_${i}`}
-              style={this.getIconStyle()}
-            >
+            <RatingsIcon key={`RATINGS_ICON_${i}`} style={this.getIconStyle()}>
               {icon}
-            </span>
+            </RatingsIcon>
           ))}
-        </div>
-      </div>
+        </BottomLayer>
+      </StyledRatings>
     );
   }
 
