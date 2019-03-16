@@ -1,7 +1,6 @@
 import * as React from "react";
-import cx from "classnames";
 //@ts-ignore
-import Arrow from "../../icons/right-arrow.svg";
+import ArrowIcon from "../../icons/right-arrow.svg";
 import {
   MONTHS,
   getDaysInMonth,
@@ -10,7 +9,18 @@ import {
   formatDate,
   stringToDate
 } from "./utils";
-import styles from "./styles.scss";
+import {
+  Root,
+  Header,
+  Arrow,
+  MonthYear,
+  StyledDate,
+  StyledDays,
+  StyledMonth,
+  StyledYear,
+  StyledMonthView,
+  StyledYearView
+} from "./styles";
 
 interface Props {
   currentDate: string;
@@ -29,13 +39,11 @@ interface State {
 }
 
 export class DatePicker extends React.Component<Props, State> {
-  static dayStyles = (options: any) =>
-    cx({
-      [styles.days]: true,
-      [styles.today]: options.today,
-      [styles.selected]: options.selected,
-      [styles.disabled]: options.disabled
-    });
+  static dayStyles = (options: any) => ({
+    today: options.today,
+    selected: options.selected,
+    disabled: options.disabled
+  });
 
   public constructor(props: Props) {
     super(props);
@@ -59,37 +67,29 @@ export class DatePicker extends React.Component<Props, State> {
   public render() {
     const { currentDay, currentMonth, currentYear } = this.state;
     return (
-      <div className={styles.root}>
-        <div className={styles.header}>
-          <span
-            className={cx([styles.arrow, styles.leftArrow])}
-            onClick={() => this.goToMonth(currentMonth - 1)}
-          >
-            <Arrow width={15} height={15} />
-          </span>
-          <div className={styles.monthYear}>
+      <Root>
+        <Header>
+          <Arrow onClick={() => this.goToMonth(currentMonth - 1)} leftArrow>
+            <ArrowIcon width={15} height={15} />
+          </Arrow>
+          <MonthYear>
             <span onClick={this.showMonthView}>{MONTHS[currentMonth]}</span>
             <span onClick={this.showYearView}>{currentYear}</span>
-          </div>
-          <span
-            className={cx([styles.arrow, styles.rightArrow])}
-            onClick={() => this.goToMonth(currentMonth + 1)}
-          >
-            <Arrow width={15} height={15} />
-          </span>
-        </div>
-        <div className={styles.date}>
+          </MonthYear>
+          <Arrow onClick={() => this.goToMonth(currentMonth + 1)} rightArrow>
+            <ArrowIcon width={15} height={15} />
+          </Arrow>
+        </Header>
+        <StyledDate>
           {this.generateDays(currentDay, currentMonth, currentYear)}
-        </div>
+        </StyledDate>
         {this.state.showMonth ? (
-          <div className={styles.monthView}>
-            {this.generateMonths(currentYear)}
-          </div>
+          <StyledMonthView>{this.generateMonths(currentYear)}</StyledMonthView>
         ) : null}
         {this.state.showYear ? (
-          <div className={styles.yearView}>{this.generateYears()}</div>
+          <StyledYearView>{this.generateYears()}</StyledYearView>
         ) : null}
-      </div>
+      </Root>
     );
   }
 
@@ -98,17 +98,17 @@ export class DatePicker extends React.Component<Props, State> {
     const daysInMonth = getDaysInMonth(month + 1, year);
     for (let i = 0; i < 31; i += 1) {
       days.push(
-        <div
-          className={DatePicker.dayStyles({
+        <StyledDays
+          key={`DAYS_${i}`}
+          onClick={() => this.onSelectDate(i, month, year)}
+          {...DatePicker.dayStyles({
             today: this.state.today,
             selected: i === day,
             disabled: i >= daysInMonth
           })}
-          key={`DAYS_${i}`}
-          onClick={() => this.onSelectDate(i, month, year)}
         >
           {i + 1}
-        </div>
+        </StyledDays>
       );
     }
     return days;
@@ -118,8 +118,7 @@ export class DatePicker extends React.Component<Props, State> {
     const months = [];
     for (let i = 0; i < MONTHS.length; i += 1) {
       months.push(
-        <div
-          className={styles.month}
+        <StyledMonth
           key={`MONTH_${i}`}
           onClick={() => {
             this.onSelectDate(0, i, year);
@@ -127,7 +126,7 @@ export class DatePicker extends React.Component<Props, State> {
           }}
         >
           {MONTHS[i].substring(0, 3)}
-        </div>
+        </StyledMonth>
       );
     }
     return months;
@@ -137,8 +136,7 @@ export class DatePicker extends React.Component<Props, State> {
     const years = [];
     for (let i = YEAR_START; i < YEAR_END; i += 1) {
       years.push(
-        <div
-          className={styles.year}
+        <StyledYear
           key={`YEAR_${i}`}
           onClick={() => {
             this.onSelectDate(0, 0, i);
@@ -146,7 +144,7 @@ export class DatePicker extends React.Component<Props, State> {
           }}
         >
           {i}
-        </div>
+        </StyledYear>
       );
     }
     return years;
