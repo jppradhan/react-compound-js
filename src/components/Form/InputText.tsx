@@ -1,6 +1,5 @@
 import * as React from "react";
-import cx from "classnames";
-import styles from "./styles.scss";
+import { FormElems, InputLabel, FormInput, InputErrorMessage } from "./styles";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label: React.ReactNode;
@@ -22,16 +21,12 @@ export const InputText: React.SFC<Props> = ({
   ...rest
 }) => {
   return (
-    <div className={styles.formElems}>
-      <label className={styles.inputLabel}>{label}</label>
-      <input
-        type={type}
-        {...rest}
-        className={cx([styles.formInput, styles[`format-${format}`]])}
-      />
+    <FormElems>
+      <InputLabel>{label}</InputLabel>
+      <FormInput type={type} format={format} {...rest} />
       {format === "error" && errorMessage ? (
-        <p className={styles.inputErrorMessage}>{errorMessage}</p>
+        <InputErrorMessage>{errorMessage}</InputErrorMessage>
       ) : null}
-    </div>
+    </FormElems>
   );
 };

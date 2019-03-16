@@ -23,7 +23,8 @@
     "downlevelIteration": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "styled/*": ["./src/common/styles/*"]
+      "styled/*": ["./src/common/styles/*"],
+      "components/*": ["./src/components/*"]
     }
   },
   "include": ["src/**/*"],
