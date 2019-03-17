@@ -1,6 +1,5 @@
 import * as React from "react";
-import cx from "classnames";
-import styles from "./styles.scss";
+import { StyledSortable, Draggable } from "./styles";
 
 interface Props {
   children: React.ReactNode;
@@ -12,11 +11,6 @@ interface State {
 }
 
 export class Sortable extends React.Component<Props, State> {
-  static styleDragelem = (dragIndex: number | null, index: number) =>
-    cx({
-      [styles.draggable]: true,
-      [styles.dragging]: dragIndex === index
-    });
   private dragElementIndex: number = 0;
   public constructor(props: Props) {
     super(props);
@@ -30,24 +24,20 @@ export class Sortable extends React.Component<Props, State> {
 
   public render() {
     return (
-      <div
-        onDrop={this.onDrop}
-        onDragOver={this.onDragOver}
-        className={styles.sortable}
-      >
+      <StyledSortable onDrop={this.onDrop} onDragOver={this.onDragOver}>
         {this.state.children.map((child, i) => (
-          <div
-            className={Sortable.styleDragelem(this.state.dragClassIndex, i)}
+          <Draggable
             draggable
-            onDragStart={e => this.onDragStart(e, i)}
+            onDragStart={(e: any) => this.onDragStart(e, i)}
             onDragEnd={this.onDragEnd}
             key={`DRAGGABLE__${i}`}
             id={`draggable_${i}`}
+            dragging={this.state.dragClassIndex === i}
           >
             {React.cloneElement(child, { id: `draggable_inner_${i}` })}
-          </div>
+          </Draggable>
         ))}
-      </div>
+      </StyledSortable>
     );
   }
 
