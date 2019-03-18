@@ -43,7 +43,7 @@ export const Headers = styled.div`
   border-bottom: 1px solid ${tab_headers_border};
 `;
 
-export const Tabs = styled.div`
+export const StyledTab = styled.div`
   width: 100%;
   height: 45px;
   display: flex;
