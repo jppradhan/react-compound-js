@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { darkGrey, white, red } from "styled/colors";
 
-export const Ratings = styled.div`
+export const StyledRatings = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
