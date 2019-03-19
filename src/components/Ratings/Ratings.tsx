@@ -9,6 +9,8 @@ interface Props {
   margin?: number;
   readonly?: boolean;
   onSetRating?: (rating: number) => void;
+  topColor?: string;
+  bottomColor?: string;
 }
 
 interface State {
@@ -33,17 +35,18 @@ export class Ratings extends React.Component<Props, State> {
     for (let i = 0; i < COUNT; i += 1) {
       blankStar.push(i);
     }
-    const { icon } = this.props;
+    const { icon, topColor, bottomColor } = this.props;
+
     return (
       <StyledRatings style={this.getContainerStyle()} onClick={this.setRatings}>
-        <TopLayer style={this.getRatingStyle()}>
+        <TopLayer style={this.getRatingStyle()} color={topColor}>
           {blankStar.map((b, i) => (
             <RatingsIcon key={`RATINGS_ICON_${i}`} style={this.getIconStyle()}>
               {icon}
             </RatingsIcon>
           ))}
         </TopLayer>
-        <BottomLayer>
+        <BottomLayer color={bottomColor}>
           {blankStar.map((b, i) => (
             <RatingsIcon key={`RATINGS_ICON_${i}`} style={this.getIconStyle()}>
               {icon}

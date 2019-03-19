@@ -60,7 +60,7 @@ export const RadioLabel = styled.label`
   display: inline-block;
   font-weight: 500;
   font-size: 16px;
-  color: $text;
+  color: ${text};
   padding-left: 30px;
   position: relative;
   line-height: 20px;
@@ -120,7 +120,7 @@ export const FormInput = styled.input`
     border: 2px solid ${primary};
   }
   ${props =>
-    props.error &&
+    props.format === "error" &&
     css`
       border: 1px solid ${red};
       &:focus {
@@ -128,7 +128,7 @@ export const FormInput = styled.input`
       }
     `}
   ${props =>
-    props.success &&
+    props.format === "success" &&
     css`
       border: 1px solid ${success};
       &:focus {
@@ -138,7 +138,7 @@ export const FormInput = styled.input`
 `;
 
 export const InputErrorMessage = styled.p`
-  color: $red;
+  color: ${red};
   font-size: 12px;
   line-height: 25px;
 `;
@@ -171,7 +171,7 @@ export const Range = styled.div`
     const marginLeft = `${props.start}%`;
     return css`
       width: ${width};
-      marginleft: ${marginLeft};
+      margin-left: ${marginLeft};
     `;
   }}
 `;

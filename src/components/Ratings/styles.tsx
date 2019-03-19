@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { darkGrey, white, red } from "styled/colors";
+import { darkGrey, white } from "styled/colors";
 
 export const StyledRatings = styled.div`
   width: 100%;
@@ -28,8 +28,9 @@ export const TopLayer = styled.div`
   white-space: nowrap;
   overflow: hidden;
   svg {
+    *,
     path {
-      fill: ${red};
+      fill: ${props => props.color};
     }
   }
 `;
@@ -40,4 +41,10 @@ export const BottomLayer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  svg {
+    *,
+    path {
+      fill: ${props => props.color};
+    }
+  }
 `;

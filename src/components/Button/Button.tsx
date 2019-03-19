@@ -46,7 +46,7 @@ const StyledButton = styled.button`
       cursor: not-allowed;
     `}
   ${props =>
-    props.primary &&
+    props.format === "primary" &&
     css`
       background-color: ${primary};
       border: 1px solid ${primary};
@@ -58,18 +58,18 @@ const StyledButton = styled.button`
     `}
 
   ${props =>
-    props.success &&
+    props.format === "success" &&
     css`
       background-color: ${success};
       border: 1px solid ${success};
-      color: $white;
+      color: ${white};
       &:hover {
         border: 1px solid ${success_hover_bg};
         background-color: ${success_hover_bg};
       }
     `}
   ${props =>
-    props.danger &&
+    props.format === "danger" &&
     css`
       background-color: ${red};
       border: 1px solid ${red};
