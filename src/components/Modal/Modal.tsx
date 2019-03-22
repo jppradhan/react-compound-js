@@ -1,6 +1,11 @@
 import * as React from "react";
-import cx from "classnames";
-import styles from "./styles.scss";
+import {
+  StyledModal,
+  ModalInner,
+  ModalTitle,
+  CloseDialog,
+  ModalBody
+} from "./styles";
 //@ts-ignore
 import Cross from "../../icons/cross.svg";
 
@@ -13,7 +18,7 @@ interface Props {
 
 interface State {
   isShowing: boolean;
-  innerClass: string;
+  innerClass: "close" | "open";
 }
 
 export class Modal extends React.Component<Props, State> {
@@ -23,7 +28,7 @@ export class Modal extends React.Component<Props, State> {
     super(props);
     this.state = {
       isShowing: this.props.isShowing,
-      innerClass: this.props.isShowing ? styles.open : styles.close
+      innerClass: this.props.isShowing ? "open" : "close"
     };
   }
 
@@ -37,7 +42,7 @@ export class Modal extends React.Component<Props, State> {
     if (nextProps.isShowing !== this.props.isShowing) {
       this.setState({
         isShowing: nextProps.isShowing,
-        innerClass: nextProps.isShowing ? styles.open : styles.close
+        innerClass: nextProps.isShowing ? "open" : "close"
       });
     }
   }
@@ -46,23 +51,22 @@ export class Modal extends React.Component<Props, State> {
     const { title, children } = this.props;
     if (this.state.isShowing) {
       return (
-        <div
-          className={styles.modal}
+        <StyledModal
           onClick={this.onClickOutSide}
           onKeyUp={this.onKeyPress}
           tabIndex={0}
-          ref={e => (this.modalElem = e)}
+          ref={(e: any) => (this.modalElem = e)}
         >
-          <div className={cx([styles.modalInner, this.state.innerClass])}>
-            <div className={styles.modalTitle}>
+          <ModalInner innerClass={this.state.innerClass}>
+            <ModalTitle>
               <h2>{title}</h2>
-              <span className={styles.closeDialog} onClick={this.onCloseModal}>
+              <CloseDialog onClick={this.onCloseModal}>
                 <Cross />
-              </span>
-            </div>
-            <div className={styles.modalBody}>{children}</div>
-          </div>
-        </div>
+              </CloseDialog>
+            </ModalTitle>
+            <ModalBody>{children}</ModalBody>
+          </ModalInner>
+        </StyledModal>
       );
     }
     return null;
@@ -70,7 +74,7 @@ export class Modal extends React.Component<Props, State> {
 
   public onCloseModal = () => {
     this.setState({
-      innerClass: styles.close
+      innerClass: "close"
     });
     setTimeout(() => {
       this.setState(

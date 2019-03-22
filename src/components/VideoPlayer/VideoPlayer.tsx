@@ -1,6 +1,12 @@
 import * as React from "react";
-import cx from "classnames";
-import styles from "./styles.scss";
+import {
+  VideoWrapper,
+  VideoList,
+  PreviewItem,
+  PreviewThumb,
+  Title,
+  VideoContainer
+} from "./styles";
 
 interface Video {
   title: string;
@@ -41,31 +47,23 @@ export class VideoPlayer extends React.Component<Props, State> {
   public render() {
     const { videos, children } = this.props;
     return (
-      <div className={styles.videoWrapper} ref={e => (this.wrapper = e)}>
-        <div
-          className={styles.videoList}
-          style={{ height: this.state.listHeight }}
-        >
+      <VideoWrapper ref={(e: any) => (this.wrapper = e)}>
+        <VideoList style={{ height: this.state.listHeight }}>
           {videos.map((video, v) => (
-            <div
-              className={cx({
-                [styles.previewItem]: true,
-                [styles.selected]: this.state.selectedVideoIndex === v
-              })}
+            <PreviewItem
               onClick={() => this.onSelectVideo(video, v)}
               key={`PREVIEW__${v}`}
+              selected={this.state.selectedVideoIndex === v}
             >
-              <img src={video.thumb} className={styles.previewThumb} />
-              <div className={styles.title}>
+              <PreviewThumb src={video.thumb} />
+              <Title>
                 <h4>{video.title}</h4>
-              </div>
-            </div>
+              </Title>
+            </PreviewItem>
           ))}
-        </div>
-        <div className={styles.videoContainer}>
-          {children(this.state.selectedVideo)}
-        </div>
-      </div>
+        </VideoList>
+        <VideoContainer>{children(this.state.selectedVideo)}</VideoContainer>
+      </VideoWrapper>
     );
   }
 

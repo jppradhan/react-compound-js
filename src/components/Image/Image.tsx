@@ -1,6 +1,5 @@
 import * as React from "react";
-import cx from "classnames";
-import styles from "./styles.scss";
+import { ImageWrapper, LoadingWrapper, StyledImage } from "./styles";
 
 interface Props {
   src: string;
@@ -23,19 +22,14 @@ export class Image extends React.Component<Props, State> {
   public render() {
     const { src, loadingIcon } = this.props;
     return (
-      <div className={styles.image}>
-        {this.state.isLoading && (
-          <div className={styles.loadingWrapper}>{loadingIcon}</div>
-        )}
-        <img
+      <ImageWrapper>
+        {this.state.isLoading && <LoadingWrapper>{loadingIcon}</LoadingWrapper>}
+        <StyledImage
           src={src}
           onLoad={this.loadImage}
-          className={cx({
-            [styles.hide]: this.state.isLoading,
-            [styles.show]: !this.state.isLoading
-          })}
+          show={!this.state.isLoading}
         />
-      </div>
+      </ImageWrapper>
     );
   }
 

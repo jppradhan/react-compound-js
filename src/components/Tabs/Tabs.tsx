@@ -1,6 +1,5 @@
 import * as React from "react";
-import cx from "classnames";
-import styles from "./styles.scss";
+import { StyledTabs, StyledTab, Headers, Content } from "./styles";
 
 interface Props {
   tabContent: tabContent[];
@@ -18,13 +17,15 @@ interface State {
 }
 
 export class Tabs extends React.Component<Props, State> {
-  static tabstyles = (activeTab: number, prevTabIndex: number, index: number) =>
-    cx({
-      [styles.tab]: true,
-      [styles.active]: activeTab === index,
-      [styles.right]: prevTabIndex < activeTab,
-      [styles.left]: prevTabIndex >= activeTab
-    });
+  static tabstyles = (
+    activeTab: number,
+    prevTabIndex: number,
+    index: number
+  ) => ({
+    active: activeTab === index,
+    right: prevTabIndex < activeTab,
+    left: prevTabIndex >= activeTab
+  });
   private previousTabIndex: number = 0;
   public constructor(props: Props) {
     super(props);
@@ -38,26 +39,26 @@ export class Tabs extends React.Component<Props, State> {
   public render() {
     const { tabContent } = this.props;
     return (
-      <div className={styles.tabs}>
-        <div className={styles.headers}>
+      <StyledTabs>
+        <Headers>
           {tabContent.map((tab, i) => {
             return (
-              <div
-                className={Tabs.tabstyles(
+              <StyledTab
+                key={`TAB_${i}`}
+                onClick={() => this.goToTab(i)}
+                {...Tabs.tabstyles(
                   this.state.activeTab,
                   this.previousTabIndex,
                   i
                 )}
-                key={`TAB_${i}`}
-                onClick={() => this.goToTab(i)}
               >
                 <h4>{tab.label}</h4>
-              </div>
+              </StyledTab>
             );
           })}
-        </div>
-        <div className={styles.content}>{this.state.activeTabContent}</div>
-      </div>
+        </Headers>
+        <Content>{this.state.activeTabContent}</Content>
+      </StyledTabs>
     );
   }
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 //@ts-ignore
 import Arrow from "../../icons/right-arrow.svg";
-import styles from "./styles.scss";
+import { Wrapper, StyledButton, StyledInput, Remain } from "./styles";
 
 interface Props {
   total: number;
@@ -22,7 +22,6 @@ export class Pagination extends React.Component<Props, State> {
       pageInput: props.page
     };
     this.setActivePage = this.setActivePage.bind(this);
-    this.renderPaginateButtons = this.renderPaginateButtons.bind(this);
     this.onChangeInput = this.onChangeInput.bind(this);
     this.onKeyPressInput = this.onKeyPressInput.bind(this);
   }
@@ -31,30 +30,27 @@ export class Pagination extends React.Component<Props, State> {
     const { currentPage } = this.state;
     const { total } = this.props;
     return (
-      <div className={styles.wrapper}>
-        <button
+      <Wrapper>
+        <StyledButton
           onClick={() => this.setActivePage(currentPage - 1)}
-          className={styles.button}
           disabled={currentPage <= 0}
         >
           <Arrow />
-        </button>
-        <input
+        </StyledButton>
+        <StyledInput
           type="number"
           value={this.state.pageInput}
           onChange={this.onChangeInput}
           onKeyPress={this.onKeyPressInput}
-          className={styles.input}
         />
-        <button
+        <StyledButton
           onClick={() => this.setActivePage(currentPage + 1)}
-          className={styles.button}
           disabled={currentPage >= total}
         >
           <Arrow />
-        </button>
-        <span className={styles.remain}> of {total}</span>
-      </div>
+        </StyledButton>
+        <Remain> of {total}</Remain>
+      </Wrapper>
     );
   }
 
@@ -71,23 +67,6 @@ export class Pagination extends React.Component<Props, State> {
         this.props.onGoToPage(page);
       }
     );
-  }
-
-  private renderPaginateButtons() {
-    const buttons = [];
-    const { total, onGoToPage } = this.props;
-    const totalCount = total <= 5 ? total : 5;
-    for (let i = 0; i < totalCount; i += 1) {
-      buttons.push(
-        <button
-          className={this.state.currentPage === i ? "active" : ""}
-          onClick={() => onGoToPage(i)}
-        >
-          {i + 1}
-        </button>
-      );
-    }
-    return buttons;
   }
 
   private onChangeInput(e: React.ChangeEvent<any>) {

@@ -1,5 +1,5 @@
 import * as React from "react";
-import styles from "./styles.scss";
+import { StyledRatings, TopLayer, BottomLayer, RatingsIcon } from "./styles";
 
 interface Props {
   rate: number;
@@ -9,6 +9,8 @@ interface Props {
   margin?: number;
   readonly?: boolean;
   onSetRating?: (rating: number) => void;
+  topColor?: string;
+  bottomColor?: string;
 }
 
 interface State {
@@ -33,36 +35,25 @@ export class Ratings extends React.Component<Props, State> {
     for (let i = 0; i < COUNT; i += 1) {
       blankStar.push(i);
     }
-    const { icon } = this.props;
+    const { icon, topColor, bottomColor } = this.props;
+
     return (
-      <div
-        className={styles.ratings}
-        style={this.getContainerStyle()}
-        onClick={this.setRatings}
-      >
-        <div className={styles.topLayer} style={this.getRatingStyle()}>
+      <StyledRatings style={this.getContainerStyle()} onClick={this.setRatings}>
+        <TopLayer style={this.getRatingStyle()} color={topColor}>
           {blankStar.map((b, i) => (
-            <span
-              className={styles.ratingsIcon}
-              key={`RATINGS_ICON_${i}`}
-              style={this.getIconStyle()}
-            >
+            <RatingsIcon key={`RATINGS_ICON_${i}`} style={this.getIconStyle()}>
               {icon}
-            </span>
+            </RatingsIcon>
           ))}
-        </div>
-        <div className={styles.bottomLayer}>
+        </TopLayer>
+        <BottomLayer color={bottomColor}>
           {blankStar.map((b, i) => (
-            <span
-              className={styles.ratingsIcon}
-              key={`RATINGS_ICON_${i}`}
-              style={this.getIconStyle()}
-            >
+            <RatingsIcon key={`RATINGS_ICON_${i}`} style={this.getIconStyle()}>
               {icon}
-            </span>
+            </RatingsIcon>
           ))}
-        </div>
-      </div>
+        </BottomLayer>
+      </StyledRatings>
     );
   }
 

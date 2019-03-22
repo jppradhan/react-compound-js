@@ -1,6 +1,13 @@
 import * as React from "react";
-import cx from "classnames";
-import styles from "./styles.scss";
+import {
+  FormRange,
+  InputLabel,
+  RangeWrapper,
+  Range,
+  RangeButton,
+  FormInput,
+  RangeInputs
+} from "./styles";
 
 interface Props {
   start: number;
@@ -54,50 +61,33 @@ export class InputRange extends React.Component<Props, State> {
 
     const { start, end } = this.state;
     return (
-      <div className={cx([styles.formElems, styles.formRange])}>
-        <label className={styles.inputLabel}>{label}</label>
-        <div className={styles.rangeWrapper} ref={e => (this.rangeElem = e)}>
-          <div className={styles.range} style={this.getRangeStyle(start, end)}>
-            <span
-              className={cx([styles.rangeButton, styles.left])}
-              id="start-button"
-              role="slider"
-            />
-            <span
-              className={cx([styles.rangeButton, styles.right])}
-              role="slider"
-              id="end-button"
-            />
-          </div>
-        </div>
-        <div className={styles.rangeInputs}>
-          <input
+      <FormRange>
+        <InputLabel>{label}</InputLabel>
+        <RangeWrapper ref={(e: any) => (this.rangeElem = e)}>
+          <Range start={start} end={end}>
+            <RangeButton id="start-button" role="slider" />
+            <RangeButton role="slider" id="end-button" right />
+          </Range>
+        </RangeWrapper>
+        <RangeInputs>
+          <FormInput
             type="text"
             name={startInputName}
-            className={cx([styles.formInput, styles.formatDefault])}
             value={this.state.inputStart}
             onChange={this.onChangeStart}
             onKeyDown={this.onKeyDownStart}
           />
-          <input
+          <FormInput
             type="text"
             name={endInputName}
-            className={cx([styles.formInput, styles.formatDefault])}
             value={this.state.inputEnd}
             onChange={this.onChangeEnd}
             onKeyDown={this.onKeyDownEnd}
           />
-        </div>
-      </div>
+        </RangeInputs>
+      </FormRange>
     );
   }
-
-  private getRangeStyle = (start: number, end: number) => {
-    return {
-      width: `${end - start}%`,
-      marginLeft: `${start}%`
-    };
-  };
 
   private onKeyDownStart = (e: React.KeyboardEvent) => {
     if (e.keyCode !== 13) {

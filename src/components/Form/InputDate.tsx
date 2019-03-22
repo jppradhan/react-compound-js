@@ -1,7 +1,6 @@
 import * as React from "react";
-import cx from "classnames";
-import { DatePicker } from "../DatePicker/DatePicker";
-import styles from "./styles.scss";
+import { DatePicker } from "components/DatePicker/DatePicker";
+import { FormDate, FormInput, InputLabel, PickerWrapper } from "./styles";
 
 interface Props {
   value: string;
@@ -35,16 +34,16 @@ export class InputDate extends React.Component<Props, State> {
       ...rest
     } = this.props;
     return (
-      <div className={cx([styles.formElems, styles.formDate])}>
-        <label className={cx(styles.inputLabel)}>{label}</label>
-        <input
-          type="text"
-          value={this.state.selectedValue}
+      <FormDate>
+        <InputLabel>{label}</InputLabel>
+        <FormInput
           {...rest}
           onFocus={this.openDatePicker}
-          className={cx([styles.formInput, styles[`format-${format}`]])}
+          type="text"
+          value={this.state.selectedValue}
+          format={format}
         />
-        <div className={styles.pickerWrapper}>
+        <PickerWrapper>
           {this.state.showDatePicker ? (
             <DatePicker
               format={dateFormat}
@@ -52,8 +51,8 @@ export class InputDate extends React.Component<Props, State> {
               onSelectDate={val => this.setDateValue(val)}
             />
           ) : null}
-        </div>
-      </div>
+        </PickerWrapper>
+      </FormDate>
     );
   }
 
