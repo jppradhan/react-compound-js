@@ -7,7 +7,7 @@ interface Props {
 }
 interface State {
     isShowing: boolean;
-    innerClass: string;
+    innerClass: "close" | "open";
 }
 export declare class Modal extends React.Component<Props, State> {
     private modalElem;

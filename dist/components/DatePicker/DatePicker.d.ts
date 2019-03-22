@@ -14,7 +14,11 @@ interface State {
     showYear: boolean;
 }
 export declare class DatePicker extends React.Component<Props, State> {
-    static dayStyles: (options: any) => string;
+    static dayStyles: (options: any) => {
+        today: any;
+        selected: any;
+        disabled: any;
+    };
     constructor(props: Props);
     render(): JSX.Element;
     private generateDays;

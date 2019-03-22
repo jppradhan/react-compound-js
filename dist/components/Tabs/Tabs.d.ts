@@ -12,7 +12,11 @@ interface State {
     activeTabContent: React.ReactNode;
 }
 export declare class Tabs extends React.Component<Props, State> {
-    static tabstyles: (activeTab: number, prevTabIndex: number, index: number) => string;
+    static tabstyles: (activeTab: number, prevTabIndex: number, index: number) => {
+        active: boolean;
+        right: boolean;
+        left: boolean;
+    };
     private previousTabIndex;
     constructor(props: Props);
     render(): JSX.Element;

@@ -1,0 +1,11 @@
+export declare const black = "#131313";
+export declare const white = "#FFFFFF";
+export declare const primary = "#00ADEF";
+export declare const success = "#4ec437";
+export declare const darkGrey = "#b3bfc8";
+export declare const lightRed = "#FF4D4D";
+export declare const red = "#D93636";
+export declare const lightGrey = "#EEF1F2";
+export declare const greyText = "#607680";
+export declare const text = "#17272E";
+export declare const focus_color = "rgba(12,150,242,1)";

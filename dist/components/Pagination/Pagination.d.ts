@@ -12,7 +12,6 @@ export declare class Pagination extends React.Component<Props, State> {
     constructor(props: Props);
     render(): JSX.Element;
     private setActivePage;
-    private renderPaginateButtons;
     private onChangeInput;
     private onKeyPressInput;
 }

@@ -7,6 +7,8 @@ interface Props {
     margin?: number;
     readonly?: boolean;
     onSetRating?: (rating: number) => void;
+    topColor?: string;
+    bottomColor?: string;
 }
 interface State {
     rate: number;

@@ -22,7 +22,6 @@ export declare class InputRange extends React.Component<Props, State> {
     componentDidMount(): void;
     componentWillUnmount(): void;
     render(): JSX.Element;
-    private getRangeStyle;
     private onKeyDownStart;
     private onKeyDownEnd;
     private onChangeStart;
