@@ -6,14 +6,14 @@ interface Props {
   value?: string;
   name: string;
   checked?: boolean;
-  id?: string;
+  id: string;
 }
 
 export const InputRadio: React.SFC<Props> = ({ label, id, ...rest }) => {
   return (
     <FormRadio>
       <input type="radio" {...rest} id={id} />
-      <RadioLabel for={id}>{label}</RadioLabel>
+      <RadioLabel htmlFor={id}>{label}</RadioLabel>
     </FormRadio>
   );
 };

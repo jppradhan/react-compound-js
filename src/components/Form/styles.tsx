@@ -106,7 +106,9 @@ export const InputLabel = styled.label`
   color: ${text};
 `;
 
-export const FormInput = styled.input`
+export const FormInput = styled.input<{
+  format?: "error" | "success" | "default";
+}>`
   padding: 0 10px;
   border-radius: 5px;
   border: 1px solid ${darkGrey};
@@ -160,7 +162,10 @@ export const FormRange = styled(FormElems)`
   position: relative;
 `;
 
-export const Range = styled.div`
+export const Range = styled.div<{
+  start: number;
+  end: number;
+}>`
   background-color: ${primary};
   height: 8px;
   width: 0;
@@ -185,7 +190,9 @@ export const RangeWrapper = styled.div`
   border-radius: 2px;
 `;
 
-export const RangeButton = styled.span`
+export const RangeButton = styled.span<{
+  right?: boolean;
+}>`
   display: inline-block;
   position: absolute;
   top: -9px;

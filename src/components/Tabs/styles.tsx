@@ -43,7 +43,11 @@ export const Headers = styled.div`
   border-bottom: 1px solid ${tab_headers_border};
 `;
 
-export const StyledTab = styled.div`
+export const StyledTab = styled.div<{
+  active: boolean;
+  left?: boolean;
+  right?: boolean;
+}>`
   width: 100%;
   height: 45px;
   display: flex;
@@ -55,34 +59,34 @@ export const StyledTab = styled.div`
   ${props =>
     props.active &&
     css`
-    background-color: ${tab_active_bg};
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    &:after {
-      content: '';
-      position: absolute;
-      display: inline-block;
-      width: 100%;
-      border-bottom: 2px solid ${primary};
-      bottom: 0;
-    }
-    //@ts-ignore
-    ${props =>
-      props.left &&
-      css`
-        &:after {
-          animation: ${leftSlide} 0.3s ease-out;
-        }
-      `}
-    //@ts-ignore
-    ${props =>
-      props.right &&
-      css`
-        &:after {
-          animation: ${rightSlide} 0.3s ease-out;
-        }
-      `}
-  `}
+      background-color: ${tab_active_bg};
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      &:after {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        border-bottom: 2px solid ${primary};
+        bottom: 0;
+      }
+      ${props =>
+        //@ts-ignore
+        props.left &&
+        css`
+          &:after {
+            animation: ${leftSlide} 0.3s ease-out;
+          }
+        `}
+      ${props =>
+        //@ts-ignore
+        props.right &&
+        css`
+          &:after {
+            animation: ${rightSlide} 0.3s ease-out;
+          }
+        `}
+    `}
 `;
 
 export const Content = styled.div`

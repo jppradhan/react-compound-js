@@ -72,14 +72,15 @@ module.exports = {
               name: "static/media/[name].[hash:8].[ext]"
             }
           },
-          {
-            test: /\.(js|jsx|mjs)$/,
-            include: paths.appSrc,
-            loader: require.resolve("babel-loader"),
-            options: {
-              compact: true
-            }
-          },
+          // {
+          //   test: /\.(js|jsx|mjs)$/,
+          //   include: paths.appSrc,
+          //   loader: require.resolve("babel-loader"),
+          //   options: {
+          //     compact: true,
+          //     presets: ["@babel/preset-env"]
+          //   }
+          // },
           {
             test: /\.(ts|tsx)$/,
             include: paths.appSrc,

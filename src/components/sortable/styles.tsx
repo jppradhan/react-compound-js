@@ -5,7 +5,9 @@ export const StyledSortable = styled.div`
   width: 100%;
 `;
 
-export const Draggable = styled.div`
+export const Draggable = styled.div<{
+  dragging: boolean;
+}>`
   ${props =>
     props.dragging &&
     css`

@@ -15,7 +15,12 @@ export const Wrapper = styled.div`
   display: flex;
 `;
 
-export const Btn = styled.button`
+interface BtnProps extends React.ButtonHTMLAttributes<any> {
+  prevBtn?: boolean;
+  nextBtn?: boolean;
+}
+
+export const Btn = styled.button<BtnProps>`
   position: absolute;
   z-index: 5;
   border: none;

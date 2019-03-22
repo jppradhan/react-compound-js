@@ -15,7 +15,7 @@ const success_hover_bg = "#3dab27";
 const primary_hover_bg = "#0095ce";
 const danger_hover_bg = "#c72121";
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<Props>`
   background-color: ${lightGrey};
   padding: 0;
   padding-left: 15px;

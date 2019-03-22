@@ -8,7 +8,9 @@ export const Wrapper = styled.div`
   color: ${text};
 `;
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<{
+  disabled?: boolean;
+}>`
   background-color: ${darkGrey};
   border: 1px solid ${greyText};
   border-radius: 4px;

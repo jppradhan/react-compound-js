@@ -10,7 +10,10 @@ export const OpenPopover = keyframes`
   }
 `;
 
-export const PopoverWrapper = styled.div`
+export const PopoverWrapper = styled.div<{
+  position: "bottom" | "left" | "right" | "top";
+  size: "sm" | "md" | "lg";
+}>`
   position: absolute;
   background: ${white};
   z-index: 10;

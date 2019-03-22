@@ -9,7 +9,9 @@ export const ImageWrapper = styled.div`
   position: relative;
 `;
 
-export const StyledImage = styled.img`
+export const StyledImage = styled.img<{
+  show?: boolean;
+}>`
   width: 100%;
   opacity: 0;
   ${props =>

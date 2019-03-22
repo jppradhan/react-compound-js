@@ -28,7 +28,9 @@ export const StyledModal = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
 `;
-export const ModalInner = styled.div`
+export const ModalInner = styled.div<{
+  innerClass: "open" | "close";
+}>`
   min-height: 400px;
   background: ${white};
   border: 1px solid ${darkGrey};

@@ -19,7 +19,10 @@ export const Header = styled.div`
   align-items: center;
 `;
 
-export const Arrow = styled.span`
+export const Arrow = styled.span<{
+  leftArrow?: boolean;
+  rightArrow?: boolean;
+}>`
   width: 35px;
   height: 35px;
   display: flex;
@@ -58,7 +61,11 @@ export const StyledDate = styled.div`
   padding: 5px;
 `;
 
-export const StyledDays = styled.div`
+export const StyledDays = styled.div<{
+  today?: boolean;
+  selected?: boolean;
+  disabled?: boolean;
+}>`
   min-width: 49px;
   height: 49px;
   display: inline-flex;

@@ -17,7 +17,9 @@ export const RatingsIcon = styled.span`
   margin-right: 5px;
 `;
 
-export const TopLayer = styled.div`
+export const TopLayer = styled.div<{
+  color?: string;
+}>`
   position: absolute;
   top: 0;
   left: 0;
@@ -35,7 +37,9 @@ export const TopLayer = styled.div`
   }
 `;
 
-export const BottomLayer = styled.div`
+export const BottomLayer = styled.div<{
+  color?: string;
+}>`
   position: absolute;
   top: 0;
   left: 0;

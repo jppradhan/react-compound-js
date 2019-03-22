@@ -24,7 +24,9 @@ export const VideoList = styled.div`
   transition: opacity 0.2s linear;
 `;
 
-export const PreviewItem = styled.div`
+export const PreviewItem = styled.div<{
+  selected: boolean;
+}>`
   height: 80px;
   width: 100%;
   margin-bottom: 10px;
