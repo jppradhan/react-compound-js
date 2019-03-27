@@ -56,6 +56,7 @@ export class Modal extends React.Component<Props, State> {
           onKeyUp={this.onKeyPress}
           tabIndex={0}
           ref={(e: any) => (this.modalElem = e)}
+          className="modal-overlay"
         >
           <ModalInner innerClass={this.state.innerClass}>
             <ModalTitle>
@@ -90,7 +91,7 @@ export class Modal extends React.Component<Props, State> {
 
   private onClickOutSide = (e: React.SyntheticEvent<any>) => {
     //@ts-ignore
-    if (e.target.classList.contains(styles.modal)) {
+    if (e.target.classList.contains("modal-overlay")) {
       return this.onCloseModal();
     }
     return false;
