@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, SFC, useEffect } from "react";
 import { PopoverWrapper, PopoverContainer } from "./styles";
 
 interface Props {
@@ -7,68 +7,34 @@ interface Props {
   size: "md" | "lg" | "sm";
 }
 
-interface State {
-  isShowing: boolean;
-}
-
 const dispatchClosePopup = () => {
   const event = new Event("closePopup");
   document.dispatchEvent(event);
 };
 
-export class PopOver extends React.Component<Props, State> {
-  public constructor(props: Props) {
-    super(props);
-    this.state = {
-      isShowing: false
-    };
-  }
+export const PopOver: SFC<Props> = props => {
+  const [isShowing, setIsShowing] = useState(false);
 
-  public componentWillUnmount() {
-    document.removeEventListener("click", this.onClickOutside);
-    document.removeEventListener("closePopup", this.closePopup);
-  }
-
-  public render() {
-    const { children, content, position = "bottom", size = "md" } = this.props;
-    return (
-      <PopoverContainer onClick={this.openPopup}>
-        {children}
-        {this.state.isShowing && (
-          <PopoverWrapper position={position} size={size}>
-            {content}
-          </PopoverWrapper>
-        )}
-      </PopoverContainer>
-    );
-  }
-
-  private openPopup = (e: React.MouseEvent<any>) => {
+  const openPopup = (e: React.MouseEvent<any>) => {
     dispatchClosePopup();
-    this.setState(
-      {
-        isShowing: true
-      },
-      () => {
-        document.addEventListener("click", this.onClickOutside);
-        document.addEventListener("closePopup", this.closePopup);
-      }
-    );
+    setIsShowing(true);
   };
 
-  private closePopup = () => {
-    this.setState(
-      {
-        isShowing: false
-      },
-      () => {
-        document.removeEventListener("click", this.onClickOutside);
-        document.removeEventListener("closePopup", this.closePopup);
-      }
-    );
+  const addEvents = () => {
+    document.addEventListener("click", onClickOutside);
+    document.addEventListener("closePopup", closePopup);
   };
 
-  private onClickOutside = (e: Event) => {
+  const removeEvents = () => {
+    document.removeEventListener("click", onClickOutside);
+    document.removeEventListener("closePopup", closePopup);
+  };
+
+  const closePopup = () => {
+    setIsShowing(false);
+  };
+
+  const onClickOutside = (e: Event) => {
     //@ts-ignore
     const paths = e.path;
     for (let i = 0; i < paths.length; i += 1) {
@@ -79,6 +45,29 @@ export class PopOver extends React.Component<Props, State> {
         return;
       }
     }
-    this.closePopup();
+    closePopup();
   };
-}
+
+  useEffect(() => {
+    if (isShowing) {
+      addEvents();
+    } else {
+      removeEvents();
+    }
+    return () => {
+      removeEvents();
+    };
+  }, [isShowing]);
+
+  const { children, content, position = "bottom", size = "md" } = props;
+  return (
+    <PopoverContainer onClick={openPopup}>
+      {children}
+      {isShowing && (
+        <PopoverWrapper position={position} size={size}>
+          {content}
+        </PopoverWrapper>
+      )}
+    </PopoverContainer>
+  );
+};
