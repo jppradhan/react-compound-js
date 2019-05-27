@@ -4,7 +4,7 @@ interface Props {
     value?: string;
     name: string;
     checked?: boolean;
-    id?: string;
+    id: string;
 }
 export declare const InputCheckbox: React.SFC<Props>;
 export {};

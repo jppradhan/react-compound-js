@@ -1,10 +1,10 @@
-import * as React from "react";
+import { SFC, ReactNode } from "react";
 interface Props {
-    label: React.ReactNode;
+    label: ReactNode;
     value?: string;
     name: string;
     checked?: boolean;
-    id?: string;
+    id: string;
 }
-export declare const InputRadio: React.SFC<Props>;
+export declare const InputRadio: SFC<Props>;
 export {};
