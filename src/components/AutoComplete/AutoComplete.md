@@ -13,8 +13,21 @@ class App extends React.Component {
   render() {
     return (
       <AutoComplete
-        values={[{ name: "Hello", id: 1 }, { name: "Hello 2", id: 2 }]}
+        values={[
+          { name: "Hello", id: 1 },
+          { name: "Hello 2", id: 2 },
+          { name: "Hello 3", id: 3 },
+          { name: "Hello 3", id: 4 },
+          { name: "Hello 5", id: 5 },
+          { name: "Hello 6", id: 6 },
+          { name: "Hello 7", id: 7 }
+        ]}
         open={this.state.open}
+        onEnter={value => {
+          this.setState({
+            text: value.name
+          });
+        }}
       >
         <InputText
           type="text"
@@ -24,7 +37,12 @@ class App extends React.Component {
           onChange={e => {
             this.setState({
               text: e.target.value,
-              open: !!this.state.text.length
+              open: !!e.target.value.length
+            });
+          }}
+          onBlur={() => {
+            this.setState({
+              open: false
             });
           }}
         />
