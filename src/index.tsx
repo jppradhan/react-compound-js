@@ -1,3 +1,4 @@
+import { AutoComplete } from "./components/AutoComplete/AutoComplete";
 import { Button } from "./components/Button/Button";
 import { Carousel } from "./components/Carousel/Carousel";
 import { DatePicker } from "./components/DatePicker/DatePicker";
@@ -6,6 +7,7 @@ import { InputText } from "./components/Form/InputText";
 import { InputCheckbox } from "./components/Form/InputCheckbox";
 import { InputRadio } from "./components/Form/InputRadio";
 import { InputDate } from "./components/Form/InputDate";
+import { InputRange } from "./components/Form/InputRange";
 import { Image } from "./components/Image/Image";
 import { Modal } from "./components/Modal/Modal";
 import { Ratings } from "./components/Ratings/Ratings";
@@ -15,8 +17,10 @@ import { Sortable } from "./components/sortable/sortable";
 import { Tabs } from "./components/Tabs/Tabs";
 import { VideoPlayer } from "./components/VideoPlayer/VideoPlayer";
 import { Pagination } from "./components/Pagination/Pagination";
+import { PopOver } from "./components/PopOver/PopOver";
 
 export {
+  AutoComplete,
   Button,
   Carousel,
   DatePicker,
@@ -25,6 +29,7 @@ export {
   InputCheckbox,
   InputRadio,
   InputDate,
+  InputRange
   Image,
   Modal,
   Ratings,
@@ -33,5 +38,6 @@ export {
   Sortable,
   Tabs,
   VideoPlayer,
-  Pagination
+  Pagination,
+  PopOver,
 };

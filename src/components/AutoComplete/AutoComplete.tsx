@@ -73,7 +73,7 @@ const reducer = (state: State, action: Action) => {
 
 export const AutoComplete: SFC<Props> = props => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const listElem: { current: HTMLLIElement | null } = useRef(null);
+  const listElem: { current: HTMLUListElement | null } = useRef(null);
 
   const handleOnclick = (index: number) => {
     dispatch({
@@ -91,6 +91,7 @@ export const AutoComplete: SFC<Props> = props => {
     ) {
       return;
     }
+    //@ts-ignore
     const itemHeight = listElem.current.childNodes[0].offsetHeight;
     listElem.current.scroll({
       top: itemHeight * elemIndex,
