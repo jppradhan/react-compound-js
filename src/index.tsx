@@ -29,7 +29,7 @@ export {
   InputCheckbox,
   InputRadio,
   InputDate,
-  InputRange
+  InputRange,
   Image,
   Modal,
   Ratings,
@@ -39,5 +39,5 @@ export {
   Tabs,
   VideoPlayer,
   Pagination,
-  PopOver,
+  PopOver
 };
