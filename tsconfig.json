@@ -24,7 +24,8 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "styled/*": ["./src/common/styles/*"],
-      "components/*": ["./src/components/*"]
+      "components/*": ["./src/components/*"],
+      "hooks/*": ["./src/hooks/*"]
     }
   },
   "include": ["src/**/*"],

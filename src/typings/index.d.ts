@@ -16,7 +16,13 @@ import { Post } from "./dist/components/Restful/Post";
 import { Sortable } from "./dist/components/sortable/sortable";
 import { Tabs } from "./dist/components/Tabs/Tabs";
 import { VideoPlayer } from "./dist/components/VideoPlayer/VideoPlayer";
+import { Pagination } from "./dist/components/Pagination/Pagination";
 import { PopOver } from "./dist/components/PopOver/PopOver";
+import { useOnDOMChange } from "./dist/hooks/useOnDOMChange";
+import { useOutsideClick } from "./dist/hooks/useOutsideClick";
+import { useStateCallback } from "./dist/hooks/useStateCallback";
+import { useWillReceiveProps } from "./dist/hooks/useWillReceiveProps";
+
 export {
   AutoComplete,
   Button,
@@ -36,6 +42,10 @@ export {
   Sortable,
   Tabs,
   VideoPlayer,
-  PopOver
+  Pagination,
+  PopOver,
+  useOutsideClick,
+  useOnDOMChange,
+  useStateCallback,
+  useWillReceiveProps
 };
-//# sourceMappingURL=index.d.ts.map

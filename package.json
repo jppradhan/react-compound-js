@@ -1,6 +1,6 @@
 {
   "name": "react-compound-js",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "email": "er.jppradhan@gmail.com",
   "description": "A react plugin with small basic components",
   "repository": {
@@ -10,7 +10,7 @@
   "homepage": "https://jppradhan.github.io/react-compound-js/",
   "scripts": {
     "start": "npx styleguidist server",
-    "build": "rm -rf dist; npx tsc --emitDeclarationOnly;npx webpack --config config/webpack.config.build.js;cp index.js dist/index.js",
+    "build": "rm -rf dist; npx tsc --emitDeclarationOnly;NODE_ENV=production npx webpack --config config/webpack.config.build.js;cp dist/index.js ./index.js",
     "docs": "npx styleguidist build"
   },
   "dependencies": {

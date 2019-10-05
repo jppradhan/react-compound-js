@@ -10,6 +10,7 @@ const publicUrl = publicPath.slice(0, -1);
 const env = getClientEnvironment(publicUrl);
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
+console.log("#################");
 const isProduction = env.stringified["process.env"].NODE_ENV !== '"production"';
 
 module.exports = {
