@@ -1,6 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-const equals = (prev, next) => {
+interface Props<T> {
+  <T>(arg: T): T;
+}
+
+const equals = <U>(prev: Props<U>, next: Props<U>): boolean => {
   let status = true;
   const keys = Object.keys(prev);
   for (let i = 0; i < keys.length; i += 1) {
@@ -15,7 +19,10 @@ const equals = (prev, next) => {
   return status;
 };
 
-export const useWillReceiveProps = (props, callback) => {
+export const useWillReceiveProps = <U>(
+  props: Props<U>,
+  callback: <T>(arg: T) => T
+) => {
   const prevState = useRef(props);
 
   useEffect(() => {
