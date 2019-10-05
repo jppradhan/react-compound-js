@@ -18,6 +18,12 @@ import { Tabs } from "./components/Tabs/Tabs";
 import { VideoPlayer } from "./components/VideoPlayer/VideoPlayer";
 import { Pagination } from "./components/Pagination/Pagination";
 import { PopOver } from "./components/PopOver/PopOver";
+import {
+  useOutsideClick,
+  useOnDOMChange,
+  useStateCallback,
+  useWillReceiveProps
+} from "./hooks";
 
 export {
   AutoComplete,
@@ -39,5 +45,9 @@ export {
   Tabs,
   VideoPlayer,
   Pagination,
-  PopOver
+  PopOver,
+  useOutsideClick,
+  useOnDOMChange,
+  useStateCallback,
+  useWillReceiveProps
 };

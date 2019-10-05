@@ -15,6 +15,12 @@ import { Sortable } from "./dist/components/sortable/sortable";
 import { Tabs } from "./dist/components/Tabs/Tabs";
 import { VideoPlayer } from "./dist/components/VideoPlayer/VideoPlayer";
 import { Pagination } from "./dist/components/Pagination/Pagination";
+import {
+  useOutsideClick,
+  useOnDOMChange,
+  useStateCallback,
+  useWillReceiveProps
+} from "./dist/hooks";
 
 export {
   Button,
@@ -33,5 +39,9 @@ export {
   Sortable,
   Tabs,
   VideoPlayer,
-  Pagination
+  Pagination,
+  useOutsideClick,
+  useOnDOMChange,
+  useStateCallback,
+  useWillReceiveProps
 };

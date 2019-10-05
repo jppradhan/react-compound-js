@@ -18,4 +18,5 @@ import { Tabs } from "./components/Tabs/Tabs";
 import { VideoPlayer } from "./components/VideoPlayer/VideoPlayer";
 import { Pagination } from "./components/Pagination/Pagination";
 import { PopOver } from "./components/PopOver/PopOver";
-export { AutoComplete, Button, Carousel, DatePicker, Form, InputText, InputCheckbox, InputRadio, InputDate, InputRange, Image, Modal, Ratings, Get, Post, Sortable, Tabs, VideoPlayer, Pagination, PopOver };
+import { useOutsideClick, useOnDOMChange, useStateCallback, useWillReceiveProps } from "./hooks";
+export { AutoComplete, Button, Carousel, DatePicker, Form, InputText, InputCheckbox, InputRadio, InputDate, InputRange, Image, Modal, Ratings, Get, Post, Sortable, Tabs, VideoPlayer, Pagination, PopOver, useOutsideClick, useOnDOMChange, useStateCallback, useWillReceiveProps };
