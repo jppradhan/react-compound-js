@@ -18,6 +18,8 @@ import { Tabs } from "./components/Tabs/Tabs";
 import { VideoPlayer } from "./components/VideoPlayer/VideoPlayer";
 import { Pagination } from "./components/Pagination/Pagination";
 import { PopOver } from "./components/PopOver/PopOver";
+import { Pills } from "./components/Pills/Pills";
+import { TagSelect } from "./components/TagSelect/TagSelect";
 import { useOnDOMChange } from "./hooks/useOnDOMChange";
 import { useOutsideClick } from "./hooks/useOutsideClick";
 import { useStateCallback } from "./hooks/useStateCallback";
@@ -47,5 +49,7 @@ export {
   useOutsideClick,
   useOnDOMChange,
   useStateCallback,
-  useWillReceiveProps
+  useWillReceiveProps,
+  TagSelect,
+  Pills
 };

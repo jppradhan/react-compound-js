@@ -18,6 +18,8 @@ import { Tabs } from "./dist/components/Tabs/Tabs";
 import { VideoPlayer } from "./dist/components/VideoPlayer/VideoPlayer";
 import { Pagination } from "./dist/components/Pagination/Pagination";
 import { PopOver } from "./dist/components/PopOver/PopOver";
+import { Pills } from "./dist/components/Pills/Pills";
+import { TagSelect } from "./dist/components/TagSelect/TagSelect";
 import { useOnDOMChange } from "./dist/hooks/useOnDOMChange";
 import { useOutsideClick } from "./dist/hooks/useOutsideClick";
 import { useStateCallback } from "./dist/hooks/useStateCallback";
