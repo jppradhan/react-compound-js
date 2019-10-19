@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { Pills } from "components/Pills/Pills";
-import { lightGrey, text, darkGrey } from "styled/colors";
+import { text, darkGrey } from "styled/colors";
 
 export const SelectContainer = styled.div`
     display: flex;
@@ -23,14 +22,6 @@ export const SelectArea = styled.div`
     border-color: ${text};
   }
 `;
-//@ts-ignore
-export const StyledTag = styled<{ label: string; onRemove: () => {} }>(Pills)`
-  height: auto;
-  margin: 0 5px;
-  margin-bottom: 5px;
-  min-height: 7px;
-  width: auto;
-`;
 
 export const TagInput = styled.input`
     border: none;
@@ -43,14 +34,6 @@ export const TagInput = styled.input`
     display: inline-block;
     padding-left: 5px;
     width: auto;
-    display: inline-block;
     min-width: 60px;
     flex: 1;
-`;
-
-export const Placeholder = styled.span`
-    color: ${lightGrey};
-    font-weight: 500;
-    letter-spacing: 1px;
-    padding: 10px 0 0  10px;
 `;

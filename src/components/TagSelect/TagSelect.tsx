@@ -1,11 +1,6 @@
-import React from "react";
-import {
-  SelectContainer,
-  SelectArea,
-  StyledTag,
-  Placeholder,
-  TagInput
-} from "./styles";
+import React, { SFC } from "react";
+import { Pills } from "components/Pills/Pills";
+import { SelectContainer, SelectArea, TagInput } from "./styles";
 
 interface Tag {
   label: string;
@@ -14,7 +9,6 @@ interface Tag {
 interface Props {
   placeholder: string;
   tags: Tag[];
-  enableBackspace?: boolean;
   className?: string;
   onUpdate: (tags: Tag[]) => void;
   onRemove: (tag: Tag) => void;
@@ -96,33 +90,27 @@ const onRemove = (tags: Tag[], tagIndex: number, props: Props) => {
   props.onRemove(tags[tagIndex]);
 };
 
-export const TagSelect: React.SFC<Props> = props => {
-  const { placeholder, enableBackspace, tags } = props;
-
+export const TagSelect: SFC<Props> = props => {
+  const { placeholder, tags } = props;
+  console.log(tags);
   return (
     <SelectContainer className={props.className}>
       <SelectArea>
-        {tags &&
-          tags.map((tag, index) => (
-            <StyledTag
-              key={`TAG_${index}`}
-              label={tag.label}
-              onRemove={onRemove.bind(null, tags, index, props)}
-            />
-          ))}
-                  
-        {tags.length === 0 && !enableBackspace ? (
-          <Placeholder>{placeholder}</Placeholder>
-        ) : null}
-        {enableBackspace && (
-          <TagInput
-            type="text"
-            onKeyDown={e => handleKeydown(e, tags, props)}
-            onKeyUp={e => handleKeyUp(e, tags, props)}
-            onBlur={e => handleBlur(e, tags, props)}
-            placeholder={tags.length === 0 ? placeholder : ""}
+        {tags.map((tag, index) => (
+          <Pills
+            key={`TAG_${index}`}
+            label={tag.label}
+            onRemove={onRemove.bind(null, tags, index, props)}
           />
-        )}
+        ))}
+                  
+        <TagInput
+          type="text"
+          onKeyDown={e => handleKeydown(e, tags, props)}
+          onKeyUp={e => handleKeyUp(e, tags, props)}
+          onBlur={e => handleBlur(e, tags, props)}
+          placeholder={placeholder}
+        />
       </SelectArea>
     </SelectContainer>
   );

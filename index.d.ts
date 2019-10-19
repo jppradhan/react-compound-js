@@ -46,6 +46,8 @@ export {
   VideoPlayer,
   Pagination,
   PopOver,
+  Pills,
+  TagSelect,
   useOutsideClick,
   useOnDOMChange,
   useStateCallback,

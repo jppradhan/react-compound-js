@@ -6595,6 +6595,45 @@ var templateObject_1, templateObject_2, templateObject_3, templateObject_4, temp
 
 /***/ }),
 
+/***/ "./src/components/Pills/Pills.tsx":
+/*!****************************************!*\
+  !*** ./src/components/Pills/Pills.tsx ***!
+  \****************************************/
+/*! exports provided: Pills */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pills", function() { return Pills; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_colors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled/colors */ "./src/common/styles/colors.ts");
+/* harmony import */ var _icons_cross_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../icons/cross.svg */ "./src/icons/cross.svg");
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+
+
+
+//@ts-ignore
+
+var Pill = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: inline-block;\n  padding: 10px;\n  background-color: ", ";\n  color: ", ";\n  font-size: 14px;\n  position: relative;\n  border-radius: 4px;\n  padding-right: 30px;\n"], ["\n  display: inline-block;\n  padding: 10px;\n  background-color: ", ";\n  color: ", ";\n  font-size: 14px;\n  position: relative;\n  border-radius: 4px;\n  padding-right: 30px;\n"])), styled_colors__WEBPACK_IMPORTED_MODULE_2__["lightGrey"], styled_colors__WEBPACK_IMPORTED_MODULE_2__["text"]);
+var Label = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].span(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  margin-right: 5px;\n"], ["\n  margin-right: 5px;\n"])));
+var RemoveIcon = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].span(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  position: absolute;\n  right: 7px;\n  top: 9px;\n"], ["\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  position: absolute;\n  right: 7px;\n  top: 9px;\n"])));
+var Pills = function (props) {
+    var label = props.label, onRemove = props.onRemove;
+    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Pill, null,
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Label, null, label),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RemoveIcon, { onClick: onRemove },
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_cross_svg__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
+};
+var templateObject_1, templateObject_2, templateObject_3;
+
+
+/***/ }),
+
 /***/ "./src/components/PopOver/PopOver.tsx":
 /*!********************************************!*\
   !*** ./src/components/PopOver/PopOver.tsx ***!
@@ -7139,6 +7178,141 @@ var templateObject_1, templateObject_2, templateObject_3, templateObject_4, temp
 
 /***/ }),
 
+/***/ "./src/components/TagSelect/TagSelect.tsx":
+/*!************************************************!*\
+  !*** ./src/components/TagSelect/TagSelect.tsx ***!
+  \************************************************/
+/*! exports provided: TagSelect */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TagSelect", function() { return TagSelect; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+// import {
+//   SelectContainer,
+//   SelectArea,
+//   StyledTag,
+//   Placeholder,
+//   TagInput
+// } from "./styles";
+// interface Tag {
+//   label: string;
+// }
+// interface Props {
+//   placeholder: string;
+//   tags: Tag[];
+//   enableBackspace?: boolean;
+//   className?: string;
+//   onUpdate: (tags: Tag[]) => void;
+//   onRemove: (tag: Tag) => void;
+//   separator?: string;
+// }
+// const addTags = (
+//   event: React.SyntheticEvent<HTMLInputElement>,
+//   tags: Tag[],
+//   props: Props
+// ) => {
+//   //@ts-ignore
+//   const value = event.target.value.trim();
+//   event.preventDefault();
+//   if (!value) return;
+//   const newTags = props.separator
+//     ? [
+//         ...tags,
+//         ...value
+//           .split(new RegExp(props.separator, "g"))
+//           .filter((str: string) => !!str.trim())
+//           .map((str: string) => ({ label: str }))
+//       ]
+//     : [...tags, { label: value }];
+//   props.onUpdate(newTags);
+//   //@ts-ignore
+//   event.target.value = "";
+// };
+// const handleKeydown = (
+//   event: React.SyntheticEvent<HTMLInputElement>,
+//   tags: Tag[],
+//   props: Props
+// ) => {
+//   //@ts-ignore
+//   const isBackspace = event.keyCode === 8 && !event.target.value;
+//   //@ts-ignore
+//   const isEnter = event.keyCode === 13;
+//   if (isBackspace) {
+//     const tag = tags.pop();
+//     if (tag) {
+//       props.onRemove(tag);
+//     }
+//     props.onUpdate(tags);
+//   }
+//   if (isEnter) {
+//     addTags(event, tags, props);
+//   }
+// };
+// const handleKeyUp = (
+//   event: React.SyntheticEvent<HTMLInputElement>,
+//   tags: Tag[],
+//   props: Props
+// ) => {
+//   //@ts-ignore
+//   const value = event.target.value.trim();
+//   const isSepatatorTypes = value.includes(props.separator);
+//   if (isSepatatorTypes) {
+//     addTags(event, tags, props);
+//   }
+// };
+// const handleBlur = (
+//   event: React.SyntheticEvent<HTMLInputElement>,
+//   tags: Tag[],
+//   props: Props
+// ) => {
+//   addTags(event, tags, props);
+// };
+// const onRemove = (tags: Tag[], tagIndex: number, props: Props) => {
+//   const newTags = tags.filter((tag, index) => tagIndex !== index);
+//   props.onUpdate(newTags);
+//   props.onRemove(tags[tagIndex]);
+// };
+// export const TagSelect: SFC<Props> = props => {
+//   const { placeholder, enableBackspace, tags } = props;
+//   return (
+//     <SelectContainer className={props.className}>
+//       <SelectArea>
+//         {tags &&
+//           tags.map((tag, index) => (
+//             <StyledTag
+//               key={`TAG_${index}`}
+//               label={tag.label}
+//               onRemove={onRemove.bind(null, tags, index, props)}
+//             />
+//           ))}
+//
+//         {tags.length === 0 && !enableBackspace ? (
+//           <Placeholder>{placeholder}</Placeholder>
+//         ) : null}
+//         {enableBackspace && (
+//           <TagInput
+//             type="text"
+//             onKeyDown={e => handleKeydown(e, tags, props)}
+//             onKeyUp={e => handleKeyUp(e, tags, props)}
+//             onBlur={e => handleBlur(e, tags, props)}
+//             placeholder={tags.length === 0 ? placeholder : ""}
+//           />
+//         )}
+//       </SelectArea>
+//     </SelectContainer>
+//   );
+// };
+var TagSelect = function (props) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Pills");
+};
+
+
+/***/ }),
+
 /***/ "./src/components/VideoPlayer/VideoPlayer.tsx":
 /*!****************************************************!*\
   !*** ./src/components/VideoPlayer/VideoPlayer.tsx ***!
@@ -7654,7 +7828,7 @@ var SvgRightArrow = function SvgRightArrow(props) {
 /*!***********************!*\
   !*** ./src/index.tsx ***!
   \***********************/
-/*! exports provided: AutoComplete, Button, Carousel, DatePicker, Form, InputText, InputCheckbox, InputRadio, InputDate, InputRange, Image, Modal, Ratings, Get, Post, Sortable, Tabs, VideoPlayer, Pagination, PopOver, useOutsideClick, useOnDOMChange, useStateCallback, useWillReceiveProps */
+/*! exports provided: AutoComplete, Button, Carousel, DatePicker, Form, InputText, InputCheckbox, InputRadio, InputDate, InputRange, Image, Modal, Ratings, Get, Post, Sortable, Tabs, VideoPlayer, Pagination, PopOver, useOutsideClick, useOnDOMChange, useStateCallback, useWillReceiveProps, TagSelect, Pills */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7719,17 +7893,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PopOver_PopOver__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/PopOver/PopOver */ "./src/components/PopOver/PopOver.tsx");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PopOver", function() { return _components_PopOver_PopOver__WEBPACK_IMPORTED_MODULE_19__["PopOver"]; });
 
-/* harmony import */ var _hooks_useOnDOMChange__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./hooks/useOnDOMChange */ "./src/hooks/useOnDOMChange.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useOnDOMChange", function() { return _hooks_useOnDOMChange__WEBPACK_IMPORTED_MODULE_20__["useOnDOMChange"]; });
+/* harmony import */ var _components_Pills_Pills__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/Pills/Pills */ "./src/components/Pills/Pills.tsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Pills", function() { return _components_Pills_Pills__WEBPACK_IMPORTED_MODULE_20__["Pills"]; });
 
-/* harmony import */ var _hooks_useOutsideClick__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./hooks/useOutsideClick */ "./src/hooks/useOutsideClick.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useOutsideClick", function() { return _hooks_useOutsideClick__WEBPACK_IMPORTED_MODULE_21__["useOutsideClick"]; });
+/* harmony import */ var _components_TagSelect_TagSelect__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/TagSelect/TagSelect */ "./src/components/TagSelect/TagSelect.tsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TagSelect", function() { return _components_TagSelect_TagSelect__WEBPACK_IMPORTED_MODULE_21__["TagSelect"]; });
 
-/* harmony import */ var _hooks_useStateCallback__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./hooks/useStateCallback */ "./src/hooks/useStateCallback.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useStateCallback", function() { return _hooks_useStateCallback__WEBPACK_IMPORTED_MODULE_22__["useStateCallback"]; });
+/* harmony import */ var _hooks_useOnDOMChange__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./hooks/useOnDOMChange */ "./src/hooks/useOnDOMChange.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useOnDOMChange", function() { return _hooks_useOnDOMChange__WEBPACK_IMPORTED_MODULE_22__["useOnDOMChange"]; });
 
-/* harmony import */ var _hooks_useWillReceiveProps__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./hooks/useWillReceiveProps */ "./src/hooks/useWillReceiveProps.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useWillReceiveProps", function() { return _hooks_useWillReceiveProps__WEBPACK_IMPORTED_MODULE_23__["useWillReceiveProps"]; });
+/* harmony import */ var _hooks_useOutsideClick__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./hooks/useOutsideClick */ "./src/hooks/useOutsideClick.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useOutsideClick", function() { return _hooks_useOutsideClick__WEBPACK_IMPORTED_MODULE_23__["useOutsideClick"]; });
+
+/* harmony import */ var _hooks_useStateCallback__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./hooks/useStateCallback */ "./src/hooks/useStateCallback.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useStateCallback", function() { return _hooks_useStateCallback__WEBPACK_IMPORTED_MODULE_24__["useStateCallback"]; });
+
+/* harmony import */ var _hooks_useWillReceiveProps__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./hooks/useWillReceiveProps */ "./src/hooks/useWillReceiveProps.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useWillReceiveProps", function() { return _hooks_useWillReceiveProps__WEBPACK_IMPORTED_MODULE_25__["useWillReceiveProps"]; });
+
+
 
 
 
