@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { greyText, red } from "styled/colors";
+import { greyText, red, white } from "styled/colors";
 
 export const VideoContainer = styled.div`
   width: 100%;
@@ -36,11 +36,12 @@ export const PreviewItem = styled.div<{
   overflow: hidden;
   cursor: pointer;
   background-color: #131313;
-  ${props =>
-    props.selected &&
-    css`
-      border: 2px solid ${red};
-    `}
+  color: ${white}
+    ${props =>
+      props.selected &&
+      css`
+        border: 2px solid ${red};
+      `};
 `;
 
 export const Title = styled.div`

@@ -28,6 +28,10 @@ export const useWillReceiveProps = <U>(
   useEffect(() => {
     callback(prevState.current);
     prevState.current = props;
+    console.log("CALL SECOND");
+    return () => {
+      console.log("CALL FIRST");
+    };
   }, [equals(props, prevState.current)]);
 
   return prevState.current;

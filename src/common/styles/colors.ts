@@ -1,6 +1,7 @@
 export const black = "#131313";
 export const white = "#FFFFFF";
 export const primary = "#00ADEF";
+export const primaryDark = "#0586b7";
 export const success = "#4ec437";
 export const darkGrey = "#b3bfc8";
 export const lightRed = "#FF4D4D";

@@ -53,9 +53,8 @@ const handleKeydown = (
   if (isBackspace) {
     const tag = tags.pop();
     if (tag) {
-      props.onRemove(tag);
+      return props.onRemove(tag);
     }
-    props.onUpdate(tags);
   }
   if (isEnter) {
     addTags(event, tags, props);
@@ -92,7 +91,6 @@ const onRemove = (tags: Tag[], tagIndex: number, props: Props) => {
 
 export const TagSelect: SFC<Props> = props => {
   const { placeholder, tags } = props;
-  console.log(tags);
   return (
     <SelectContainer className={props.className}>
       <SelectArea>
