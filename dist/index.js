@@ -6619,15 +6619,15 @@ var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || func
 
 //@ts-ignore
 
-var Pill = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: inline-block;\n  padding: 10px;\n  background-color: ", ";\n  color: ", ";\n  font-size: 14px;\n  position: relative;\n  border-radius: 4px;\n  padding-right: 30px;\n"], ["\n  display: inline-block;\n  padding: 10px;\n  background-color: ", ";\n  color: ", ";\n  font-size: 14px;\n  position: relative;\n  border-radius: 4px;\n  padding-right: 30px;\n"])), styled_colors__WEBPACK_IMPORTED_MODULE_2__["lightGrey"], styled_colors__WEBPACK_IMPORTED_MODULE_2__["text"]);
+var Pill = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: inline-block;\n  padding: 10px 15px;\n  background-color: ", ";\n  color: ", ";\n  font-size: 14px;\n  position: relative;\n  border-radius: 4px;\n  padding-right: 30px;\n  margin-right: 10px;\n"], ["\n  display: inline-block;\n  padding: 10px 15px;\n  background-color: ", ";\n  color: ", ";\n  font-size: 14px;\n  position: relative;\n  border-radius: 4px;\n  padding-right: 30px;\n  margin-right: 10px;\n"])), styled_colors__WEBPACK_IMPORTED_MODULE_2__["lightGrey"], styled_colors__WEBPACK_IMPORTED_MODULE_2__["text"]);
 var Label = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].span(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  margin-right: 5px;\n"], ["\n  margin-right: 5px;\n"])));
-var RemoveIcon = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].span(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  position: absolute;\n  right: 7px;\n  top: 9px;\n"], ["\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  position: absolute;\n  right: 7px;\n  top: 9px;\n"])));
+var RemoveIcon = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].span(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  position: absolute;\n  right: 7px;\n  top: 9px;\n  cursor: pointer;\n"], ["\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  position: absolute;\n  right: 7px;\n  top: 9px;\n  cursor: pointer;\n"])));
 var Pills = function (props) {
     var label = props.label, onRemove = props.onRemove;
     return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Pill, null,
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Label, null, label),
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RemoveIcon, { onClick: onRemove },
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_cross_svg__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_cross_svg__WEBPACK_IMPORTED_MODULE_3__["default"], { width: 16, height: 16 }))));
 };
 var templateObject_1, templateObject_2, templateObject_3;
 
@@ -7190,125 +7190,114 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TagSelect", function() { return TagSelect; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-// import {
-//   SelectContainer,
-//   SelectArea,
-//   StyledTag,
-//   Placeholder,
-//   TagInput
-// } from "./styles";
-// interface Tag {
-//   label: string;
-// }
-// interface Props {
-//   placeholder: string;
-//   tags: Tag[];
-//   enableBackspace?: boolean;
-//   className?: string;
-//   onUpdate: (tags: Tag[]) => void;
-//   onRemove: (tag: Tag) => void;
-//   separator?: string;
-// }
-// const addTags = (
-//   event: React.SyntheticEvent<HTMLInputElement>,
-//   tags: Tag[],
-//   props: Props
-// ) => {
-//   //@ts-ignore
-//   const value = event.target.value.trim();
-//   event.preventDefault();
-//   if (!value) return;
-//   const newTags = props.separator
-//     ? [
-//         ...tags,
-//         ...value
-//           .split(new RegExp(props.separator, "g"))
-//           .filter((str: string) => !!str.trim())
-//           .map((str: string) => ({ label: str }))
-//       ]
-//     : [...tags, { label: value }];
-//   props.onUpdate(newTags);
-//   //@ts-ignore
-//   event.target.value = "";
-// };
-// const handleKeydown = (
-//   event: React.SyntheticEvent<HTMLInputElement>,
-//   tags: Tag[],
-//   props: Props
-// ) => {
-//   //@ts-ignore
-//   const isBackspace = event.keyCode === 8 && !event.target.value;
-//   //@ts-ignore
-//   const isEnter = event.keyCode === 13;
-//   if (isBackspace) {
-//     const tag = tags.pop();
-//     if (tag) {
-//       props.onRemove(tag);
-//     }
-//     props.onUpdate(tags);
-//   }
-//   if (isEnter) {
-//     addTags(event, tags, props);
-//   }
-// };
-// const handleKeyUp = (
-//   event: React.SyntheticEvent<HTMLInputElement>,
-//   tags: Tag[],
-//   props: Props
-// ) => {
-//   //@ts-ignore
-//   const value = event.target.value.trim();
-//   const isSepatatorTypes = value.includes(props.separator);
-//   if (isSepatatorTypes) {
-//     addTags(event, tags, props);
-//   }
-// };
-// const handleBlur = (
-//   event: React.SyntheticEvent<HTMLInputElement>,
-//   tags: Tag[],
-//   props: Props
-// ) => {
-//   addTags(event, tags, props);
-// };
-// const onRemove = (tags: Tag[], tagIndex: number, props: Props) => {
-//   const newTags = tags.filter((tag, index) => tagIndex !== index);
-//   props.onUpdate(newTags);
-//   props.onRemove(tags[tagIndex]);
-// };
-// export const TagSelect: SFC<Props> = props => {
-//   const { placeholder, enableBackspace, tags } = props;
-//   return (
-//     <SelectContainer className={props.className}>
-//       <SelectArea>
-//         {tags &&
-//           tags.map((tag, index) => (
-//             <StyledTag
-//               key={`TAG_${index}`}
-//               label={tag.label}
-//               onRemove={onRemove.bind(null, tags, index, props)}
-//             />
-//           ))}
-//
-//         {tags.length === 0 && !enableBackspace ? (
-//           <Placeholder>{placeholder}</Placeholder>
-//         ) : null}
-//         {enableBackspace && (
-//           <TagInput
-//             type="text"
-//             onKeyDown={e => handleKeydown(e, tags, props)}
-//             onKeyUp={e => handleKeyUp(e, tags, props)}
-//             onBlur={e => handleBlur(e, tags, props)}
-//             placeholder={tags.length === 0 ? placeholder : ""}
-//           />
-//         )}
-//       </SelectArea>
-//     </SelectContainer>
-//   );
-// };
-var TagSelect = function (props) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Pills");
+/* harmony import */ var components_Pills_Pills__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! components/Pills/Pills */ "./src/components/Pills/Pills.tsx");
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles */ "./src/components/TagSelect/styles.tsx");
+var __read = (undefined && undefined.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
 };
+var __spread = (undefined && undefined.__spread) || function () {
+    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
+    return ar;
+};
+
+
+
+var addTags = function (event, tags, props) {
+    //@ts-ignore
+    var value = event.target.value.trim();
+    event.preventDefault();
+    if (!value)
+        return;
+    var newTags = props.separator
+        ? __spread(tags, value
+            .split(new RegExp(props.separator, "g"))
+            .filter(function (str) { return !!str.trim(); })
+            .map(function (str) { return ({ label: str }); })) : __spread(tags, [{ label: value }]);
+    props.onUpdate(newTags);
+    //@ts-ignore
+    event.target.value = "";
+};
+var handleKeydown = function (event, tags, props) {
+    //@ts-ignore
+    var isBackspace = event.keyCode === 8 && !event.target.value;
+    //@ts-ignore
+    var isEnter = event.keyCode === 13;
+    if (isBackspace) {
+        var tag = tags.pop();
+        if (tag) {
+            props.onRemove(tag);
+        }
+        props.onUpdate(tags);
+    }
+    if (isEnter) {
+        addTags(event, tags, props);
+    }
+};
+var handleKeyUp = function (event, tags, props) {
+    //@ts-ignore
+    var value = event.target.value.trim();
+    var isSepatatorTypes = value.includes(props.separator);
+    if (isSepatatorTypes) {
+        addTags(event, tags, props);
+    }
+};
+var handleBlur = function (event, tags, props) {
+    addTags(event, tags, props);
+};
+var onRemove = function (tags, tagIndex, props) {
+    var newTags = tags.filter(function (tag, index) { return tagIndex !== index; });
+    props.onUpdate(newTags);
+    props.onRemove(tags[tagIndex]);
+};
+var TagSelect = function (props) {
+    var placeholder = props.placeholder, tags = props.tags;
+    console.log(tags);
+    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles__WEBPACK_IMPORTED_MODULE_2__["SelectContainer"], { className: props.className },
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles__WEBPACK_IMPORTED_MODULE_2__["SelectArea"], null,
+            tags.map(function (tag, index) { return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(components_Pills_Pills__WEBPACK_IMPORTED_MODULE_1__["Pills"], { key: "TAG_" + index, label: tag.label, onRemove: onRemove.bind(null, tags, index, props) })); }),
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles__WEBPACK_IMPORTED_MODULE_2__["TagInput"], { type: "text", onKeyDown: function (e) { return handleKeydown(e, tags, props); }, onKeyUp: function (e) { return handleKeyUp(e, tags, props); }, onBlur: function (e) { return handleBlur(e, tags, props); }, placeholder: placeholder }))));
+};
+
+
+/***/ }),
+
+/***/ "./src/components/TagSelect/styles.tsx":
+/*!*********************************************!*\
+  !*** ./src/components/TagSelect/styles.tsx ***!
+  \*********************************************/
+/*! exports provided: SelectContainer, SelectArea, TagInput */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectContainer", function() { return SelectContainer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectArea", function() { return SelectArea; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TagInput", function() { return TagInput; });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_colors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled/colors */ "./src/common/styles/colors.ts");
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+
+
+var SelectContainer = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  \u00A0\u00A0display: flex;\n  \u00A0\u00A0justify-content: center;\n  \u00A0\u00A0align-items: center;\n  \u00A0\u00A0margin: 5px\u00A00;\n  \u00A0\u00A0width: 100%;\n"], ["\n  \u00A0\u00A0display: flex;\n  \u00A0\u00A0justify-content: center;\n  \u00A0\u00A0align-items: center;\n  \u00A0\u00A0margin: 5px\u00A00;\n  \u00A0\u00A0width: 100%;\n"])));
+var SelectArea = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  min-height: 12px;\n  border: 1px\u00A0solid\u00A0 ", ";\n  border-radius: 3px;\n  padding: 10px\u00A05px;\n  color: ", ";\n  width: 100%;\n  display: flex;\n  flex-wrap: wrap;\n  &:hover\u00A0 {\n    border-color: ", ";\n  }\n"], ["\n  min-height: 12px;\n  border: 1px\u00A0solid\u00A0 ", ";\n  border-radius: 3px;\n  padding: 10px\u00A05px;\n  color: ", ";\n  width: 100%;\n  display: flex;\n  flex-wrap: wrap;\n  &:hover\u00A0 {\n    border-color: ", ";\n  }\n"])), styled_colors__WEBPACK_IMPORTED_MODULE_1__["darkGrey"], styled_colors__WEBPACK_IMPORTED_MODULE_1__["text"], styled_colors__WEBPACK_IMPORTED_MODULE_1__["text"]);
+var TagInput = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].input(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  \u00A0\u00A0border: none;\n  \u00A0\u00A0outline: none;\n  \u00A0\u00A0color: ", ";\n  \u00A0\u00A0height: 30px;\n  \u00A0\u00A0font-size: 14px;\n  \u00A0\u00A0font-weight: 500;\n  \u00A0\u00A0letter-spacing: 1px;\n  \u00A0\u00A0display: inline-block;\n  \u00A0\u00A0padding-left: 5px;\n  \u00A0\u00A0width: auto;\n  \u00A0\u00A0min-width: 60px;\n  \u00A0\u00A0flex: 1;\n"], ["\n  \u00A0\u00A0border: none;\n  \u00A0\u00A0outline: none;\n  \u00A0\u00A0color: ", ";\n  \u00A0\u00A0height: 30px;\n  \u00A0\u00A0font-size: 14px;\n  \u00A0\u00A0font-weight: 500;\n  \u00A0\u00A0letter-spacing: 1px;\n  \u00A0\u00A0display: inline-block;\n  \u00A0\u00A0padding-left: 5px;\n  \u00A0\u00A0width: auto;\n  \u00A0\u00A0min-width: 60px;\n  \u00A0\u00A0flex: 1;\n"])), styled_colors__WEBPACK_IMPORTED_MODULE_1__["text"]);
+var templateObject_1, templateObject_2, templateObject_3;
 
 
 /***/ }),
