@@ -14,7 +14,7 @@ const ReceiveProps: SFC<Props> = props => {
   });
 
   return (
-    <Button format="default" onClick={props.onClick}>
+    <Button format='default' onClick={props.onClick}>
       {props.text}
     </Button>
   );
@@ -22,8 +22,6 @@ const ReceiveProps: SFC<Props> = props => {
 
 export const Hooks: SFC<{}> = () => {
   const [count, setCount] = useState(0);
-
-  console.log("Google");
 
   return (
     <ReceiveProps
