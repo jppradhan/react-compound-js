@@ -1,6 +1,7 @@
 export declare const black = "#131313";
 export declare const white = "#FFFFFF";
 export declare const primary = "#00ADEF";
+export declare const primaryDark = "#0586b7";
 export declare const success = "#4ec437";
 export declare const darkGrey = "#b3bfc8";
 export declare const lightRed = "#FF4D4D";
