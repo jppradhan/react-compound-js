@@ -4,6 +4,7 @@ module.exports = {
   propsParser: require("react-docgen-typescript").parse,
   webpackConfig: require("./config/webpack.config.dev"),
   require: [path.join(__dirname, "./src/app.css")],
+  title: "React compound",
   theme: {
     fontSize: {
       base: 14,
@@ -17,20 +18,8 @@ module.exports = {
       h6: 14
     },
     color: {
-      base: "#333",
-      light: "#767676",
-      lightest: "#ccc",
-      link: "#78dce8",
-      linkHover: "#f28a25",
-      border: "#e8e8e8",
-      name: "#7f9a44",
-      type: "#b77daa",
-      error: "#ff6188",
-      baseBackground: "#fff",
-      codeBackground: "#2c292d",
-      sidebarBackground: "#2c292d",
-      ribbonBackground: "#f9970d",
-      ribbonText: "#fff"
+      link: "#00ADEF",
+      linkHover: "#0586b7"
     }
   },
   styleguideDir: "docs",

@@ -19,6 +19,7 @@ const Pill = styled.div`
   border-radius: 4px;
   padding-right: 30px;
   margin-right: 10px;
+  margin-bottom: 10px;
 `;
 
 const Label = styled.span`

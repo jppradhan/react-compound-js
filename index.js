@@ -4927,7 +4927,7 @@ module.exports = g;
 /*!*************************************!*\
   !*** ./src/common/styles/colors.ts ***!
   \*************************************/
-/*! exports provided: black, white, primary, success, darkGrey, lightRed, red, lightGrey, greyText, text, focus_color */
+/*! exports provided: black, white, primary, primaryDark, success, darkGrey, lightRed, red, lightGrey, greyText, text, focus_color */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4935,6 +4935,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "black", function() { return black; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "white", function() { return white; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "primary", function() { return primary; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "primaryDark", function() { return primaryDark; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "success", function() { return success; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "darkGrey", function() { return darkGrey; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lightRed", function() { return lightRed; });
@@ -4946,6 +4947,7 @@ __webpack_require__.r(__webpack_exports__);
 var black = "#131313";
 var white = "#FFFFFF";
 var primary = "#00ADEF";
+var primaryDark = "#0586b7";
 var success = "#4ec437";
 var darkGrey = "#b3bfc8";
 var lightRed = "#FF4D4D";
@@ -6619,7 +6621,7 @@ var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || func
 
 //@ts-ignore
 
-var Pill = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: inline-block;\n  padding: 10px 15px;\n  background-color: ", ";\n  color: ", ";\n  font-size: 14px;\n  position: relative;\n  border-radius: 4px;\n  padding-right: 30px;\n  margin-right: 10px;\n"], ["\n  display: inline-block;\n  padding: 10px 15px;\n  background-color: ", ";\n  color: ", ";\n  font-size: 14px;\n  position: relative;\n  border-radius: 4px;\n  padding-right: 30px;\n  margin-right: 10px;\n"])), styled_colors__WEBPACK_IMPORTED_MODULE_2__["lightGrey"], styled_colors__WEBPACK_IMPORTED_MODULE_2__["text"]);
+var Pill = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: inline-block;\n  padding: 10px 15px;\n  background-color: ", ";\n  color: ", ";\n  font-size: 14px;\n  position: relative;\n  border-radius: 4px;\n  padding-right: 30px;\n  margin-right: 10px;\n  margin-bottom: 10px;\n"], ["\n  display: inline-block;\n  padding: 10px 15px;\n  background-color: ", ";\n  color: ", ";\n  font-size: 14px;\n  position: relative;\n  border-radius: 4px;\n  padding-right: 30px;\n  margin-right: 10px;\n  margin-bottom: 10px;\n"])), styled_colors__WEBPACK_IMPORTED_MODULE_2__["lightGrey"], styled_colors__WEBPACK_IMPORTED_MODULE_2__["text"]);
 var Label = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].span(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  margin-right: 5px;\n"], ["\n  margin-right: 5px;\n"])));
 var RemoveIcon = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].span(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  position: absolute;\n  right: 7px;\n  top: 9px;\n  cursor: pointer;\n"], ["\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  position: absolute;\n  right: 7px;\n  top: 9px;\n  cursor: pointer;\n"])));
 var Pills = function (props) {
@@ -7238,9 +7240,8 @@ var handleKeydown = function (event, tags, props) {
     if (isBackspace) {
         var tag = tags.pop();
         if (tag) {
-            props.onRemove(tag);
+            return props.onRemove(tag);
         }
-        props.onUpdate(tags);
     }
     if (isEnter) {
         addTags(event, tags, props);
@@ -7264,7 +7265,6 @@ var onRemove = function (tags, tagIndex, props) {
 };
 var TagSelect = function (props) {
     var placeholder = props.placeholder, tags = props.tags;
-    console.log(tags);
     return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles__WEBPACK_IMPORTED_MODULE_2__["SelectContainer"], { className: props.className },
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles__WEBPACK_IMPORTED_MODULE_2__["SelectArea"], null,
             tags.map(function (tag, index) { return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(components_Pills_Pills__WEBPACK_IMPORTED_MODULE_1__["Pills"], { key: "TAG_" + index, label: tag.label, onRemove: onRemove.bind(null, tags, index, props) })); }),
@@ -7294,7 +7294,7 @@ var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || func
 };
 
 
-var SelectContainer = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  \u00A0\u00A0display: flex;\n  \u00A0\u00A0justify-content: center;\n  \u00A0\u00A0align-items: center;\n  \u00A0\u00A0margin: 5px\u00A00;\n  \u00A0\u00A0width: 100%;\n"], ["\n  \u00A0\u00A0display: flex;\n  \u00A0\u00A0justify-content: center;\n  \u00A0\u00A0align-items: center;\n  \u00A0\u00A0margin: 5px\u00A00;\n  \u00A0\u00A0width: 100%;\n"])));
+var SelectContainer = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  \u00A0\u00A0display: flex;\n  \u00A0\u00A0justify-content: center;\n  \u00A0\u00A0align-items: center;\n  \u00A0\u00A0margin: 5px\u00A00;\n  \u00A0\u00A0width: 100%;\n  padding: 10px;\n  border: 1px solid ", ";\n  border-radius: 4px;\n  &:hover {\n    border: 1px solid ", ";\n  }\n"], ["\n  \u00A0\u00A0display: flex;\n  \u00A0\u00A0justify-content: center;\n  \u00A0\u00A0align-items: center;\n  \u00A0\u00A0margin: 5px\u00A00;\n  \u00A0\u00A0width: 100%;\n  padding: 10px;\n  border: 1px solid ", ";\n  border-radius: 4px;\n  &:hover {\n    border: 1px solid ", ";\n  }\n"])), styled_colors__WEBPACK_IMPORTED_MODULE_1__["primary"], styled_colors__WEBPACK_IMPORTED_MODULE_1__["primaryDark"]);
 var SelectArea = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  min-height: 12px;\n  border: 1px\u00A0solid\u00A0 ", ";\n  border-radius: 3px;\n  padding: 10px\u00A05px;\n  color: ", ";\n  width: 100%;\n  display: flex;\n  flex-wrap: wrap;\n  &:hover\u00A0 {\n    border-color: ", ";\n  }\n"], ["\n  min-height: 12px;\n  border: 1px\u00A0solid\u00A0 ", ";\n  border-radius: 3px;\n  padding: 10px\u00A05px;\n  color: ", ";\n  width: 100%;\n  display: flex;\n  flex-wrap: wrap;\n  &:hover\u00A0 {\n    border-color: ", ";\n  }\n"])), styled_colors__WEBPACK_IMPORTED_MODULE_1__["darkGrey"], styled_colors__WEBPACK_IMPORTED_MODULE_1__["text"], styled_colors__WEBPACK_IMPORTED_MODULE_1__["text"]);
 var TagInput = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].input(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  \u00A0\u00A0border: none;\n  \u00A0\u00A0outline: none;\n  \u00A0\u00A0color: ", ";\n  \u00A0\u00A0height: 30px;\n  \u00A0\u00A0font-size: 14px;\n  \u00A0\u00A0font-weight: 500;\n  \u00A0\u00A0letter-spacing: 1px;\n  \u00A0\u00A0display: inline-block;\n  \u00A0\u00A0padding-left: 5px;\n  \u00A0\u00A0width: auto;\n  \u00A0\u00A0min-width: 60px;\n  \u00A0\u00A0flex: 1;\n"], ["\n  \u00A0\u00A0border: none;\n  \u00A0\u00A0outline: none;\n  \u00A0\u00A0color: ", ";\n  \u00A0\u00A0height: 30px;\n  \u00A0\u00A0font-size: 14px;\n  \u00A0\u00A0font-weight: 500;\n  \u00A0\u00A0letter-spacing: 1px;\n  \u00A0\u00A0display: inline-block;\n  \u00A0\u00A0padding-left: 5px;\n  \u00A0\u00A0width: auto;\n  \u00A0\u00A0min-width: 60px;\n  \u00A0\u00A0flex: 1;\n"])), styled_colors__WEBPACK_IMPORTED_MODULE_1__["text"]);
 var templateObject_1, templateObject_2, templateObject_3;
@@ -7401,9 +7401,9 @@ var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || func
 
 var VideoContainer = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: 100%;\n  height: 100%;\n  video {\n    width: 100%;\n    height: 100%;\n  }\n"], ["\n  width: 100%;\n  height: 100%;\n  video {\n    width: 100%;\n    height: 100%;\n  }\n"])));
 var VideoList = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 150px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  height: 90%;\n  overflow-y: auto;\n  z-index: 10;\n  padding-top: 15px;\n  padding-right: 15px;\n  opacity: 0;\n  transition: opacity 0.2s linear;\n"], ["\n  width: 150px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  height: 90%;\n  overflow-y: auto;\n  z-index: 10;\n  padding-top: 15px;\n  padding-right: 15px;\n  opacity: 0;\n  transition: opacity 0.2s linear;\n"])));
-var PreviewItem = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  height: 80px;\n  width: 100%;\n  margin-bottom: 10px;\n  position: relative;\n  border-radius: 4px;\n  border: 1px solid ", ";\n  overflow: hidden;\n  cursor: pointer;\n  background-color: #131313;\n  ", "\n"], ["\n  height: 80px;\n  width: 100%;\n  margin-bottom: 10px;\n  position: relative;\n  border-radius: 4px;\n  border: 1px solid ", ";\n  overflow: hidden;\n  cursor: pointer;\n  background-color: #131313;\n  ",
-    "\n"])), styled_colors__WEBPACK_IMPORTED_MODULE_1__["greyText"], function (props) {
-    return props.selected && Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n      border: 2px solid ", ";\n    "], ["\n      border: 2px solid ", ";\n    "])), styled_colors__WEBPACK_IMPORTED_MODULE_1__["red"]);
+var PreviewItem = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  height: 80px;\n  width: 100%;\n  margin-bottom: 10px;\n  position: relative;\n  border-radius: 4px;\n  border: 1px solid ", ";\n  overflow: hidden;\n  cursor: pointer;\n  background-color: #131313;\n  color: ", "\n    ", ";\n"], ["\n  height: 80px;\n  width: 100%;\n  margin-bottom: 10px;\n  position: relative;\n  border-radius: 4px;\n  border: 1px solid ", ";\n  overflow: hidden;\n  cursor: pointer;\n  background-color: #131313;\n  color: ", "\n    ",
+    ";\n"])), styled_colors__WEBPACK_IMPORTED_MODULE_1__["greyText"], styled_colors__WEBPACK_IMPORTED_MODULE_1__["white"], function (props) {
+    return props.selected && Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n        border: 2px solid ", ";\n      "], ["\n        border: 2px solid ", ";\n      "])), styled_colors__WEBPACK_IMPORTED_MODULE_1__["red"]);
 });
 var Title = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  display: flex;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  align-items: center;\n  justify-content: center;\n  color: $lightGrey;\n  padding: 0 15px;\n  font-size: 12px;\n  background-color: rgba(0, 0, 0, 0.3);\n"], ["\n  display: flex;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  align-items: center;\n  justify-content: center;\n  color: $lightGrey;\n  padding: 0 15px;\n  font-size: 12px;\n  background-color: rgba(0, 0, 0, 0.3);\n"])));
 var PreviewThumb = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].img(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  width: 100%;\n  height: 100%;\n"], ["\n  width: 100%;\n  height: 100%;\n"])));
@@ -7665,10 +7665,11 @@ var equals = function (prev, next) {
     var status = true;
     var keys = Object.keys(prev);
     for (var i = 0; i < keys.length; i += 1) {
-        if (typeof prev[i] === "object") {
-            return equals(prev[i], next[i]);
+        var key = keys[i];
+        if (typeof prev[key] === "object") {
+            return equals(prev[key], next[key]);
         }
-        if (prev[i] != next[i]) {
+        if (prev[key] != next[key]) {
             status = false;
             break;
         }
@@ -7678,9 +7679,11 @@ var equals = function (prev, next) {
 var useWillReceiveProps = function (props, callback) {
     var prevState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(props);
     Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-        callback(prevState.current);
-        prevState.current = props;
-    }, [equals(props, prevState.current)]);
+        if (!equals(props, prevState.current)) {
+            callback(prevState.current);
+            prevState.current = props;
+        }
+    }, [props]);
     return prevState.current;
 };
 
@@ -7938,8 +7941,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/jyotiprakash/www/react-compound-js/config/polyfills.js */"./config/polyfills.js");
-module.exports = __webpack_require__(/*! /Users/jyotiprakash/www/react-compound-js/src/index.tsx */"./src/index.tsx");
+__webpack_require__(/*! /Users/jp/workspace/react-compound-js/config/polyfills.js */"./config/polyfills.js");
+module.exports = __webpack_require__(/*! /Users/jp/workspace/react-compound-js/src/index.tsx */"./src/index.tsx");
 
 
 /***/ })

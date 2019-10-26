@@ -8,10 +8,11 @@ const equals = <U>(prev: Props<U>, next: Props<U>): boolean => {
   let status = true;
   const keys = Object.keys(prev);
   for (let i = 0; i < keys.length; i += 1) {
-    if (typeof prev[i] === "object") {
-      return equals(prev[i], next[i]);
+    const key = keys[i];
+    if (typeof prev[key] === "object") {
+      return equals(prev[key], next[key]);
     }
-    if (prev[i] != next[i]) {
+    if (prev[key] != next[key]) {
       status = false;
       break;
     }
@@ -26,9 +27,11 @@ export const useWillReceiveProps = <U>(
   const prevState = useRef(props);
 
   useEffect(() => {
-    callback(prevState.current);
-    prevState.current = props;
-  }, [equals(props, prevState.current)]);
+    if (!equals(props, prevState.current)) {
+      callback(prevState.current);
+      prevState.current = props;
+    }
+  }, [props]);
 
   return prevState.current;
 };

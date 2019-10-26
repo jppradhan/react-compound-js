@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { text, darkGrey } from "styled/colors";
+import { text, darkGrey, primary, primaryDark } from "styled/colors";
 
 export const SelectContainer = styled.div`
     display: flex;
@@ -7,6 +7,12 @@ export const SelectContainer = styled.div`
     align-items: center;
     margin: 5px 0;
     width: 100%;
+  padding: 10px;
+  border: 1px solid ${primary};
+  border-radius: 4px;
+  &:hover {
+    border: 1px solid ${primaryDark};
+  }
 `;
 
 export const SelectArea = styled.div`
