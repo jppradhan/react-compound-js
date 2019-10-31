@@ -6079,7 +6079,7 @@ var __read = (undefined && undefined.__read) || function (o, n) {
 var DEFAULT_COLOR = "#000000";
 var InputColor = function (_a) {
     var _b = _a.type, type = _b === void 0 ? "text" : _b, _c = _a.format, format = _c === void 0 ? "default" : _c, label = _a.label, errorMessage = _a.errorMessage, isValid = _a.isValid, rest = __rest(_a, ["type", "format", "label", "errorMessage", "isValid"]);
-    var _d = __read(Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(DEFAULT_COLOR), 2), color = _d[0], setColor = _d[1];
+    var _d = __read(Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(rest.value || DEFAULT_COLOR), 2), color = _d[0], setColor = _d[1];
     var _e = __read(Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false), 2), showPicker = _e[0], setShowPicker = _e[1];
     var colorElem = Object(hooks_useOutsideClick__WEBPACK_IMPORTED_MODULE_2__["useOutsideClick"])(function () {
         setShowPicker(false);

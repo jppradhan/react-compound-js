@@ -1,7 +1,7 @@
 import { SFC, ChangeEvent, ReactNode, InputHTMLAttributes } from "react";
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
     label: ReactNode;
-    value: string | number;
+    value: string;
     name: string;
     format: "default" | "error" | "success";
     errorMessage?: string;
