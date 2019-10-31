@@ -1,5 +1,13 @@
 import styled, { css } from "styled-components";
-import { primary, text, white, darkGrey, red, success } from "styled/colors";
+import {
+  primary,
+  text,
+  white,
+  darkGrey,
+  red,
+  success,
+  black
+} from "styled/colors";
 
 export const FormElems = styled.div`
   width: 100%;
@@ -220,4 +228,31 @@ export const RangeInputs = styled.div`
     width: 40px;
     height: 30px;
   }
+`;
+
+export const ColorInput = styled.div`
+  max-width: 120px;
+  position: relative;
+`;
+
+export const ColorPickerWrapper = styled.div`
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  z-index: 10;
+  border-radius: 5px;
+  border: 2px solid ${black};
+  overflow: hidden;
+`;
+
+export const ColorPreview = styled.div.attrs(props => ({
+  style: props.style
+}))`
+  position: absolute;
+  right: 7px;
+  bottom: 6px;
+  height: 30px;
+  width: 30px;
+  border-radius: 3px;
+  cursor: pointer;
 `;

@@ -1,7 +1,11 @@
 import React, { useRef, useEffect, SFC } from "react";
 import Picker from "./Picker";
 
-export const ColorPicker: SFC<{}> = () => {
+interface Props {
+  onSelect: (color: string) => void;
+}
+
+export const ColorPicker: SFC<Props> = ({ onSelect }) => {
   const picker: { current: HTMLElement | null } = useRef(null);
 
   useEffect(() => {
@@ -9,7 +13,9 @@ export const ColorPicker: SFC<{}> = () => {
       new Picker({
         element: picker.current,
         onSelect: color => {
-          console.log(color);
+          if (typeof onSelect === "function") {
+            onSelect(color);
+          }
         }
       });
     }
