@@ -8,6 +8,7 @@ import { InputCheckbox } from "./components/Form/InputCheckbox";
 import { InputRadio } from "./components/Form/InputRadio";
 import { InputDate } from "./components/Form/InputDate";
 import { InputRange } from "./components/Form/InputRange";
+import { InputColor } from "./components/Form/InputColor";
 import { Image } from "./components/Image/Image";
 import { Modal } from "./components/Modal/Modal";
 import { Ratings } from "./components/Ratings/Ratings";
@@ -36,6 +37,7 @@ export {
   InputRadio,
   InputDate,
   InputRange,
+  InputColor,
   Image,
   Modal,
   Ratings,
