@@ -1,3 +1,4 @@
+/// <reference types="react" />
 export declare const FormElems: import("styled-components").StyledComponent<"div", any, {}, never>;
 export declare const CheckboxLabel: import("styled-components").StyledComponent<"label", any, {}, never>;
 export declare const FormCheckbox: import("styled-components").StyledComponent<"div", any, {}, never>;
@@ -20,3 +21,8 @@ export declare const RangeButton: import("styled-components").StyledComponent<"s
     right?: boolean | undefined;
 }, never>;
 export declare const RangeInputs: import("styled-components").StyledComponent<"div", any, {}, never>;
+export declare const ColorInput: import("styled-components").StyledComponent<"div", any, {}, never>;
+export declare const ColorPickerWrapper: import("styled-components").StyledComponent<"div", any, {}, never>;
+export declare const ColorPreview: import("styled-components").StyledComponent<"div", any, {
+    style: import("react").CSSProperties | undefined;
+}, "style">;
