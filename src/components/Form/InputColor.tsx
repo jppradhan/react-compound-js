@@ -19,7 +19,7 @@ import {
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: ReactNode;
-  value: string | number;
+  value: string;
   name: string;
   format: "default" | "error" | "success";
   errorMessage?: string;
@@ -37,7 +37,7 @@ export const InputColor: SFC<Props> = ({
   isValid,
   ...rest
 }) => {
-  const [color, setColor] = useState(DEFAULT_COLOR);
+  const [color, setColor] = useState(rest.value || DEFAULT_COLOR);
   const [showPicker, setShowPicker] = useState(false);
 
   const colorElem = useOutsideClick(() => {
