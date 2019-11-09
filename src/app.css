@@ -181,8 +181,3 @@ code {
 [class*="top-layer"] circle {
   fill: #37b7f2;
 }
-
-/* Document styles override */
-.rsg--logo-42 {
-  color: #ffd866 !important;
-}

@@ -1,5 +1,8 @@
 Form component
 ```jsx
+import { InputText } from 'components/Form/InputText';
+import { Button } from 'components/Button/Button';
+
 <Form 
     formValues={{name: 'my name', email: 'test@test.com'}} 
     onSubmit={(val) => console.log(val)}

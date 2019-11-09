@@ -1,4 +1,6 @@
 ```jsx
+import { Button } from 'components/Button/Button';
+
 const Spinner = require("../../icons/spinner.svg").default;
 <Post>
   {({ post, data, error, loading }) => {

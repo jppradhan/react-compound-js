@@ -5,6 +5,17 @@ module.exports = {
   webpackConfig: require("./config/webpack.config.dev"),
   require: [path.join(__dirname, "./src/app.css")],
   title: "React compound",
+  styles: {
+    Logo: {
+      logo: {
+        animation: 'blink ease-in-out 300ms',
+        color: '#ff2182',
+      },
+      '@keyframes blink': {
+        to: { opacity: 0 }
+      }
+    }
+  },
   theme: {
     fontSize: {
       base: 14,
@@ -20,6 +31,10 @@ module.exports = {
     color: {
       link: "#00ADEF",
       linkHover: "#0586b7"
+    },
+    fontFamily: {
+      base: '"Comic Sans MS", "Comic Sans", cursive',
+      monospace: ['Consolas', '"Liberation Mono"', 'Menlo', 'monospace'],
     }
   },
   styleguideDir: "docs",
