@@ -6,6 +6,13 @@ interface ImageOptions {
   callback: (url: string) => void;
 }
 
+export interface Rect {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+}
+
 export const imageToDataUrl = (options: ImageOptions) => {
   const createCanvasAndDraw = (imageObj: any) => {
     const canvas = document.createElement("canvas");
@@ -34,9 +41,9 @@ export const imageToDataUrl = (options: ImageOptions) => {
   }
 };
 
-const CLIPPING_OFFSET = 75;
+const CLIPPING_OFFSET = 150;
 
-export const getClipingPoints = (element: HTMLElement | null) => {
+export const getClipingPoints = (element: HTMLElement | null): Rect => {
   if (element) {
     const height = element.offsetHeight;
     const width = element.offsetWidth;

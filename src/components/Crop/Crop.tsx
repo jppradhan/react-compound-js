@@ -1,10 +1,10 @@
 import React, { SFC, useRef, useState } from "react";
 import { Button } from "components/Button/Button";
-import { imageToDataUrl, getDefaultCropRect, getClipingPoints } from "./helper";
+import { CropRegion } from "./CropRegion";
+import { imageToDataUrl } from "./helper";
 import {
   Container,
   StyledImage,
-  OverlayImage,
   Overlay,
   InputFile,
   ImageWrappper,
@@ -61,10 +61,7 @@ export const Crop: SFC<Props> = props => {
         {source && (
           <>
             <StyledImage src={source} ref={elem => (img.current = elem)} />
-            <OverlayImage
-              src={source}
-              style={getDefaultCropRect(imageWrapper.current)}
-            />
+            <CropRegion src={source} parent={imageWrapper.current} />
             <Overlay />
           </>
         )}

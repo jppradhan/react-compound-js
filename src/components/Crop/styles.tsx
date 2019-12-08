@@ -53,3 +53,14 @@ export const ActionWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const Clipper = styled.div.attrs(props => ({
+  style: props.style
+}))`
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 2px dashed ${lightGrey};
+  z-index: 4;
+  cursor: move;
+`;
