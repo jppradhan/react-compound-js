@@ -22,25 +22,19 @@ const getClipperPosition = (rect: Rect) => {
 
 const getMousePosition = (
   event: MouseEvent,
-  parent: HTMLElement,
-  prevPoints: { x: number; y: number }
+  prevPoints: { current: { x: number; y: number } },
+  prevTran: { current: { x: number; y: number } },
+  parent: HTMLElement
 ) => {
-  //@ts-ignore
+  const movedX = event.clientX - prevPoints.current.x;
+  const movedY = event.clientY - prevPoints.current.y;
   const parentRect = parent.getBoundingClientRect();
   //@ts-ignore
   const clientRect = event.target.getBoundingClientRect();
 
-  const movedX = event.clientX - prevPoints.x;
-  const movedY = event.clientY - prevPoints.y;
-  //console.log(event.clientX, prevPoints.x);
-  const rmpc = {
-    x: event.clientX - clientRect.left - movedX,
-    y: event.clientY - clientRect.top - movedY
-  };
-
   const rmp = {
-    x: event.clientX - parentRect.left - rmpc.x,
-    y: event.clientY - parentRect.top - rmpc.y
+    x: prevTran.current.x + movedX,
+    y: prevTran.current.y + movedY
   };
 
   if (rmp.x <= 0) {
@@ -49,12 +43,14 @@ const getMousePosition = (
   if (rmp.y <= 0) {
     rmp.y = 0;
   }
-  if (rmp.x >= clientRect.width) {
-    rmp.x = clientRect.width;
+  if (rmp.x >= parentRect.width - clientRect.width) {
+    rmp.x = parentRect.width - clientRect.width;
   }
-  if (rmp.y >= clientRect.height) {
-    rmp.y = clientRect.height;
+  if (rmp.y >= parentRect.height - clientRect.height) {
+    rmp.y = parentRect.height - clientRect.height;
   }
+
+  prevTran.current = rmp;
 
   return rmp;
 };
@@ -69,6 +65,11 @@ export const CropRegion: SFC<Props> = props => {
   });
 
   const rect = getClipingPoints(parent);
+
+  const prevTran = useRef({
+    x: rect.left,
+    y: rect.top
+  });
 
   const [clipperStyle, setClipperStyle] = useState({
     ...getClipperDimensions(rect),
@@ -88,13 +89,22 @@ export const CropRegion: SFC<Props> = props => {
     };
   };
 
-  const handleMouseUp = () => {
+  const handleMouseUp = (event: MouseEvent) => {
     dragStart.current = false;
+    prevMousePoints.current = {
+      x: event.clientX,
+      y: event.clientY
+    };
   };
 
   const handleMouseMove = (event: MouseEvent) => {
     if (dragStart.current && parent) {
-      const { x, y } = getMousePosition(event, parent, prevMousePoints.current);
+      const { x, y } = getMousePosition(
+        event,
+        prevMousePoints,
+        prevTran,
+        parent
+      );
       setClipperStyle({
         ...clipperStyle,
         ...getClipperPosition({

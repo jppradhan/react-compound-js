@@ -11,7 +11,7 @@ class App extends React.Component {
   render() {
     return (
       <div style={{ display: "flex" }}>
-        <div style={{ width: "600px", height: "350px", marginBottom: "50px" }}>
+        <div style={{ width: "500px", height: "500px", marginBottom: "50px" }}>
           <Crop
             onCrop={src => {
               this.setState({
