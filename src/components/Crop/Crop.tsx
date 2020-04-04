@@ -8,19 +8,20 @@ import {
   Overlay,
   InputFile,
   ImageWrappper,
-  ActionWrapper
+  ActionWrapper,
 } from "./styles";
 
 interface Props {
   onCrop: (url: string) => string;
 }
 
-export const Crop: SFC<Props> = props => {
+export const Crop: SFC<Props> = (props) => {
   const { onCrop } = props;
   const [source, setSource] = useState("");
   const img: { current: HTMLImageElement | null } = useRef(null);
   const inputFile: { current: HTMLInputElement | null } = useRef(null);
   const imageWrapper: { current: HTMLDivElement | null } = useRef(null);
+  const [parentStyle, setParentStyle] = useState({});
 
   const onSelectImage = (event: any) => {
     const file = event.target.files[0];
@@ -47,38 +48,50 @@ export const Crop: SFC<Props> = props => {
         img: img.current,
         format: "image/png",
         height: 200,
-        width: 300,
-        callback: url => {
+        width: 200,
+        callback: (url) => {
           onCrop(url);
-        }
+        },
       });
     }
   };
 
+  const handleParentStyle = (style: { transform: string }) => {
+    setParentStyle(style);
+  };
+
   return (
     <Container>
-      <ImageWrappper ref={elem => (imageWrapper.current = elem)}>
+      <ImageWrappper ref={(elem) => (imageWrapper.current = elem)}>
         {source && (
           <>
-            <StyledImage src={source} ref={elem => (img.current = elem)} />
-            <CropRegion src={source} parent={imageWrapper.current} />
+            <StyledImage
+              src={source}
+              ref={(elem) => (img.current = elem)}
+              style={parentStyle}
+            />
+            <CropRegion
+              src={source}
+              parent={imageWrapper.current}
+              updateParentStyle={handleParentStyle}
+            />
             <Overlay />
           </>
         )}
       </ImageWrappper>
       <ActionWrapper>
-        <Button type="button" onClick={selectFile}>
+        <Button type='button' onClick={selectFile}>
           Upload image
         </Button>
-        <Button type="button" onClick={doCrop} format="primary">
+        <Button type='button' onClick={doCrop} format='primary'>
           Crop image
         </Button>
       </ActionWrapper>
 
       <InputFile
-        type="file"
+        type='file'
         onChange={onSelectImage}
-        ref={e => (inputFile.current = e)}
+        ref={(e) => (inputFile.current = e)}
       />
     </Container>
   );

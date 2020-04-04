@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import { lightGrey } from "styled/colors";
 
-export const StyledImage = styled.img`
+export const StyledImage = styled.img.attrs((props) => ({
+  style: props.style,
+}))`
   width: 100%;
   height: 100%;
 `;
 
-export const OverlayImage = styled.img.attrs(props => ({
-  style: props.style
+export const OverlayImage = styled.img.attrs((props) => ({
+  style: props.style,
 }))`
   width: 100%;
   height: 100%;
@@ -15,6 +17,7 @@ export const OverlayImage = styled.img.attrs(props => ({
   left: 0;
   top: 0;
   z-index: 2;
+  opacity: 0;
 `;
 
 export const Container = styled.div`
@@ -46,6 +49,7 @@ export const ImageWrappper = styled.div`
   width: 100%;
   position: relative;
   height: 100%;
+  overflow: hidden;
 `;
 
 export const ActionWrapper = styled.div`
@@ -54,12 +58,13 @@ export const ActionWrapper = styled.div`
   align-items: center;
 `;
 
-export const Clipper = styled.div.attrs(props => ({
-  style: props.style
+export const Clipper = styled.div.attrs((props) => ({
+  style: props.style,
 }))`
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border: 2px dashed ${lightGrey};
   z-index: 4;
   cursor: move;

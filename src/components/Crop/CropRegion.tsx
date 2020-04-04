@@ -1,22 +1,16 @@
-import React, { SFC, useState, useRef, MouseEvent } from "react";
-import { getDefaultCropRect, Rect, getClipingPoints } from "./helper";
+import React, { SFC, useRef, MouseEvent } from "react";
+import { Rect, getClipingPoints, getDefaultCropRect } from "./helper";
 import { OverlayImage, Clipper } from "./styles";
 
 interface Props {
   src: string;
   parent: HTMLElement | null;
+  updateParentStyle: (style: { transform: string }) => void;
 }
-
-const getClipperDimensions = (rect: Rect) => {
-  return {
-    width: `${rect.right - rect.left}px`,
-    height: `${rect.bottom - rect.top}px`
-  };
-};
 
 const getClipperPosition = (rect: Rect) => {
   return {
-    transform: `translate(${rect.left}px, ${rect.top}px)`
+    transform: `translate(${rect.left}px, ${rect.top}px)`,
   };
 };
 
@@ -34,7 +28,7 @@ const getMousePosition = (
 
   const rmp = {
     x: prevTran.current.x + movedX,
-    y: prevTran.current.y + movedY
+    y: prevTran.current.y + movedY,
   };
 
   if (rmp.x <= 0) {
@@ -55,37 +49,35 @@ const getMousePosition = (
   return rmp;
 };
 
-export const CropRegion: SFC<Props> = props => {
-  const { src, parent } = props;
-  const [clipStyle, setClipStyle] = useState(getDefaultCropRect(parent));
+export const CropRegion: SFC<Props> = (props) => {
+  const { src, parent, updateParentStyle } = props;
   const dragStart = useRef(false);
   const prevMousePoints = useRef({
     x: 0,
-    y: 0
+    y: 0,
   });
 
   const rect = getClipingPoints(parent);
 
   const prevTran = useRef({
     x: rect.left,
-    y: rect.top
+    y: rect.top,
   });
 
-  const [clipperStyle, setClipperStyle] = useState({
-    ...getClipperDimensions(rect),
-    ...getClipperPosition(rect)
-  });
+  const defaultClipStyle = getDefaultCropRect(parent);
 
-  // const setRegionStyles = () => {
-  //   const styles = getClipperDimensions(getClipingPoints(parent))
-  //   setClipperStyle(styles)
-  // }
+  const getClipperDimension = (): { height: string; width: string } => {
+    return {
+      height: `${parent ? parent.offsetHeight - rect.top * 2 : 0}px`,
+      width: `${parent ? parent.offsetWidth - rect.left * 2 : 0}px`,
+    };
+  };
 
   const handleMouseDown = (event: MouseEvent) => {
     dragStart.current = true;
     prevMousePoints.current = {
       x: event.clientX,
-      y: event.clientY
+      y: event.clientY,
     };
   };
 
@@ -93,7 +85,7 @@ export const CropRegion: SFC<Props> = props => {
     dragStart.current = false;
     prevMousePoints.current = {
       x: event.clientX,
-      y: event.clientY
+      y: event.clientY,
     };
   };
 
@@ -105,23 +97,23 @@ export const CropRegion: SFC<Props> = props => {
         prevTran,
         parent
       );
-      setClipperStyle({
-        ...clipperStyle,
+      console.log("MOUSE MOVED", x, y);
+      updateParentStyle({
         ...getClipperPosition({
           left: x,
           top: y,
           right: 0,
-          bottom: 0
-        })
+          bottom: 0,
+        }),
       });
     }
   };
 
   return (
     <>
-      <OverlayImage src={src} style={clipStyle} />
+      <OverlayImage src={src} style={defaultClipStyle} />
       <Clipper
-        style={clipperStyle}
+        style={getClipperDimension()}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
