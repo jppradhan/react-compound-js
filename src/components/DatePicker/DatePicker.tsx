@@ -7,7 +7,7 @@ import {
   YEAR_START,
   YEAR_END,
   formatDate,
-  stringToDate
+  stringToDate,
 } from "./utils";
 import {
   Root,
@@ -19,7 +19,7 @@ import {
   StyledMonth,
   StyledYear,
   StyledMonthView,
-  StyledYearView
+  StyledYearView,
 } from "./styles";
 
 interface Props {
@@ -42,7 +42,7 @@ export class DatePicker extends React.Component<Props, State> {
   static dayStyles = (options: any) => ({
     today: options.today,
     selected: options.selected,
-    disabled: options.disabled
+    disabled: options.disabled,
   });
 
   public constructor(props: Props) {
@@ -60,7 +60,7 @@ export class DatePicker extends React.Component<Props, State> {
         curDate.getFullYear()
       ),
       showMonth: false,
-      showYear: false
+      showYear: false,
     };
   }
 
@@ -104,7 +104,7 @@ export class DatePicker extends React.Component<Props, State> {
           {...DatePicker.dayStyles({
             today: this.state.today,
             selected: i === day,
-            disabled: i >= daysInMonth
+            disabled: i >= daysInMonth,
           })}
         >
           {i + 1}
@@ -155,7 +155,7 @@ export class DatePicker extends React.Component<Props, State> {
       return;
     }
     this.setState({
-      currentMonth: month
+      currentMonth: month,
     });
   };
 
@@ -165,7 +165,7 @@ export class DatePicker extends React.Component<Props, State> {
         currentDay: day,
         currentMonth: month,
         currentYear: year,
-        selectedDate: formatDate(this.props.format, day + 1, month + 1, year)
+        selectedDate: formatDate(this.props.format, day + 1, month + 1, year),
       },
       () => {
         if (!this.state.showMonth && !this.state.showMonth) {
@@ -177,27 +177,27 @@ export class DatePicker extends React.Component<Props, State> {
 
   private showMonthView = () => {
     this.setState({
-      showMonth: true
+      showMonth: true,
     });
   };
 
   private hideMonthView = () => {
     this.setState({
-      showMonth: false
+      showMonth: false,
     });
   };
 
   private showYearView = () => {
     this.setState({
       showYear: true,
-      showMonth: false
+      showMonth: false,
     });
   };
 
   private hideYearView = () => {
     this.setState({
       showYear: false,
-      showMonth: true
+      showMonth: true,
     });
   };
 

@@ -8,13 +8,13 @@ module.exports = {
   styles: {
     Logo: {
       logo: {
-        animation: 'blink ease-in-out 300ms',
-        color: '#ff2182',
+        animation: "blink ease-in-out 300ms",
+        color: "#ff2182",
       },
-      '@keyframes blink': {
-        to: { opacity: 0 }
-      }
-    }
+      "@keyframes blink": {
+        to: { opacity: 0 },
+      },
+    },
   },
   theme: {
     fontSize: {
@@ -26,17 +26,17 @@ module.exports = {
       h3: 22,
       h4: 18,
       h5: 16,
-      h6: 14
+      h6: 14,
     },
     color: {
       link: "#00ADEF",
-      linkHover: "#0586b7"
+      linkHover: "#0586b7",
     },
     fontFamily: {
       base: '"Comic Sans MS", "Comic Sans", cursive',
-      monospace: ['Consolas', '"Liberation Mono"', 'Menlo', 'monospace'],
-    }
+      monospace: ["Consolas", '"Liberation Mono"', "Menlo", "monospace"],
+    },
   },
   styleguideDir: "docs",
-  ignore: ["**/styles.tsx"]
+  ignore: ["**/styles.tsx", "**/*.ts", "**/*.js"],
 };

@@ -6,7 +6,7 @@ export declare const RadioLabel: import("styled-components").StyledComponent<"la
 export declare const FormRadio: import("styled-components").StyledComponent<"div", any, {}, never>;
 export declare const InputLabel: import("styled-components").StyledComponent<"label", any, {}, never>;
 export declare const FormInput: import("styled-components").StyledComponent<"input", any, {
-    format?: "default" | "success" | "error" | undefined;
+    format?: "success" | "default" | "error" | undefined;
 }, never>;
 export declare const InputErrorMessage: import("styled-components").StyledComponent<"p", any, {}, never>;
 export declare const PickerWrapper: import("styled-components").StyledComponent<"div", any, {}, never>;
