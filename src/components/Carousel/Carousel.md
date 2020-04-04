@@ -1,7 +1,9 @@
 Carousel sample:
 
 ```jsx
+  import { Image } from "components/Image/Image";
   const Spinner = require("../../icons/spinner.svg").default;
+
   <Carousel loop={false} iconDimension={20}>
     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(c => (
       <div className="imageWrapper" key={c}>

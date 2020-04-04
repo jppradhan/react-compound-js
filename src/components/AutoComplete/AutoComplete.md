@@ -1,6 +1,8 @@
 AutoComplete example:
 
-```js
+```jsx
+import { InputText } from 'components/Form/InputText';
+
 class App extends React.Component {
   constructor(props) {
     super(props);

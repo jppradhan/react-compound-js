@@ -1,6 +1,8 @@
 Modal:
 
-```js
+```jsx
+import { Button } from 'components/Button/Button';
+
 class App extends React.Component {
   constructor() {
     this.state = {
