@@ -1,6 +1,5 @@
 import React, { SFC, useRef, useState } from "react";
 import { Button } from "components/Button/Button";
-import { CropRegion } from "./CropRegion";
 import { imageToDataUrl } from "./helper";
 import {
   Container,
@@ -9,31 +8,49 @@ import {
   InputFile,
   ImageWrappper,
   ActionWrapper,
+  Clipper,
 } from "./styles";
 
 interface Props {
   onCrop: (url: string) => string;
 }
 
+const selectImage = (event: any, callback: (value: string) => void) => {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+
+  reader.onloadend = () => {
+    if (reader.result) {
+      //@ts-ignore
+      callback(reader.result);
+    }
+  };
+  reader.readAsDataURL(file);
+};
+
 export const Crop: SFC<Props> = (props) => {
   const { onCrop } = props;
   const [source, setSource] = useState("");
+  const [clipperStyle, setClipperStyle] = useState({});
   const img: { current: HTMLImageElement | null } = useRef(null);
+  const clipper: { current: HTMLDivElement | null } = useRef(null);
+  const overlay: { current: HTMLDivElement | null } = useRef(null);
   const inputFile: { current: HTMLInputElement | null } = useRef(null);
   const imageWrapper: { current: HTMLDivElement | null } = useRef(null);
-  const [parentStyle, setParentStyle] = useState({});
+  const dragValues: { current: any } = useRef({
+    active: false,
+    currentX: null,
+    currentY: null,
+    initialX: null,
+    initialY: null,
+    xOffset: 0,
+    yOffset: 0,
+  });
 
   const onSelectImage = (event: any) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      if (reader.result) {
-        //@ts-ignore
-        setSource(reader.result);
-      }
-    };
-    reader.readAsDataURL(file);
+    selectImage(event, (res) => {
+      setSource(res);
+    });
   };
 
   const selectFile = () => {
@@ -43,21 +60,61 @@ export const Crop: SFC<Props> = (props) => {
   };
 
   const doCrop = () => {
-    if (img.current) {
-      imageToDataUrl({
-        img: img.current,
-        format: "image/png",
-        height: 200,
-        width: 200,
-        callback: (url) => {
-          onCrop(url);
-        },
-      });
+    if (overlay.current && clipper.current) {
+      const overlayRect = overlay.current.getBoundingClientRect();
+      const clipperRect = clipper.current.getBoundingClientRect();
+      const x = clipperRect.left - overlayRect.left;
+      const y = clipperRect.top - overlayRect.top;
+      const width = clipper.current.offsetWidth;
+      const height = clipper.current.offsetHeight;
+
+      if (img.current) {
+        imageToDataUrl({
+          img: img.current,
+          format: "image/jpeg",
+          height,
+          width,
+          x,
+          y,
+          callback: (url) => {
+            onCrop(url);
+          },
+        });
+      }
     }
   };
 
-  const handleParentStyle = (style: { transform: string }) => {
-    setParentStyle(style);
+  const onClipperMouseDown = (e: any) => {
+    dragValues.current.active = true;
+    dragValues.current.initialX = e.clientX - dragValues.current.xOffset;
+    dragValues.current.initialY = e.clientY - dragValues.current.yOffset;
+  };
+
+  const onClipperMouseUp = () => {
+    dragValues.current.active = false;
+    dragValues.current.initialX = dragValues.current.currentX;
+    dragValues.current.initialY = dragValues.current.currentY;
+  };
+
+  const onClipperMouseMove = (e: any) => {
+    if (dragValues.current.active && clipper.current) {
+      dragValues.current.currentX = e.clientX - dragValues.current.initialX;
+      dragValues.current.currentY = e.clientY - dragValues.current.initialY;
+      dragValues.current.xOffset = dragValues.current.currentX;
+      dragValues.current.yOffset = dragValues.current.currentY;
+      const translate3d =
+        "translate3d(" +
+        dragValues.current.currentX +
+        "px, " +
+        dragValues.current.currentY +
+        "px, 0)";
+      setClipperStyle({
+        transform: translate3d,
+        WebKitTransform: translate3d,
+        MsTransform: translate3d,
+        MozTransform: translate3d,
+      });
+    }
   };
 
   return (
@@ -65,17 +122,16 @@ export const Crop: SFC<Props> = (props) => {
       <ImageWrappper ref={(elem) => (imageWrapper.current = elem)}>
         {source && (
           <>
-            <StyledImage
-              src={source}
-              ref={(elem) => (img.current = elem)}
-              style={parentStyle}
-            />
-            <CropRegion
-              src={source}
-              parent={imageWrapper.current}
-              updateParentStyle={handleParentStyle}
-            />
-            <Overlay />
+            <StyledImage src={source} ref={(elem) => (img.current = elem)} />
+            <Overlay ref={(elem) => (overlay.current = elem)}>
+              <Clipper
+                ref={(elem) => (clipper.current = elem)}
+                onMouseDown={onClipperMouseDown}
+                onMouseUp={onClipperMouseUp}
+                onMouseMove={onClipperMouseMove}
+                style={clipperStyle}
+              />
+            </Overlay>
           </>
         )}
       </ImageWrappper>

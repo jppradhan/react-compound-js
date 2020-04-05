@@ -35,6 +35,9 @@ export const Overlay = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const InputFile = styled.input`
@@ -61,11 +64,9 @@ export const ActionWrapper = styled.div`
 export const Clipper = styled.div.attrs((props) => ({
   style: props.style,
 }))`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border: 2px dashed ${lightGrey};
   z-index: 4;
   cursor: move;
+  height: 30%;
+  width: 30%;
 `;
