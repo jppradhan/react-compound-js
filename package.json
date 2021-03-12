@@ -47,7 +47,7 @@
     "promise": "8.0.1",
     "raf": "3.4.0",
     "react": "16.13.1",
-    "react-dev-utils": "8.0.0",
+    "react-dev-utils": "11.0.4",
     "react-docgen-typescript": "1.15.0",
     "react-dom": "16.13.1",
     "react-styleguidist": "^11.0.5",
